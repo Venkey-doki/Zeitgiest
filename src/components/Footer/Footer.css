@@ -1,0 +1,32 @@
+.footer {
+    background-color: #000;
+  }
+  
+  .hover-gray:hover {
+    color: #808080; /* Gray color on hover */
+  }
+  
+  .footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .social-media {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .social-media li {
+    margin-bottom: 10px;
+  }
+  
+  .social-media i {
+    margin-right: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    iframe {
+      height: 200px;
+    }
+  }
+  

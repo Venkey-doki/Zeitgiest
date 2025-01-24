@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import p1 from "../../assets/1000255470-removebg-preview.png";
+import p1 from "../../../assets/CyberSecurity1.png";
 
-function GenAi() {
+function CyberSecurity() {
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration
@@ -38,11 +38,9 @@ function GenAi() {
                 height: "auto",
               }}
             />
-            <h1 className="display-5 text-warning mt-4">TechFest: GEN AI</h1>
+            <h1 className="display-5 text-warning mt-4">Cyber Security</h1>
             <p className="lead">
-              Join our GenAI Workshop to explore the exciting world of
-              Generative AI! Learn how cutting-edge technologies like GPT and
-              diffusion models create art, text, and more.
+            Dive into the world of Cybersecurity with our interactive workshop! Learn to identify vulnerabilities, implement security measures, and protect systems from cyber threats. Gain hands-on experience with tools and techniques to safeguard data and networks, empowering you to stay ahead in today’s digital landscape.
             </p>
           </div>
 
@@ -109,4 +107,4 @@ function GenAi() {
   );
 }
 
-export default GenAi;
+export default CyberSecurity;

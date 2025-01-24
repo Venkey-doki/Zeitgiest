@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import p1 from "../../assets/1000255470-removebg-preview.png";
-import p2 from "../../assets/AIp.png"
+import p2 from "../../assets/devops.png"
 import p3 from "../../assets/CloudComputing.png"
 import p4 from "../../assets/cyberSecurity1.png"
 import { Link } from "react-router-dom";
@@ -60,7 +60,7 @@ function Workshop() {
                 <p className="lead">
                 Discover the power of Cloud Computing in our hands-on workshop! Learn the essentials of cloud services, deployment models, and popular platforms like AWS and Azure. Gain practical skills to build, deploy, and manage scalable applications, preparing you to harness the full potential of the cloud for innovation and efficiency..
                 </p>
-                <Link to="/workshop/GenAI" className="btn btn-outline-warning">
+                <Link to="./CloudComputing" className="btn btn-outline-warning">
                   Explore Now
                 </Link>
               </div>
@@ -98,7 +98,7 @@ function Workshop() {
                 <p className="lead">
                 Dive into the world of Cybersecurity with our interactive workshop! Learn to identify vulnerabilities, implement security measures, and protect systems from cyber threats. Gain hands-on experience with tools and techniques to safeguard data and networks, empowering you to stay ahead in today’s digital landscape.
                 </p>
-                <Link to="/workshop/GenAI" className="btn btn-outline-warning">
+                <Link to="/workshop/CyberSecurity" className="btn btn-outline-warning">
                   Explore Now
                 </Link>
               </div>
@@ -136,7 +136,7 @@ function Workshop() {
                 <p className="lead">
                 Unlock the potential of DevOps in our dynamic workshop! Learn how to streamline development and operations through tools like Docker, Kubernetes, and CI/CD pipelines. Gain hands-on experience in automation, collaboration, and deployment strategies to accelerate workflows and enhance project efficiency.
                 </p>
-                <Link to="/workshop/GenAI" className="btn btn-outline-warning">
+                <Link to="/workshop/DevOps" className="btn btn-outline-warning">
                   Explore Now
                 </Link>
               </div>

@@ -12,8 +12,11 @@ import Contests from './components/Contest/Contest'
 import TechnicalEvents from './components/TechnicalEvents/TechnicalEvents'
 import ContactUs from './components/ContactUs/ContactUs'
 import Accommodation from './components/Accommodation/Accommodation'
-import GenAi from './components/GenAi/GenAi'
+import GenAi from './components/Workshop/GenAi/GenAi'
 import Team from './components/Team/Team'
+import CloudComputing from './components/Workshop/CloudComputing/CloudComputing'
+import CyberSecurity from './components/Workshop/CyberSecurity/CyberSecurity'
+import DevOps from './components/Workshop/DevOps/DevOps'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
@@ -28,6 +31,9 @@ const router = createBrowserRouter(
       <Route path='/Accommodation' element={<Accommodation/>} />
       <Route path='/Workshop/GenAI' element={<GenAi />} />
       <Route path='/Team' element={<Team />} /> 
+      <Route path='/Workshop/CloudComputing' element={<CloudComputing />} /> 
+      <Route path='/Workshop/CyberSecurity' element={<CyberSecurity />} /> 
+      <Route path='/Workshop/DevOps' element={<DevOps />} /> 
     </Route>
   )
 )

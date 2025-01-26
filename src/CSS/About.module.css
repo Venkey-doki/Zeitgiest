@@ -1,0 +1,150 @@
+/* General Styles */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .header h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    font-size: 1.2em;
+    color: #666;
+  }
+  
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+  }
+  
+  .imageContainer img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .textContent {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+  }
+  
+  .textContent h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .textContent p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .textContent ul {
+    list-style: none;
+  }
+  
+  .textContent ul li {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .footer h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .joinBtn {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: #008DDA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .joinBtn:hover {
+    background-color: #41C9E2;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .imageContainer, .textContent {
+      max-width: 100%;
+    }
+  
+    .header h1 {
+      font-size: 2em;
+    }
+  
+    .header p {
+      font-size: 1.1em;
+    }
+  
+    .textContent h2 {
+      font-size: 1.8em;
+    }
+  
+    .textContent p {
+      font-size: 1.1em;
+    }
+  
+    .joinBtn {
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header h1 {
+      font-size: 1.5em;
+    }
+  
+    .header p {
+      font-size: 1em;
+    }
+  
+    .textContent h2 {
+      font-size: 1.6em;
+    }
+  
+    .textContent p {
+      font-size: 1em;
+    }
+  
+    .joinBtn {
+      font-size: 0.9em;
+    }
+  }
+  

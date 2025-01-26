@@ -1,0 +1,19 @@
+.contestsContainer {
+  display: grid; /* Use CSS Grid for responsive layout */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cards adjust to screen size */
+  gap: 20px; /* Add spacing between cards */
+  padding: 20px;
+  justify-items: center; /* Center cards horizontally */
+}
+
+.cardItem {
+  width: 100%; /* Ensure card fills available space */
+}
+  
+  @media screen and (max-width: 768px) {
+    .gridContainer {
+      gap: 15px; /* Reduce gap on smaller screens */
+      padding: 15px; /* Reduce padding */
+    }
+  }
+  

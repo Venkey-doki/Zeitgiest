@@ -3,20 +3,28 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Layout from './Layout'
-import Home from './components/Home/Home'
-import Workshop from './components/Workshop/Workshop'
-import Login from './components/Login/Login'
-import Events from './components/Events/Events'
-import Gallery from './components/Gallery/Gallery'
-import Contests from './components/Contest/Contest'
-import TechnicalEvents from './components/TechnicalEvents/TechnicalEvents'
-import ContactUs from './components/ContactUs/ContactUs'
-import Accommodation from './components/Accommodation/Accommodation'
-import GenAi from './components/Workshop/GenAi/GenAi'
-import Team from './components/Team/Team'
-import CloudComputing from './components/Workshop/CloudComputing/CloudComputing'
-import CyberSecurity from './components/Workshop/CyberSecurity/CyberSecurity'
-import DevOps from './components/Workshop/DevOps/DevOps'
+import Home from './pages/Home'
+import Workshop from './Pages/Workshop'
+import Login from './Pages/Login'
+import Events from './Pages/Events'
+import Gallery from './Pages/Gallery'
+import Contests from './Pages/Contests'
+import About from './Pages/About'
+import TechnicalEvents from './Pages/TechnicalEvents'
+import Accommodation from './Pages/Accommodation'
+import GenAi from './Pages/GenAi/GenAi'
+import CloudComputing from './Pages/CloudComputing/CloudComputing'
+import CyberSecurity from './Pages/CyberSecurity/CyberSecurity'
+import DevOps from './Pages/DevOps/DevOps'
+import Team from './Pages/Team'
+import Profile from './Pages/Profile'
+import Registration from './Pages/Registration'
+import Sponsors from './Pages/Sponsors'
+import OnlineEvents from './Pages/OnlineEvents'
+
+
+
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
@@ -26,14 +34,18 @@ const router = createBrowserRouter(
       <Route path='/events' element={<Events />} />
       <Route path='/Gallery' element={<Gallery />} />
       <Route path='/Contests' element={<Contests />} />
+      <Route path='/About' element={<About />} />
       <Route path='/TechnicalEvents' element={<TechnicalEvents />} />
-      <Route path='/ContactUs' element={<ContactUs />} />
       <Route path='/Accommodation' element={<Accommodation/>} />
       <Route path='/Workshop/GenAI' element={<GenAi />} />
+      <Route path='/Workshop/CloudComputing' element={<CloudComputing />} />
+      <Route path='/Workshop/CyberSecurity' element={<CyberSecurity />} />
+      <Route path='/Workshop/DevOps' element={<DevOps />} />
       <Route path='/Team' element={<Team />} /> 
-      <Route path='/Workshop/CloudComputing' element={<CloudComputing />} /> 
-      <Route path='/Workshop/CyberSecurity' element={<CyberSecurity />} /> 
-      <Route path='/Workshop/DevOps' element={<DevOps />} /> 
+      <Route path='/profile' element={<Profile/>}/>
+      <Route path='/Registration' element={<Registration />}/>
+      <Route path='/Sponsors' element={<Sponsors />} />
+      <Route path='/OnlineEvents' element={<OnlineEvents/>}/>
     </Route>
   )
 )

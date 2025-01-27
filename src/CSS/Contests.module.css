@@ -21,6 +21,11 @@
 }
 
 @media screen and (max-width: 768px) {
+  .contestsContainer {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards in the container */
+  }
+  
   .cardItem {
     flex: 1 1 100%; /* Cards take up the full width */
     max-width: 100%; /* Ensure full width with spacing */

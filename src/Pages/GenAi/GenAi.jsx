@@ -60,6 +60,15 @@ function GenAi() {
             <h2 className="text-warning mb-4">Workshop Details</h2>
             {/* Rules and Regulations */}
             <div>
+              <h4 className="text-light">Cerification Policy:</h4>
+              <ul className="list-unstyled text-white-50">
+                <li>Certificate of participation for all the workshop participants from IIT Bombay & Anvira Edustation.</li>
+                <li>At the end of this workshop, a small competition will be organised among the participating students and winners will be awarded with a 'Certificate of Excellence'.
+                </li>
+                 <li>Certificate of Coordination for the coordinators of the campus workshops.</li>
+              </ul>
+            </div>
+            <div>
               <h4 className="text-light">Rules & Regulations:</h4>
               <ul className="list-unstyled text-white-50">
                 <li>1. Registration is mandatory for all participants.</li>

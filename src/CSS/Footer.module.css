@@ -1,5 +1,6 @@
+/* Footer styling */
 .bgDark {
-  background-color: #343a40;
+  background-color: #333;
 }
 
 .textWhite {
@@ -7,22 +8,21 @@
 }
 
 .py4 {
-  padding: 1.5rem 0;
+  padding: 2rem 0;
 }
 
-.container {
-  max-width: 1140px;
-  margin: 0 auto;
-}
-
+/* Spacing between columns */
 .row {
   display: flex;
   flex-wrap: wrap;
+   margin-left: 15px;
+  /* margin-right: 15px; */
 }
 
 .col12 {
-  flex: 0 0 100%;
-  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
 }
 
 .colMd3 {
@@ -31,30 +31,50 @@
 }
 
 .mb3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .textCenter {
   text-align: center;
 }
 
-.textDecorationNone {
-  text-decoration: none;
-}
-
-.hoverGray:hover {
-  color: gray;
-}
-
 .listUnstyled {
-  list-style: none;
-  padding: 0;
-}
-
-.socialMedia {
+  list-style-type: none;
   padding: 0;
 }
 
 .socialMedia li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 10px;
+}
+
+.socialMedia a {
+  font-size: 1.2rem;
+  color: white;
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+.socialMedia a:hover {
+  color: #41C9E2; /* Light blue hover effect for social media links */
+}
+
+/* Hover effect for contact names */
+.contactName:hover {
+  color: #008DDA; /* Blue color on hover */
+  text-decoration: underline; /* Underline the contact name on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .colMd3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .colMd3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }

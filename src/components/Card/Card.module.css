@@ -46,15 +46,29 @@
 /* Description */
 .description {
   color: #fff;
-  font-family:'Times New Roman', Times, serif;
-  font-weight: lighter;
-  font-size: 16px;
+  font-family:'Jetbrains Mono', Times, serif;
+  font-weight:bolder;
+  font-size: 12px;
+  justify-content: space-between;
   text-align: center;
   margin-bottom: 10px;
 }
 
+.coordinators{
+  color: #000;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.628);
+  border-radius: 6px;
+  font-family:'Jetbrains Mono', Times, serif;
+  font-weight:bolder;
+  font-size: 12px;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 10px;  
+}
+
 .heading {
-  color: #fff;
+  color: #00d9ff;
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;

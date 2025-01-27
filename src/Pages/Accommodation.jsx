@@ -35,7 +35,7 @@ function Accommodation() {
               className="img-fluid"
               style={{
                 borderRadius: "15px",
-                maxWidth: "90%",
+                maxWidth: "50%",
                 height: "auto",
               }}
             />
@@ -43,8 +43,8 @@ function Accommodation() {
               Hostel Accommodation
             </h1>
             <p className="lead">
-              Comfortable and affordable hostel facilities designed for your
-              convenience and safety.
+            Comfortable and affordable hostel facilities designed for your
+            convenience and safety.
             </p>
           </div>
 
@@ -95,11 +95,12 @@ function Accommodation() {
             {/* Call to Action */}
             <div className="text-center mt-4">
               <a
-                href="#"
+                href="tel:
+                8143224017"
                 className="btn btn-outline-warning btn-lg"
                 data-aos="zoom-in"
               >
-                Contact for More Details...
+                Contact Coordinators for More Details...
               </a>
             </div>
           </div>

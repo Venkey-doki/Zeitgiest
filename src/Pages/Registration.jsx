@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../CSS/Registration.css";
-import logo from "../assets/logo.jpg";
+import QrCode from "../assets/QrCode.jpg";
 
 function Registration() {
   const navigate = useNavigate();
@@ -16,40 +16,78 @@ function Registration() {
     referredBy: "",
     transactionId: "",
     paymentReceipt: null,
-    event: "NEW REGISTRATION", // Default event
-    price: "200", // Default price
+    event: "NEW REGISTRATION",
+    price: "200",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Set up event and price based on URL params
+  const eventPriceMap = {
+    "Technoquest: Ignite Your Tech-Savvy Spirit": "200",
+    "Typing Titans: The Ultimate Keyboard Showdown": "200",
+    "Blind Coding: Code Without Sight, Trust Your Logic": "200",
+    "Present You: Showcase Your Ideas, Redefine Innovation": "200",
+    "Open Mic: The PowerPoint Edition": "200",
+    "Beat the Bug: Debugging Showdown": "200",
+    "Cryptic Hunt: Decode, Discover, Dominate": "200",
+    "Mind Maze": "0",
+    "Code Combat": "0",
+    "Web Wizards": "0",
+    "GenAI": "1200",
+    "DevOps": "1200",
+    "CyberSecurity": "1100",
+    "Cloud Computing": "1100",
+  };
+
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const event = urlParams.get("event");
-    const eventPriceMap = {
-      "Technoquest: Ignite Your Tech-Savvy Spirit": "100",
-      "TechTalk: Innovating the Future": "150",
-      "CodeQuest: Challenge Your Coding Skills": "200",
-      "Mind Maze": "100",  
-      "GenAI":"1200",
-      "DevOps":"1200",
-      "CyberSecurity":"1100",
-      "Cloud Computing":"1100"
-      // Add more events and their respective prices here
-    };
-
-    if (event) {
-      const price = eventPriceMap[event] || "200"; // Default to 200 if event not in map
-      setFormData((prevData) => ({
-        ...prevData,
-        event,
-        price,
-      }));
+    // Check login status
+    const isLoggedIn = localStorage.getItem("user");
+    if (!isLoggedIn) {
+      navigate("/registration?event=NEW REGISTRATION");
+      console.log("hello");
+      return;
     }
-  }, [location]);
 
-  // Validation logic
+    // Get event from URL parameters
+    const urlParams = new URLSearchParams(location.search);
+    const eventFromUrl = urlParams.get("event");
+    const price = eventPriceMap[eventFromUrl] || "200";
+
+    // Get user data from localStorage
+    const userData = localStorage.getItem("user");
+    let userDetails = {};
+    // console.log(userData);
+    
+    
+    const parsedData = JSON.parse(userData);
+    // console.log(typeof(parsedData));
+    
+    if (userData) {
+      try {
+        if (parsedData) {
+          userDetails = Object.values(parsedData);
+        }
+      } catch (error) {
+        console.error("Error parsing user data:", error);
+      }
+    }
+    
+    // Update form data with both event and user details
+    setFormData(prevData => ({
+      ...prevData,
+      name: userDetails[1] || "",
+      email: userDetails[2] || "",
+      contactNo: userDetails[3] || "",
+      rollNumber: userDetails[4] || "",
+      collegeName: userDetails[5] || "",
+      collegePlace: userDetails[6] || "",
+      event: eventFromUrl || "NEW REGISTRATION",
+      price: price,
+    }));
+  }, [location.search, navigate]); // Dependencies updated to include only necessary items
+
+  // Rest of your component remains the same
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name) newErrors.name = "Name is required.";
@@ -70,10 +108,10 @@ function Registration() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData(prevData => ({
+      ...prevData,
       [name]: value,
-    });
+    }));
   };
 
   const handleFileChange = (e) => {
@@ -82,59 +120,56 @@ function Registration() {
       alert("File size should be less than 2MB");
       return;
     }
-    setFormData({
-      ...formData,
+    setFormData(prevData => ({
+      ...prevData,
       paymentReceipt: file,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
-        setErrors(formErrors);
-        return;
+      setErrors(formErrors);
+      return;
     }
     setErrors({});
     setIsSubmitting(true);
 
     const formDataToSend = new FormData();
     Object.keys(formData).forEach((key) => {
-        if (key === "paymentReceipt" && formData[key]) {
-            formDataToSend.append(key, formData[key], formData[key].name);
-        } else {
-            formDataToSend.append(key, formData[key]);
-        }
+      if (key === "paymentReceipt" && formData[key]) {
+        formDataToSend.append(key, formData[key], formData[key].name);
+      } else {
+        formDataToSend.append(key, formData[key]);
+      }
     });
 
     try {
-        const response = await fetch("https://workingman.infinityfreeapp.com/Zeitgeist/register.php", {
-            method: "POST",
-            body: formDataToSend,
-        });
+      const response = await fetch("http://localhost/Zeitgeist/register.php", {
+        method: "POST",
+        body: formDataToSend,
+      });
 
-        // Check if the response is OK (status 200)
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-        // Parse the JSON response
-        const result = await response.json();
+      const result = await response.json();
 
-        // Check for errors or success
-        if (result.status === "success") {
-            alert(`Registration successful! Your User ID: ${result.userId}`);
-            navigate(`/`);
-        } else {
-            alert("Registration failed: " + result.message);
-        }
+      if (result.status === "success") {
+        alert(`Registration successful! Your User ID: ${result.userId}`);
+        navigate(`/`);
+      } else {
+        alert("Registration failed: " + result.message);
+      }
     } catch (error) {
-        setIsSubmitting(false);
-        console.error("Error:", error);
-        alert("An error occurred: " + error.message);
+      console.error("Error:", error);
+      alert("An error occurred: " + error.message);
+    } finally {
+      setIsSubmitting(false);
     }
-};
-
+  };
 
   const handleCancel = () => {
     setFormData({
@@ -163,7 +198,7 @@ function Registration() {
                 <span>SCAN QR</span>
                 <span>TO PAY</span>
               </div>
-              <img src={logo} alt="logo" className="logo" />
+              <img src={QrCode} alt="logo" className="logo" />
               <p style={{ color: "white", marginTop: "20px" }}>
                 After scanning the QR Code, please provide the transaction ID
                 and upload the payment receipt.

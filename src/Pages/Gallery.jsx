@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/Gallery.css";
+import styles from "../CSS/Gallery.module.css";
 
 import mainEntrance from "../assets/JNTUK main entrance.jpg";
 import nehruStatue from "../assets/nehru statue_3.jpg";
@@ -31,11 +31,11 @@ const galleryImages = [
 
 function Gallery1() {
   return (
-    <div id="Gallery" className="gallery-container">
+    <div id="Gallery" className={styles.galleryContainer}>
       {galleryImages.map((image) => (
-        <div className="gallery-item" key={image.id}>
+        <div className={styles.galleryItem} key={image.id}>
           <img src={image.src} alt={image.place} />
-          <div className="overlay">
+          <div className={styles.overlay}>
             <span>{image.place}</span>
           </div>
         </div>

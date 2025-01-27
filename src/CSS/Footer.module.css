@@ -1,0 +1,60 @@
+.bgDark {
+  background-color: #343a40;
+}
+
+.textWhite {
+  color: white;
+}
+
+.py4 {
+  padding: 1.5rem 0;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.colMd3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.mb3 {
+  margin-bottom: 1rem;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textDecorationNone {
+  text-decoration: none;
+}
+
+.hoverGray:hover {
+  color: gray;
+}
+
+.listUnstyled {
+  list-style: none;
+  padding: 0;
+}
+
+.socialMedia {
+  padding: 0;
+}
+
+.socialMedia li {
+  margin-bottom: 0.5rem;
+}

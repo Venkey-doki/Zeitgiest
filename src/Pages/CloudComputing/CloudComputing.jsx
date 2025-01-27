@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import p1 from "../../assets/CloudComputing.png";
+import { Link } from "react-router-dom";
 
 function CloudComputing() {
   useEffect(() => {
@@ -92,8 +93,8 @@ function CloudComputing() {
 
             {/* Call to Action */}
             <div className="text-center mt-4">
-                <a
-                    href="/register"
+                <Link
+                    to="/Registration?event=Cloud Computing"
                     className="btn  btn-lg"
                     data-aos="zoom-in"
                     style={{
@@ -111,7 +112,7 @@ function CloudComputing() {
                     }}
                 >
                     Register Now
-                </a>
+                </Link>
                 </div>
           </div>
         </div>

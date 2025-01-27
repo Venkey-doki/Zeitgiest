@@ -46,7 +46,9 @@
 /* Description */
 .description {
   color: #fff;
-  font-size: 14px;
+  font-family:'Times New Roman', Times, serif;
+  font-weight: lighter;
+  font-size: 16px;
   text-align: center;
   margin-bottom: 10px;
 }

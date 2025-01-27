@@ -31,7 +31,11 @@ function Registration() {
       "Technoquest: Ignite Your Tech-Savvy Spirit": "100",
       "TechTalk: Innovating the Future": "150",
       "CodeQuest: Challenge Your Coding Skills": "200",
-      "Mind Maze":"100",  
+      "Mind Maze": "100",  
+      "GenAI":"1200",
+      "DevOps":"1200",
+      "CyberSecurity":"1100",
+      "Cloud Computing":"1100"
       // Add more events and their respective prices here
     };
 
@@ -88,45 +92,49 @@ function Registration() {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-      return;
+        setErrors(formErrors);
+        return;
     }
     setErrors({});
     setIsSubmitting(true);
 
     const formDataToSend = new FormData();
     Object.keys(formData).forEach((key) => {
-      if (key === "paymentReceipt" && formData[key]) {
-        formDataToSend.append(key, formData[key], formData[key].name);
-      } else {
-        formDataToSend.append(key, formData[key]);
-      }
+        if (key === "paymentReceipt" && formData[key]) {
+            formDataToSend.append(key, formData[key], formData[key].name);
+        } else {
+            formDataToSend.append(key, formData[key]);
+        }
     });
 
     try {
-      const response = await fetch("http://localhost/Zeitgeist/register.php", {
-        method: "POST",
-        body: formDataToSend,
-      });
+        const response = await fetch("https://workingman.infinityfreeapp.com/Zeitgeist/register.php", {
+            method: "POST",
+            body: formDataToSend,
+        });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+        // Check if the response is OK (status 200)
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
 
-      const result = await response.json();
-      setIsSubmitting(false);
-      if (result.success) {
-        alert(`Registration successful! Your User ID: ${result.userId}`);
-        navigate(`/success/${result.userId}`);
-      } else {
-        alert("Registration failed: " + result.message);
-      }
+        // Parse the JSON response
+        const result = await response.json();
+
+        // Check for errors or success
+        if (result.status === "success") {
+            alert(`Registration successful! Your User ID: ${result.userId}`);
+            navigate(`/`);
+        } else {
+            alert("Registration failed: " + result.message);
+        }
     } catch (error) {
-      setIsSubmitting(false);
-      console.error("Error:", error);
-      alert("Not Working.");
+        setIsSubmitting(false);
+        console.error("Error:", error);
+        alert("An error occurred: " + error.message);
     }
-  };
+};
+
 
   const handleCancel = () => {
     setFormData({

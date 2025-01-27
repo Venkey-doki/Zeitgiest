@@ -3,6 +3,9 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  margin-top: 50px;
+  width: 100%; /* Ensure it spans the width of the screen */
+  box-sizing: border-box;
 }
 
 .bg {
@@ -11,77 +14,71 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .bg h1 {
-  font-size: 15rem;
+  font-size: 14rem; /* Reduce size for better mobile scaling */
   color: #fff;
-  filter: opacity(0.1);
+  filter: opacity(0.2);
 }
 
 .nftGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjusted for smaller devices */
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .nft {
   user-select: none;
-  max-width: 400px; /* Increased max-width for larger cards */
+  width: 100%; /* Adjust to grid width */
+  max-width: 400px; /* Keep card within reasonable size limits */
   border: 1px solid #ffffff22;
   background-color: #282c34;
-  background: linear-gradient(0deg, rgba(40, 44, 52, 1) 0%, rgba(17, 0, 32, 0.5) 100%);
+  background: linear-gradient(45deg, rgba(40, 44, 52, 1) 0%, rgba(0, 72, 94, 0.322) 100%);
   box-shadow: 0 7px 20px 5px #00000088;
   border-radius: 0.7rem;
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
   overflow: hidden;
   transition: 0.5s all;
-  position: relative; /* Added to position the ::before pseudo-element */
-}
-
-.nft hr {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #88888855;
-  margin-top: 0;
-}
-
-.nft ins {
-  text-decoration: none;
-}
-
-.nft .main .name {
-  color: #a89ec9;
-  font-size: 1.25rem; /* Adjust font size if necessary */
-  white-space: nowrap; /* Prevent name from wrapping */
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Add ellipsis if name is too long */
+  position: relative;
 }
 
 .nft .main {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers items horizontally */
-  justify-content: center; /* Centers items vertically */
-  width: 90%;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Adjusted to take full card width */
   padding: 1rem;
 }
 
 .nft .main .tokenImage {
-  border-radius: .5rem;
-  max-width: 100%;
-  height: 250px;
+  border-radius: 0.5rem;
+  width: 100%; /* Ensure it scales responsively */
+  height: auto;
+  max-height: 325px;
   object-fit: cover;
-  margin-bottom: 1rem; /* Add some spacing below the image */
+  margin-bottom: 1rem;
+}
+
+.nft .main .name {
+  font-size: 1.25rem;
+  color: #00e1ff;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nft .main .description {
-  margin: .5rem 0;
-  color: #a89ec9;
+  margin: 0.5rem 0;
+  color: #00e1ffd3;
+  text-align: center; /* Align text for smaller screens */
 }
 
 .nft:hover {
@@ -94,12 +91,12 @@
 .nft::before {
   position: absolute; /* Changed to absolute to position relative to .nft */
   content: "";
-  box-shadow: 0 0 100px 40px #ffffff08;
+  box-shadow: 0 0 100px 40px #00c3ff1e;
   top: -10%;
   left: -100%;
   transform: rotate(-45deg);
   height: 60rem;
-  transition: .7s all;
+  transition: .5s all;
 }
 
 .nft:hover::before {
@@ -111,7 +108,45 @@
 .sectionHeading {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin: 20px;
   text-align: center;
   color: #fff; /* Customize the color as needed */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .bg h1 {
+    font-size: 5rem; /* Reduce size for tablets */
+  }
+
+  .nftGrid {
+    padding: 1rem;
+    gap: 2rem; /* Reduce spacing */
+  }
+
+  .nft .main .name {
+    font-size: 1rem; /* Smaller text for smaller screens */
+  }
+
+  .nft .main .description {
+    font-size: 0.9rem;
+  }
+
+  .sectionHeading {
+    font-size: 1.25rem; /* Smaller heading */
+  }
+}
+
+@media (max-width: 480px) {
+  .bg h1 {
+    font-size: 3.5rem; /* Further reduce size for mobile */
+  }
+
+  .nft .main .tokenImage {
+    max-height: 300px; /* Smaller images on mobile */
+  }
+
+  .nft {
+    box-shadow: 0 4px 10px 3px #00000088;
+  }
 }

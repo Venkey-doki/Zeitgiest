@@ -1,32 +1,41 @@
 .contestsContainer {
-  display: grid; /* Use CSS Grid for responsive layout */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cards adjust to screen size */
-  gap: 20px; /* Add spacing between cards */
-  padding: 20px;
-  justify-items: center; /* Center cards horizontally */
+  display: flex; /* Enable flexbox */
+  flex-wrap: wrap; /* Allow wrapping for cards */
+  justify-content: center; /* Center cards horizontally */
+  gap: 50px; /* Add space between cards */
+  padding: 20px; /* Add padding around the container */
+  
 }
 
 .cardItem {
-  width: 100%; /* Ensure card fills available space */
+  flex: 1 1 300px; /* Cards take a minimum width of 300px */
+  max-width: 300px; /* Ensure cards don't exceed 300px */
+  box-sizing: border-box; /* Include padding and borders in width */
 }
-  
-  @media screen and (max-width: 768px) {
-    .gridContainer {
-      gap: 15px; /* Reduce gap on smaller screens */
-      padding: 15px; /* Reduce padding */
-    }
-  }
-  .contestsContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-    gap: 20px; /* Spacing between cards */
-    padding: 20px; /* Add padding around the container */
-    justify-content: center; /* Center the grid within the container */
-  }
-  
+
+@media screen and (max-width: 1024px) {
   .cardItem {
-    border-radius: 8px; /* Optional: Rounded corners for the card */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow for the card */
-    overflow: hidden; /* Ensure content doesn't overflow */
+    flex: 1 1 calc(50% - 30px); /* Cards take up 1/2 of the row */
+    max-width: calc(50% - 30px); /* Adjust max-width for two cards per row */
   }
-  
+}
+
+@media screen and (max-width: 768px) {
+  .cardItem {
+    flex: 1 1 100%; /* Cards take up the full width */
+    max-width: 100%; /* Ensure full width with spacing */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contestsContainer {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards in the container */
+  }
+
+  .cardItem {
+    width: 100%; /* Cards take full width */
+    max-width: 300px; /* Limit the width of each card */
+    margin: 0 auto; /* Center cards horizontally */
+  }
+}

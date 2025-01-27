@@ -1,15 +1,15 @@
 import React from "react";
 import Timer from "./Timer";
 import backgroundVideo from "../assets/HomeBackground.mp4";
-import "../CSS/Home.css"; // Add a separate CSS file for styling
+import styles from "../CSS/Home.module.css"; // Import the CSS module
 
 export default function Home() {
   return (
-    <div className="home-container">
+    <div className={styles.homeContainer}>
       {/* Video Background */}
-      <div className="video-container">
+      <div className={styles.videoContainer}>
         <video
-          className="video-bg"
+          className={styles.videoBg}
           src={backgroundVideo}
           autoPlay
           loop
@@ -18,14 +18,14 @@ export default function Home() {
         ></video>
 
         {/* Overlay Content */}
-        {/* <div className="content">
-          <h1 className="title">Welcome to ZEITGEIST</h1>
-          <p className="subtitle">Experience the best we have to offer!</p>
+        {/* <div className={styles.content}>
+          <h1 className={styles.title}>Welcome to ZEITGEIST</h1>
+          <p className={styles.subtitle}>Experience the best we have to offer!</p>
         </div> */}
       </div>
 
       {/* Timer Component */}
-      <div className="timer-section">
+      <div className={styles.timerSection}>
         <Timer />
       </div>
     </div>

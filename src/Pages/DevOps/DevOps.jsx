@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import p1 from "../../assets/devops.png";
+import { Link } from "react-router-dom";
 
 function DevOps() {
   useEffect(() => {
@@ -92,8 +93,8 @@ function DevOps() {
 
             {/* Call to Action */}
             <div className="text-center mt-4">
-                <a
-                    href="/register"
+                <Link
+                    to="/Registration?event=DevOps"
                     className="btn btn-outline-warning btn-lg"
                     data-aos="zoom-in"
                     style={{
@@ -111,7 +112,7 @@ function DevOps() {
                     }}
                 >
                     Register Now
-                </a>
+                </Link>
                 </div>
           </div>
         </div>

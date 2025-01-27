@@ -12,13 +12,13 @@
   
   .header h1 {
     font-size: 2.5em;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
   }
   
   .header p {
     font-size: 1.2em;
-    color: #666;
+    color: #ffffff;
   }
   
   .content {
@@ -49,12 +49,12 @@
   .textContent h2 {
     font-size: 2em;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffffff;
   }
   
   .textContent p {
     font-size: 1.1em;
-    color: #555;
+    color: #ffffff;
     line-height: 1.6;
     margin-bottom: 20px;
   }
@@ -65,7 +65,7 @@
   
   .textContent ul li {
     font-size: 1.1em;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
   }
   
@@ -76,7 +76,7 @@
   
   .footer h3 {
     font-size: 1.8em;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
   }
   

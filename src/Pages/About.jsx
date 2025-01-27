@@ -39,7 +39,6 @@ const About = () => {
         <h3>Join us for an unforgettable experience!</h3>
         <button className={styles.joinBtn}>Register Now</button>
       </section>
-      <Card />
     </div>
   );
 };

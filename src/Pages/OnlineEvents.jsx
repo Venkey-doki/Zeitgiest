@@ -106,8 +106,7 @@ function OnlineEvents() {
             <div className="mt-4">
               <h4 className="text-light">Pricing Details:</h4>
               <ul className="list-unstyled text-white-50">
-                <li>Double Room: $350/month per person (Includes food and Wi-Fi).</li>
-                <li>Dormitory: $200/month per person (Includes food and Wi-Fi).</li>
+                <li>Event Fee: ₹200(for all online events included,)</li>
               </ul>
             </div>
 

@@ -63,7 +63,7 @@ const About = () => {
           <h2>Faculty Coordinators</h2>
           <ul>
             <li data-aos="fade-up" data-aos-delay="100">
-              Dr.Chandra Sekhar (Asst. Professor), JNTU Kakinada
+              Dr. S. Chandra Sekhar (Asst. Professor), JNTU Kakinada
             </li>
             <li data-aos="fade-up" data-aos-delay="200">
             Dr. S. Surekha (Asst. Professor), JNTU Kakinada

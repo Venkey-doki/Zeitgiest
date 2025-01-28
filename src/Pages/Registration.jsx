@@ -146,7 +146,7 @@ function Registration() {
     });
 
     try {
-      const response = await fetch("http://localhost/Zeitgeist/register.php", {
+      const response = await fetch("https://zeitgeistjntukcse.com/Zeitgeist/register.php", {
         method: "POST",
         body: formDataToSend,
       });

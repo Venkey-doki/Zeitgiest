@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
           <div className={`${styles.col12} ${styles.colMd3} ${styles.mb3}`}>
             <h4>Contact Us</h4>
-            <p><a href="mailto:zeitgeist2k25@gmail.com" className={`${styles.textWhite} ${styles.textDecorationNone} ${styles.hoverGray}`}>Email: zeitgeist2k25@gmail.com</a></p>
+            <p><a href="mailto:zeitgeist2k25@gmail.com" className={`${styles.textWhite} ${styles.textDecorationNone} ${styles.hoverGray}`}>Email: info@zeitgeistjntukcse.com</a></p>
             <p>D.BHARGAV - 8317504292</p>
             <p>T.VIVEK - 7799002247</p>
             <p>B.LIKITH - 7569801239</p>

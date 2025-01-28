@@ -38,7 +38,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost/Zeitgeist/login.php",
+        "https://zeitgeistjntukcse.com/Zeitgeist/login.php",
         formData,
         {
           headers: { "Content-Type": "application/json" },

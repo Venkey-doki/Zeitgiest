@@ -1,0 +1,300 @@
+/* Main Container */
+.workshopContainer {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: radial-gradient(circle at center, #000000, #0a0a23);
+  }
+  
+  /* Animated Background (Same as Home Page) */
+  /* Techy Animated Background */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #000000, #101025);
+  }
+  
+  .background::before,
+  .background::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(135, 206, 235, 0.1) 1%, transparent 1%),
+                linear-gradient(45deg, rgba(135, 206, 235, 0.05) 25%, transparent 25%, transparent 75%, rgba(135, 206, 235, 0.05) 75%),
+                linear-gradient(45deg, rgba(135, 206, 235, 0.05) 25%, transparent 25%, transparent 75%, rgba(135, 206, 235, 0.05) 75%);
+    background-size: 100px 100px, 50px 50px, 50px 50px;
+    animation: moveGrid 20s linear infinite;
+  }
+  
+  .background::before {
+    top: 0;
+    left: 0;
+    transform: rotate(45deg);
+  }
+  
+  .background::after {
+    top: 0;
+    left: 50%;
+    transform: rotate(-45deg);
+    animation-delay: -10s;
+  }
+  
+  @keyframes moveGrid {
+    0% {
+      transform: translate(0, 0) rotate(45deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+  
+  /* Add glowing particles */
+  .background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(135, 206, 235, 0.3) 1%, transparent 1%);
+    background-size: 20px 20px;
+    animation: moveParticles 10s linear infinite;
+  }
+  
+  @keyframes moveParticles {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+  /* Add neon grid lines */
+  .background::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveGridLines 5s linear infinite;
+  }
+  
+  @keyframes moveGridLines {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-25px, -25px);
+    }
+  }
+  
+  .quotation{
+    color: #fff;
+    backdrop-filter: blur(8px);
+    font-size: larger;
+  }
+  
+  .typewriterContainer {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .typewriterText {
+    color: #87CEEB; /* Skyblue color */
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Consolas', 'Courier New', monospace;
+    overflow: hidden;
+    border-right: 2px solid #87CEEB;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: 
+      typing 3.5s steps(9, end),
+      blink-caret 0.75s step-end infinite;
+    text-shadow: 0 0 5px rgba(135, 206, 235, 0.8);
+  }
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #2C3E50; }
+  }
+  
+  /* Content Container */
+  .contentContainer {
+    position: relative;
+    z-index: 2;
+    padding: 120px 20px 60px;
+  }
+  
+  .mainTitle {
+    text-align: center;
+    color: #87CEEB;
+    font-size: 3.5rem;
+    text-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+    margin-bottom: 60px;
+  }
+  
+  /* Workshop Sections */
+  .workshopSection {
+    position: relative;
+    width: 100%;
+    min-height: 70vh;
+    margin: 80px 0;
+    padding: 40px 0;
+    overflow: hidden;
+  }
+  
+  .workshopContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  /* Image Styles */
+  .imageContainer {
+    position: relative;
+    flex: 1;
+    max-width: 500px;
+    perspective: 1000px;
+  }
+  
+  .workshopImage {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transform: rotateY(0deg);
+    transition: all 0.5s ease;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .imageContainer:hover .workshopImage {
+    transform: rotateY(-10deg) scale(1.05);
+  }
+  
+  .imageGlow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, 
+      rgba(135, 206, 235, 0.3) 0%, 
+      transparent 70%);
+    animation: pulseGlow 3s infinite alternate;
+  }
+  
+  @keyframes pulseGlow {
+    0% { opacity: 0.3; transform: scale(0.95); }
+    100% { opacity: 0.6; transform: scale(1.05); }
+  }
+  
+  /* Text Content */
+  .textContent {
+    flex: 1;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    box-shadow: 0 0 30px rgba(135, 206, 235, 0.2);
+  }
+  
+  .workshopTitle {
+    color: #87CEEB;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(135, 206, 235, 0.5);
+  }
+  
+  .workshopDescription {
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+  
+  /* Button Styles */
+  .exploreButton {
+    position: relative;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    background: linear-gradient(45deg, 
+      rgba(135, 206, 235, 0.8), 
+      rgba(0, 191, 255, 0.8));
+    border: none;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .exploreButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(135, 206, 235, 0.5);
+  }
+  
+  .buttonHoverGlow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .exploreButton:hover .buttonHoverGlow {
+    left: 100%;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .workshopContent {
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .imageContainer {
+      max-width: 400px;
+    }
+  
+    .textContent {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .mainTitle {
+      font-size: 2.5rem;
+    }
+  
+    .workshopTitle {
+      font-size: 2rem;
+    }
+  
+    .workshopDescription {
+      font-size: 1rem;
+    }
+  }

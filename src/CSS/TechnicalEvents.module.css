@@ -92,172 +92,263 @@
     }
   }
   
-  /* New Styles */
-  .contentContainer {
-    position: relative;
-    z-index: 2;
-    padding: 120px 20px 60px;
-    max-width: 1400px;
-    margin: 0 auto;
+/* Main Content */
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  padding: 120px 20px 60px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.mainTitle {
+  font-size: 4rem;
+  color: #87CEEB;
+  text-align: center;
+  margin-bottom: 80px;
+  text-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
+}
+
+/* Events Grid */
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 0 40px;
+}
+
+/* New Card Design */
+.eventCard {
+  position: relative;
+  background: rgba(16, 16, 37, 0.6);
+  border-radius: 15px;
+  border: 1px solid rgba(135, 206, 235, 0.1);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.eventCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 50%,
+    rgba(135, 206, 235, 0.05) 50%
+  );
+  background-size: 10px 10px;
+  animation: moveGrid 20s linear infinite;
+  z-index: -1;
+}
+
+.eventCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(135, 206, 235, 0.1),
+    transparent
+  );
+  animation: glowSlide 6s infinite;
+  z-index: -1;
+}
+
+.eventCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(135, 206, 235, 0.2);
+  border-color: rgba(135, 206, 235, 0.3);
+}
+
+/* Card Visual Section */
+.cardVisual {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.eventImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.eventCard:hover .eventImage {
+  transform: scale(1.1);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+/* Card Content Section */
+.cardContent {
+  padding: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.eventTitle {
+  font-size: 1.5rem;
+  color: #87CEEB;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+  position: relative;
+}
+
+.eventTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    #87CEEB,
+    transparent
+  );
+}
+
+.eventDescription {
+  font-size: 0.95rem;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.2);
+}
+
+/* Details Section */
+.detailsSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.coordinators h3,
+.pricing h3 {
+  font-size: 1.1rem;
+  color: #87CEEB;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+}
+
+.coordinatorList p {
+  margin: 8px 0;
+  font-size: 0.85rem;
+}
+
+.name {
+  display: block;
+  color: #ffffff;
+}
+
+.phone {
+  color: #87CEEB;
+  font-size: 0.8rem;
+}
+
+.pricing {
+  text-align: right;
+}
+
+.fee {
+  font-size: 1.4rem;
+  color: #87CEEB;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+}
+
+/* Register Button */
+.registerButton {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  text-align: center;
+  background: linear-gradient(
+    45deg,
+    rgba(135, 206, 235, 0.8),
+    rgba(0, 191, 255, 0.8)
+  );
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.registerButton:hover {
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.registerButton::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: buttonGlow 3s infinite linear;
+}
+
+/* Animations */
+@keyframes moveGrid {
+  0% {
+    transform: translate(0, 0);
   }
-  
-  .mainTitle {
-    font-size: 4rem;
-    color: #87CEEB;
-    text-align: center;
-    margin-bottom: 60px;
-    text-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
+  100% {
+    transform: translate(-50%, -50%);
   }
-  
-  .eventsGrid {
-    display: grid;
-    grid-template-columns: repeat(2 ,1fr);
-    gap: 40px;
+}
+
+@keyframes glowSlide {
+  0% {
+    left: -100%;
   }
-  
-  .eventCard {
-    background: rgba(16, 16, 37, 0.9);
-    border-radius: 15px;
-    border: 1px solid rgba(135, 206, 235, 0.2);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+  100% {
+    left: 100%;
   }
-  
-  .eventCard:hover {
-    transform: translateY(-5px);
+}
+
+@keyframes buttonGlow {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
   }
-  
-  .cardVisual {
-    position: relative;
-    height: 300px;
-    overflow: hidden;
+  100% {
+    transform: translateX(100%) rotate(45deg);
   }
-  
-  .eventImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .eventCard:hover .eventImage {
-    transform: scale(1.05);
-  }
-  
-  .imageOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 50%);
-  }
-  
-  .cardContent {
-    padding: 25px;
-  }
-  
-  .eventTitle {
-    font-size: 1.8rem;
-    color: #87CEEB;
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
-  }
-  
-  .glowBar {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, #87CEEB, transparent);
-    margin-bottom: 20px;
-  }
-  
-  .eventDescription {
-    font-size: 1rem;
-    color: #ffffff;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    min-height: 120px;
-  }
-  
-  .detailsSection {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 25px;
-  }
-  
-  .coordinators h3,
-  .pricing h3 {
-    font-size: 1.2rem;
-    color: #87CEEB;
-    margin-bottom: 10px;
-  }
-  
-  .coordinatorList p {
-    margin: 8px 0;
-    font-size: 0.9rem;
-  }
-  
-  .name {
-    display: block;
-    color: #ffffff;
-  }
-  
-  .phone {
-    color: #87CEEB;
-    font-size: 0.85rem;
-  }
-  
-  .pricing {
-    text-align: right;
-  }
-  
-  .fee {
-    font-size: 1.5rem;
-    color: #87CEEB;
-    font-weight: bold;
-  }
-  
-  .registerButton {
-    display: block;
-    width: 100%;
-    padding: 12px 0;
-    text-align: center;
-    background: linear-gradient(45deg, 
-      rgba(135, 206, 235, 0.8), 
-      rgba(0, 191, 255, 0.8));
-    color: #000;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .registerButton:hover {
-    box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
-    transform: translateY(-2px);
-  }
-  
-  .registerButton::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, 
-      transparent, 
-      rgba(255, 255, 255, 0.2), 
-      transparent);
-    transform: rotate(45deg);
-    animation: buttonGlow 3s infinite linear;
-  }
-  
-  @keyframes buttonGlow {
-    0% { transform: translateX(-100%) rotate(45deg); }
-    100% { transform: translateX(100%) rotate(45deg); }
-  }
+}
+
   
   /* Responsive Design */
   @media (max-width: 768px) {

@@ -81,29 +81,20 @@ function GenAi() {
             <div className="mt-4">
               <h4 className="text-light">Coordinators:</h4>
               <p className="text-white-50">
-                <strong>John Doe:</strong> +91 9876543210 <br />
-                <strong>Jane Smith:</strong> +91 8765432109
+                <strong>B. Deva:</strong> +91 9761667788 <br />
+                <strong>K. Sai:</strong> +91 6304667187 <br />
+                <strong>P. Poojitha:</strong> +91 7032711368 <br />
               </p>
             </div>
 
             {/* Fee Details */}
             <div className="mt-4">
               <h4 className="text-light">Fee Details:</h4>
-              <p className="text-white-50">Registration Fee: ₹500</p>
-              <p className="text-white-50">Team Registration Fee: ₹1000</p>
+              <p className="text-white-50">Registration Fee: ₹1200</p>
+              <p className="text-white-50">Team Registration Fee: ₹4400</p>
             </div>
-
-            {/* Offers */}
-            <div className="mt-4">
-              <h4 className="text-light">Special Offers:</h4>
-              <ul className="list-unstyled text-white-50">
-                <li>1. Early bird discount: 10% off (valid until Jan 31st).</li>
-                <li>2. Group registrations (5+ members) get a 20% discount.</li>
-              </ul>
-            </div>
-
             {/* Call to Action */}
-            <div className="text-center mt-4">
+            <div c  lassName="text-center mt-4">
               <Link
                 to="/Registration?event=GenAI"
                 className="btn btn-outline-warning btn-lg"

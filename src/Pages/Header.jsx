@@ -1,175 +1,165 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../CSS/Header.css";
-import logo from "../assets/logo.jpg";
+import { React, useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import '../CSS/Header.css';
 
 export default function Header() {
-  const [user, setUser] = useState(null); // Store logged-in user
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Toggle for profile dropdown
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user data exists in localStorage (if the user is logged in)
     const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      setUser(JSON.parse(loggedInUser)); // Set user state if logged in
-    }
+    if (loggedInUser) setUser(JSON.parse(loggedInUser));
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user"); // Remove user data from localStorage
-    setUser(null); // Clear user state
-    setIsMenuOpen(false); // Close the dropdown menu
-    navigate("/"); // Redirect to the login page
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev); // Toggle profile dropdown visibility
-  };
+  const navItems = [
+    { path: "/", icon: "fa-home", text: "Home" },
+    { path: "/about", icon: "fa-info-circle", text: "About" },
+    { 
+      type: "dropdown",
+      text: "Events",
+      icon: "fa-calendar-alt",
+      subItems: [
+        { path: "/TechnicalEvents", icon: "fa-code", text: "Technical" },
+        { path: "/OnlineEvents", icon: "fa-laptop", text: "Online" }
+      ]
+    },
+    { path: "/workshop", icon: "fa-chalkboard", text: "Workshop" },
+    { path: "/contests", icon: "fa-trophy", text: "Contests" },
+    { path: "/accommodation", icon: "fa-bed", text: "Stay" },
+    { path: "/gallery", icon: "fa-image", text: "Gallery" },
+  ];
 
-  const isAdmin = user?.role === "admin"; // Check if the logged-in user is an admin
+  const dropdownItems = [
+    { path: "/team", icon: "fa-users", text: "Team" },
+    { path: "/sponsors", icon: "fa-handshake", text: "Sponsors" },
+  ];
 
   return (
-    <div className="container mb-2 rounded align-items-center">
-      <nav className="navbar navbar-expand-lg header container-fluid fixed-top bg-dark">
-        <div className="container-fluid">
-          <div className="d-flex align-items-center">
-            <img src={logo} height={70} width={70} alt="Logo" />
-            <h3 className="navbar-brand mt-2 ms-2 ">Zeitgeist'25</h3>
-          </div>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div
-            className="offcanvas offcanvas-end"
-            tabIndex="-1"
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
-          >
-            <div className="offcanvas-header">
-              <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                Zeitgeist
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
+    <header className="glass-header">
+      {/* Desktop Navigation */}
+      <nav className="desktop-nav">
+        {navItems.map((item, index) => (
+          item.type === "dropdown" ? (
+            <div key={index} className="nav-dropdown">
+              <button className="nav-link">
+                <i className={`fas ${item.icon}`} />
+                <span>{item.text}</span>
+              </button>
+              <div className="dropdown-menu">
+                {item.subItems.map((subItem, subIndex) => (
+                  <Link key={subIndex} to={subItem.path} className="dropdown-item">
+                    <i className={`fas ${subItem.icon}`} />
+                    {subItem.text}
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="offcanvas-body">
-              <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                {/* Regular Menu Items */}
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/about" className="nav-link">
-                    About
-                  </Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="eventsDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Events
-                  </a>
-                  <ul className="dropdown-menu" aria-labelledby="eventsDropdown">
-                    <li>
-                      <Link to="/technicalEvents" className="dropdown-item">
-                        Technical Events
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/onlineEvents" className="dropdown-item">
-                        Online Events
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <Link to="/workshop" className="nav-link ">
-                    Workshop
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/contests" className="nav-link ">
-                    Contests
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/accommodation" className="nav-link ">
-                    Accommodation
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/sponsors" className="nav-link ">
-                    Sponsors
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/gallery" className="nav-link ">
-                    Gallery
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/team" className="nav-link ">
-                    Team
-                  </Link>
-                </li>
+          ) : (
+            <Link key={index} to={item.path} className="nav-link">
+              <i className={`fas ${item.icon}`} />
+              <span>{item.text}</span>
+            </Link>
+          )
+        ))}
         
+        <div className="nav-dropdown">
+          <button className="nav-link">
+            <i className="fas fa-ellipsis-h" />
+            <span>More</span>
+          </button>
+          <div className="dropdown-menu">
+            {dropdownItems.map((item, index) => (
+              <Link key={index} to={item.path} className="dropdown-item">
+                <i className={`fas ${item.icon}`} />
+                {item.text}
+              </Link>
+            ))}
+          </div>
+        </div>
 
-                {/* User Menu (Profile or Login) */}
-                {user ? (
-                    <li className="nav-item dropdown">
-                    <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="eventsDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    >
-                    {user.fullname}
-                    </a>
-                    <ul className="dropdown-menu" aria-labelledby="eventsDropdown">
-                    <li>
-                        <Link to="/profile" className="dropdown-item">
-                        Profile
-                        </Link>
-                    </li>
-                    <li>
-                        <Link  onClick={handleLogout} className="dropdown-item">
-                        Logout                        </Link>
-                    </li>
-                    </ul>
-                </li>
-                ) : (
-                  <li className="nav-item">
-                    <Link to="/login" className="nav-link ">
-                      Login
-                    </Link>
-                  </li>
-                )}
-              </ul>
+        {user ? (
+          <div className="nav-dropdown">
+            <button className="nav-link">
+              <i className="fas fa-user-circle" />
+              <span>{user.fullname}</span>
+            </button>
+            <div className="dropdown-menu">
+              <Link to="/profile" className="dropdown-item">
+                <i className="fas fa-user" /> Profile
+              </Link>
+              <button onClick={handleLogout} className="dropdown-item">
+                <i className="fas fa-sign-out-alt" /> Logout
+              </button>
             </div>
+          </div>
+        ) : (
+          <Link to="/login" className="nav-link">
+            <i className="fas fa-sign-in-alt" />
+            <span>Login</span>
+          </Link>
+        )}
+      </nav>
+
+      {/* Mobile Navigation */}
+      <nav className="mobile-nav">
+        {navItems.slice(0, 3).map((item, index) => (
+          item.type === "dropdown" ? (
+            <div key={index} className="nav-dropdown">
+              <button className="nav-link">
+                <i className={`fas ${item.icon}`} />
+              </button>
+              <div className="dropdown-menu">
+                {item.subItems.map((subItem, subIndex) => (
+                  <Link key={subIndex} to={subItem.path} className="dropdown-item">
+                    <i className={`fas ${subItem.icon}`} />
+                    {subItem.text}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <Link key={index} to={item.path} className="nav-link">
+              <i className={`fas ${item.icon}`} />
+            </Link>
+          )
+        ))}
+        
+        <div className="nav-dropdown">
+          <button className="nav-link">
+            <i className="fas fa-ellipsis-h" />
+          </button>
+          <div className="dropdown-menu">
+            {[...navItems.slice(3), ...dropdownItems].map((item, index) => (
+              item.path ? (
+                <Link key={index} to={item.path} className="dropdown-item">
+                  <i className={`fas ${item.icon}`} />
+                  {item.text}
+                </Link>
+              ) : null
+            ))}
+            {user ? (
+              <>
+                <Link to="/profile" className="dropdown-item">
+                  <i className="fas fa-user" /> Profile
+                </Link>
+                <button onClick={handleLogout} className="dropdown-item">
+                  <i className="fas fa-sign-out-alt" /> Logout
+                </button>
+              </>
+            ) : (
+              <Link to="/login" className="dropdown-item">
+                <i className="fas fa-sign-in-alt" /> Login
+              </Link>
+            )}
           </div>
         </div>
       </nav>
-    </div>
+    </header>
   );
 }

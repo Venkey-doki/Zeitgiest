@@ -1,0 +1,69 @@
+@keyframes borderSpread {
+    0% {
+      box-shadow: 0 0 5px #41C9E2;
+    }
+    50% {
+      box-shadow: 0 0 20px #41C9E2, 0 0 40px rgba(65, 201, 226, 0.7);
+    }
+    100% {
+      box-shadow: 0 0 5px #41C9E2;
+    }
+  }
+  
+  .timerContainer {
+    border: 3px solid #41C9E2;
+    border-radius: 15px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    animation: borderSpread 2s infinite ease-in-out;
+    color: white;
+  }
+  
+  .header {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #41C9E2;
+    font-weight: bold;
+  }
+  
+  .timerBox {
+    border: 2px solid #41C9E2;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(65, 201, 226, 0.8);
+    transition: transform 0.3s ease-in-out;
+    color: white;
+  }
+  
+  .timerBox:hover {
+    transform: scale(1.05);
+  }
+  
+  .label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #41C9E2;
+  }
+  
+  .value {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .celebrateText {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #41C9E2;
+  }
+  
+  .logo {
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+  }
+  

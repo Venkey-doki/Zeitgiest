@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../CSS/Gallery.module.css";
-
+import AOS from "aos";
+import { useEffect } from "react";
 import mainEntrance from "../assets/JNTUK main entrance.jpg";
 import nehruStatue from "../assets/nehru statue_3.jpg";
 import centralLibrary from "../assets/Central Library.jpg";
@@ -29,7 +30,17 @@ const galleryImages = [
   { id: 12, src: gym, place: "JNTUK GYM" },
 ];
 
+
 function Gallery1() {
+  
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }, [location.pathname]);
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
   return (
     <div id="Gallery" className={styles.galleryContainer}>
       {galleryImages.map((image) => (

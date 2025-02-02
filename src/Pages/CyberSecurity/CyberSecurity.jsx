@@ -79,25 +79,17 @@ function CyberSecurity() {
             <div className="mt-4">
               <h4 className="text-light">Coordinators:</h4>
               <p className="text-white-50">
-                <strong>John Doe:</strong> +91 9876543210 <br />
-                <strong>Jane Smith:</strong> +91 8765432109
+                <strong>G. Chaitanya:</strong> +91 7569092272 <br />
+                <strong>P. Praneeth Joshi:</strong> +91 79816986419 <br />
+                <strong>S. Mani Tejeswi:</strong> +91 8332048777
               </p>
             </div>
 
             {/* Fee Details */}
             <div className="mt-4">
               <h4 className="text-light">Fee Details:</h4>
-              <p className="text-white-50">Registration Fee: ₹500</p>
-              <p className="text-white-50">Team Registration Fee: ₹1000</p>
-            </div>
-
-            {/* Offers */}
-            <div className="mt-4">
-              <h4 className="text-light">Special Offers:</h4>
-              <ul className="list-unstyled text-white-50">
-                <li>1. Early bird discount: 10% off (valid until Jan 31st).</li>
-                <li>2. Group registrations (5+ members) get a 20% discount.</li>
-              </ul>
+              <p className="text-white-50">Registration Fee: ₹1100</p>
+              <p className="text-white-50">Team Registration Fee: ₹4000</p>
             </div>
 
             {/* Call to Action */}

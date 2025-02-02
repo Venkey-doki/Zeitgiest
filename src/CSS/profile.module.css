@@ -1,0 +1,60 @@
+.profileContainer {
+    min-height: 100vh;
+    padding-top: 80px;
+  }
+  
+  .profilePicture {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+  }
+  
+  .profileImage {
+    
+    border: 3px solid #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .cardStyle {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s;
+  }
+  
+  .cardStyle:hover {
+    transform: translateY(-5px);
+  }
+  
+  .sectionTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .formLabel {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .buttonGroup {
+    margin-top: 2rem;
+  }
+  
+  .linkButton {
+    color: #6c757d;
+    transition: color 0.3s;
+    text-decoration: none;
+  }
+  
+  .linkButton:hover {
+    color: #0d6efd;
+  }
+  
+  .activityLog {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .cardShadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }

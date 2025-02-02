@@ -223,14 +223,22 @@ body, button, input {
   .app-title:after {
     display: none;
   }
+  .logo {
+    width: 50%;
+    height: auto;
+  }
+  
 }
 
 @media screen and (max-width: 600px) {
   .screen-body {
     padding: 40px;
-  }
+  } 
 
   .screen-body-item {
     padding: 0;
+  }
+  .logo{
+ width: 50%;
   }
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import AOS from "aos";
 import styles from "../CSS/Contests.module.css"; // Import the CSS module
 import Card from "../components/Card/Card"; // Import the Card component
 
@@ -51,6 +53,13 @@ const Contests = () => {
     },
   ];
 
+  useEffect(() => {
+      AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
+      window.scrollTo(0, 0); // Scroll to the top of the page
+    }, [location.pathname]);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   return (
     <div className={styles.contestsContainer}>
       {contests.map((contest, index) => (

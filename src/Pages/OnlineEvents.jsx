@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import styles from "../CSS/Contests.module.css"; // Import CSS module for Contests
-import Card from "../components/Card/Card";
+import style from "../CSS/TechnicalEvents.module.css"
 import { Link } from "react-router-dom";
 const eventDetails =[
   {
@@ -50,6 +49,14 @@ function OnlineEvents() {
     AOS.init({ duration: 1000, once: true }); // Initialize AOS animations
   }, []);
 ;
+
+useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }, [location.pathname]);
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <div

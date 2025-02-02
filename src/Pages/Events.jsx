@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import styles from "../CSS/Events.module.css";
 import Card from "../components/Card/Card";
 
@@ -61,7 +62,15 @@ const eventDetails = [
   },
 ];
 
+
 function Events() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }, [location.pathname]);
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <main>
       <div className={styles.contestsContainer}>

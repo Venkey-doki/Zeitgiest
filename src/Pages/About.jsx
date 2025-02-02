@@ -1,81 +1,111 @@
 import React, { useEffect } from "react";
-import styles from "../CSS/About.module.css"; // Importing the CSS module
+import styles from "../CSS/About.module.css";
 import Logo from "../assets/logo.jpg";
-import Card from "../components/Card/Card";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Import AOS styles
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 
 const About = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
+    AOS.init({ 
+      duration: 1000,
+      once: true,
+      mirror: false
+    });
+    window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className={styles.container}>
-      <section className={styles.header} data-aos="fade-up">
-        <h1>About Our College Fest</h1>
-        <p>
-          Welcome to the most awaited event of the year! A festival full of fun,
-          learning, and excitement!
-        </p>
-      </section>
-      <section className={styles.content}>
-        <div
-          className={styles.imageContainer}
-          data-aos="zoom-in"
-        >
-          <img src={Logo} alt="College Fest" />
-        </div>
-        <div
-          className={styles.textContent}
-          data-aos="fade-left"
-        >
-          <h2>Our Story</h2>
-          <p>
-            Our college fest is a celebration of creativity, teamwork, and
-            student spirit. It's where the brightest minds come together to
-            showcase their talent, engage in activities, and create lifelong
-            memories. From cultural events to technical workshops, this fest is
-            all about learning, connecting, and enjoying together.
-          </p>
-          <h2>Why Join Us?</h2>
-          <ul>
-            <li data-aos="fade-up">Engage in exciting cultural performances</li>
-            <li data-aos="fade-up" data-aos-delay="100">
-              Participate in fun and challenging competitions
-            </li>
-            <li data-aos="fade-up" data-aos-delay="200">
-              Learn new skills through workshops and talks
-            </li>
-            <li data-aos="fade-up" data-aos-delay="300">
-              Meet like-minded individuals and make new friends
-            </li>
-            <li data-aos="fade-up" data-aos-delay="400">
-              Get a chance to win exciting prizes and certificates
-            </li>
-          </ul>
-          <h2>Convenor</h2>
-          <ul>
-            <li data-aos="fade-up">Dr.N Ramakrishnaiah ,Head of the Department, JNTU Kakinada
-            </li>
-          </ul>
-          <h2>Faculty Coordinators</h2>
-          <ul>
-            <li data-aos="fade-up" data-aos-delay="100">
-              Dr. S. Chandra Sekhar (Asst. Professor), JNTU Kakinada
-            </li>
-            <li data-aos="fade-up" data-aos-delay="200">
-            Dr. S. Surekha (Asst. Professor), JNTU Kakinada
-            </li>
+      {/* Animated Background */}
+      <div className={styles.background}></div>
 
-          </ul>
+      <div className={styles.contentContainer}>
+        {/* Hero Section */}
+        <section className={styles.hero} data-aos="zoom-out">
+          <h1 className={styles.title}>ZEITGEIST</h1>
+          <p className={styles.subtitle}>Annual Technical & Cultural Fest</p>
+          <div className={styles.logoContainer} data-aos="flip-up">
+            <img src={Logo} alt="Fest Logo" className={styles.logo} />
+          </div>
+        </section>
+
+        {/* About Content */}
+        <div className={styles.gridContainer}>
+          <section className={styles.card} data-aos="fade-right">
+            <h2>Our Legacy</h2>
+            <div className={styles.glowBar}></div>
+            <p>
+              Since 1985, Zeitgeist has been the flagship event of JNTU Kakinada, 
+              evolving into one of India's largest college festivals. What began 
+              as a small technical exhibition has transformed into a 3-day 
+              extravaganza attracting 10,000+ participants annually.
+            </p>
+          </section>
+
+          <section className={styles.card} data-aos="fade-left">
+            <h2>2024 Edition</h2>
+            <div className={styles.glowBar}></div>
+            <p>
+              This year we're pushing boundaries with AI-powered competitions, 
+              immersive VR experiences, and sustainable tech challenges. 
+              Featuring 50+ events across technical, cultural, and sports domains, 
+              Zeitgeist 2024 promises to be our most innovative edition yet.
+            </p>
+          </section>
+
+          {/* Leadership Section */}
+          <section className={styles.fullWidthCard} data-aos="fade-up">
+            <h2 style={{ color: "#87CEEB" }}>Leadership</h2>
+            <div className={styles.leadershipGrid}>
+              <div className={styles.leaderCard}>
+                <h3>Convener</h3>
+                <p>Dr. N. Ramakrishnaiah</p>
+                <p>HOD, Computer Science</p>
+              </div>
+              <div className={styles.leaderCard}>
+                <h3>Coordinators</h3>
+                <p>Dr. S. Chandra Sekhar</p>
+                <p>Dr. S. Surekha</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Timeline Section */}
+          <section className={styles.timeline} data-aos="fade-up">
+            <h2>Fest Timeline</h2>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineDot}></div>
+              <div className={styles.timelineContent}>
+                <h3>March 15-30</h3>
+                <p>Workshop Series & Prelims</p>
+              </div>
+            </div>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineDot}></div>
+              <div className={styles.timelineContent}>
+                <h3>April 1-10</h3>
+                <p>Online Competitions</p>
+              </div>
+            </div>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineDot}></div>
+              <div className={styles.timelineContent}>
+                <h3>April 15-17</h3>
+                <p>Main Fest Events</p>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-      <section className={styles.footer} data-aos="fade-up">
-        <h3>Join us for an unforgettable experience!</h3>
-     <Link to={"/Registration?event=NEW REGISTRATION"}>   <button className={styles.joinBtn}>Register Now</button></Link>
-      </section>
+
+        {/* CTA Section */}
+        <section className={styles.ctaSection} data-aos="zoom-in">
+          <h2>Ready to Be Part of History?</h2>
+          <Link to="/Registration?event=NEW REGISTRATION">
+            <button className={styles.ctaButton}>Register Now</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 };

@@ -25,7 +25,7 @@
 
 .nftGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjusted for smaller devices */
+  grid-template-columns: repeat(3, minmax(350px, 1fr)); /* Adjusted for smaller devices */
   gap: 1.5rem;
   padding: 1.5rem;
   max-width: 100%;
@@ -35,7 +35,7 @@
 .nft {
   user-select: none;
   width: 100%; /* Adjust to grid width */
-  max-width: 400px; /* Keep card within reasonable size limits */
+  max-width: 600px; /* Keep card within reasonable size limits */
   border: 1px solid #ffffff22;
   background-color: #282c34;
   background: linear-gradient(45deg, rgba(40, 44, 52, 1) 0%, rgba(0, 72, 94, 0.322) 100%);
@@ -54,7 +54,7 @@
   align-items: center;
   justify-content: center;
   width: 100%; /* Adjusted to take full card width */
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .nft .main .tokenImage {
@@ -85,11 +85,10 @@
   border: 1px solid #ffffff44;
   box-shadow: 0 7px 50px 10px #000000aa;
   transform: scale(1.015);
-  /* filter: brightness(1.0); */
 }
 
 .nft::before {
-  position: absolute; /* Changed to absolute to position relative to .nft */
+  position: absolute;
   content: "";
   box-shadow: 0 0 100px 40px #00c3ff1e;
   top: -10%;
@@ -110,43 +109,52 @@
   font-weight: bold;
   margin: 20px;
   text-align: center;
-  color: #fff; /* Customize the color as needed */
+  color: #fff;
+}
+
+/* Student Coordinators Grid - 3x2 Layout */
+.studentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .bg h1 {
-    font-size: 5rem; /* Reduce size for tablets */
+    font-size: 5rem;
   }
-
   .nftGrid {
     padding: 1rem;
-    gap: 2rem; /* Reduce spacing */
+    gap: 2rem;
   }
-
   .nft .main .name {
-    font-size: 1rem; /* Smaller text for smaller screens */
+    font-size: 1rem;
   }
-
   .nft .main .description {
     font-size: 0.9rem;
   }
-
   .sectionHeading {
-    font-size: 1.25rem; /* Smaller heading */
+    font-size: 1.25rem;
+  }
+  .studentGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
   }
 }
 
 @media (max-width: 480px) {
   .bg h1 {
-    font-size: 3.5rem; /* Further reduce size for mobile */
+    font-size: 3.5rem;
   }
-
   .nft .main .tokenImage {
-    max-height: 300px; /* Smaller images on mobile */
+    max-height: 300px;
   }
-
   .nft {
     box-shadow: 0 4px 10px 3px #00000088;
+  }
+  .studentGrid {
+    grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
   }
 }

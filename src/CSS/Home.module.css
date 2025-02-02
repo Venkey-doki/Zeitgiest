@@ -1,75 +1,467 @@
-.homeContainer {
-  position: relative;
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  min-height: 100dvh;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.headerLogo {
+  height: 200px;
+  width: auto;
+  filter: drop-shadow(0 0 5px rgba(135, 206, 235, 0.8));
+}
+
+.loginButton {
+  padding: 10px 25px;
+  margin-bottom: 75px;
+  font-size: 1rem;
+  background: linear-gradient(
+    45deg,
+    rgba(135, 206, 235, 0.8),
+    rgba(0, 191, 255, 0.8)
+  );
+  border: 1px solid rgba(135, 206, 235, 0.5);
+  color: #000;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
   overflow: hidden;
 }
 
-.videoContainer {
-  position: relative;
-  width: 100%;
-  height: 100dvh;
+.loginButton:hover {
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
 }
 
-.videoBg {
+.loginButton::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: buttonGlow 3s infinite linear;
+}
+
+/* Main Container */
+.homeContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at center, #000000, #0a0a23);
+}
+
+/* Techy Animated Background */
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #000000, #101025);
+}
+
+.background::before,
+.background::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(135, 206, 235, 0.1) 1%, transparent 1%),
+              linear-gradient(45deg, rgba(135, 206, 235, 0.05) 25%, transparent 25%, transparent 75%, rgba(135, 206, 235, 0.05) 75%),
+              linear-gradient(45deg, rgba(135, 206, 235, 0.05) 25%, transparent 25%, transparent 75%, rgba(135, 206, 235, 0.05) 75%);
+  background-size: 100px 100px, 50px 50px, 50px 50px;
+  animation: moveGrid 20s linear infinite;
+}
+
+.background::before {
+  top: 0;
+  left: 0;
+  transform: rotate(45deg);
+}
+
+.background::after {
+  top: 0;
+  left: 50%;
+  transform: rotate(-45deg);
+  animation-delay: -10s;
+}
+
+@keyframes moveGrid {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+/* Add glowing particles */
+.background::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(135, 206, 235, 0.3) 1%, transparent 1%);
+  background-size: 20px 20px;
+  animation: moveParticles 10s linear infinite;
+}
+
+@keyframes moveParticles {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Add neon grid lines */
+.background::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px),
+              linear-gradient(0deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGridLines 5s linear infinite;
+}
+
+@keyframes moveGridLines {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-25px, -25px);
+  }
+}
+
+.quotation{
+  color: #fff;
+  backdrop-filter: blur(8px);
+  font-size: larger;
+}
+
+.typewriterContainer {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.typewriterText {
+  color: #87CEEB; /* Skyblue color */
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Consolas', 'Courier New', monospace;
+  overflow: hidden;
+  border-right: 2px solid #87CEEB;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: 
+    typing 3.5s steps(9, end),
+    blink-caret 0.75s step-end infinite;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.8);
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #2C3E50; }
+}
+
+/* Content Section */
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 120px 20px 60px;
+}
+
+/* Updated Hero Sections */
+.heroSectionsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between sections */
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.heroSection {
+  position: relative;
+  flex: 1 1 calc(50% - 20px);
+  min-height: 40vh; /* Reduced height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  margin: 20px 0; /* Reduced margin */
+  background: linear-gradient(
+    45deg,
+    rgba(16, 16, 37, 0.9) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  border-top: 1px solid rgba(135, 206, 235, 0.2);
+  border-bottom: 1px solid rgba(135, 206, 235, 0.2);
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  background: #000;
+  background: linear-gradient(
+    45deg,
+    transparent 50%,
+    rgba(135, 206, 235, 0.05) 50%
+  );
+  background-size: 10px 10px;
+  animation: moveGrid 20s linear infinite;
+  z-index: -1;
 }
 
-/* Mobile landscape and tablet portrait */
-@media (max-width: 768px) {
-  .videoContainer {
-    height: 100dvh;
-  }
-
-  .timerSection {
-    bottom: 4vh;
-  }
-}
-
-/* Small mobile portrait (up to 480px) */
-@media (max-width: 480px) and (orientation: portrait) {
-  .videoBg {
-    width: 200%; /* Increase width to compensate for narrow screens */
-    left: -50%; /* Center the expanded width */
-    object-position: 50% 20%; /* Adjust vertical position for key content */
-  }
-
-  .timerSection {
-    bottom: 2vh; /* Reduce bottom spacing for small screens */
-    padding: 0 15px; /* Add side padding */
-  }
-}
-
-/* Mobile landscape adjustments */
-@media (max-width: 768px) and (orientation: landscape) {
-  .videoContainer {
-    height: 100dvh;
-  }
-
-  .videoBg {
-    width: 100%;
-    left: 0;
-    object-position: center 35%; /* Adjust for landscape viewing */
-  }
-
-  .timerSection {
-    bottom: 3vh;
-  }
-}
-
-.timerSection {
-  position: absolute;
-  bottom: 5vh;
-  width: 100%;
+.heroContent {
+  max-width: 1200px;
+  width: 90%;
+  padding: 40px;
   text-align: center;
-  z-index: 2;
-  padding: 0 20px;
-  box-sizing: border-box;
+  position: relative;
+}
+
+.heroSection h2 {
+  font-size: 3rem;
+  color: #87CEEB;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.heroSection h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #87CEEB,
+    transparent
+  );
+}
+
+.heroSection p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #FFFFFF;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+}
+
+/* New Glowing Effect for Hero Sections */
+.heroSection::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(135, 206, 235, 0.1),
+    transparent
+  );
+  animation: glowSlide 6s infinite;
+}
+
+@keyframes glowSlide {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Timer Section */
+.timerSection {
+  margin: 40px 0;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  border: 0px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+/* Buttons */
+.buttonContainer {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.button {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  background: linear-gradient(45deg, 
+    rgba(135, 206, 235, 0.8), 
+    rgba(0, 191, 255, 0.8));
+  border: 1px solid rgba(135, 206, 235, 0.5);
+  color: #000;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover {
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  transform: rotate(45deg);
+  animation: buttonGlow 3s infinite linear;
+}
+
+@keyframes buttonGlow {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  .header {
+    padding: 15px;
+  }
+
+  .headerLogo {
+    height: 40px;
+  }
+
+  .loginButton {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .heroContent {
+    min-height: 30vh;
+    padding: 30px 20px;
+  }
+
+  .heroSection h2 {
+    font-size: 2.2rem;
+  }
+
+  .heroSection p {
+    font-size: 1rem;
+  }
+
+  .button {
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .typewriterText {
+    font-size: 1.8rem;
+    animation: 
+      typing 2.5s steps(10, end),
+      blink-caret 0.75s step-end infinite;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px;
+  }
+
+  .headerLogo {
+    height: 100px;
+  }
+
+  .loginButton {
+    padding: 6px 15px;
+    margin-bottom:15px;
+    font-size: 0.8rem;
+  }
+
+  .heroSectionsContainer{
+    display: block;
+  }
+  .heroSection {
+    min-height: 50vh;
+    width: 100%;
+    padding: 20px 15px;
+  }
+
+  .heroSection h2 {
+    font-size: 1.8rem;
+  }
+
+  .heroSection p {
+    font-size: 0.9rem;
+  }
+  .contentContainer {
+    padding-top: 80px;
+  }
+
+  .logo {
+    width: 250px;
+  }
+
+  .quotation {
+    font-size: 1.2rem;
+  }
 }

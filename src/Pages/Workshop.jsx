@@ -13,8 +13,11 @@ function Workshop() {
       duration: 1000, // Animation duration
       once: true, // Only animate once
     });
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }, [location.pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
-
   return (
     <div
       id="Workshop"

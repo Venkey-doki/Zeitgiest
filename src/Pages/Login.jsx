@@ -49,6 +49,7 @@ const Login = () => {
       if (response.data.success) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         setMessage("");
+        window.r
         navigate("/profile");
       } else {
         setMessage(response.data.message || "Invalid username or password.");

@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider,Navigate } from 'react-router-dom'
 import Layout from './Layout'
-import Home from './pages/Home'
+import Home from './Pages/Home'
 import Workshop from './Pages/Workshop'
 import Login from './Pages/Login'
 import Events from './Pages/Events'
@@ -46,6 +46,7 @@ const router = createBrowserRouter(
       <Route path='/Registration' element={<Registration />}/>
       <Route path='/Sponsors' element={<Sponsors />} />
       <Route path='/OnlineEvents' element={<OnlineEvents/>}/>
+      <Route path='*' element={<Navigate to="/" replace />}/>
     </Route>
   )
 )

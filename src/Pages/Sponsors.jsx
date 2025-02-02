@@ -26,6 +26,13 @@ export default function Sponsors() {
       once: true, // Only animate once
     });
   }, []);
+  useEffect(() => {
+      AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
+      window.scrollTo(0, 0); // Scroll to the top of the page
+    }, [location.pathname]);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
   return (
     <div className="py-12 px-6" style={{ backgroundColor: "#f3f4f6" }}>

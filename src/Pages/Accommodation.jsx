@@ -10,6 +10,13 @@ function Accommodation() {
       once: true, // Only animate once
     });
   }, []);
+  useEffect(() => {
+      AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
+      window.scrollTo(0, 0); // Scroll to the top of the page
+    }, [location.pathname]);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
   return (
     <div
@@ -64,7 +71,7 @@ function Accommodation() {
               <h4 className="text-light">Rules & Guidelines:</h4>
               <ul className="list-unstyled text-white-50">
                 <li>1. Quiet hours are from 10:00 PM to 6:00 AM.</li>
-                <li>2. Keep your rooms clean and tidy.</li>
+                <li>2. Keep your belongings safe and secure</li>
                 <li>3. Smoking and alcohol are prohibited on premises.</li>
                 <li>4. Visitors require prior approval to enter hostel rooms.</li>
                 <li>5. Report any damages to hostel property immediately.</li>
@@ -75,9 +82,9 @@ function Accommodation() {
             <div className="mt-4">
               <h4 className="text-light">Pricing Details:</h4>
               <ul className="list-unstyled text-white-50">
-                <li>Single Room: $500/month (Includes food and Wi-Fi).</li>
-                <li>Double Room: $350/month per person (Includes food and Wi-Fi).</li>
-                <li>Dormitory: $200/month per person (Includes food and Wi-Fi).</li>
+                <li>Single Room:  ₹300</li>
+                <li>Food : ₹500 </li>
+                <li>Food And Accomodation : ₹700 </li>
               </ul>
             </div>
 

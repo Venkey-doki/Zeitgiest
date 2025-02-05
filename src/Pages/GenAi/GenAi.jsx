@@ -48,12 +48,12 @@ function GenAi() {
               <h4 className={styles.textLight}>Pricing Details:</h4>
               <ul className={styles.listStyled}>
                 <li>Single Registration : ₹1200</li>
-                <li>Team Registration(Max 4 Persons): ₹4400 </li>
+                <li>Team Registration (Max 4 Persons) : ₹4400 </li>
               </ul>
 
               <h4 className={styles.textLight}>Coordinators:</h4>
               <p className={styles.contactDetails}>
-              <strong>B. Deva:</strong> +91 9761667788 <br />
+              <strong>B. Deva Sai Ganesh:</strong> +91 9761667788 <br />
                 <strong>K. Sai:</strong> +91 6304667187 <br />
                 <strong>P. Poojitha:</strong> +91 7032711368 <br />
               </p>

@@ -9,7 +9,7 @@ const eventDetails = [
     id: 1,
     title: "Innovation Research Centre JNTUK",
     description:
-      "Unleash your humor and creativity by crafting memes that resonate. Turn your ideas into viral-worthy masterpieces and win the crowd’s laughter.",
+      "About Innovation Research Centre",
     image:
       "https://images.unsplash.com/photo-1537432376769-00c70b3d8bb8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
    url:"https://jntuk.edu.in", 
@@ -18,7 +18,7 @@ const eventDetails = [
     id: 2,
     title: "SBI",
     description:
-    "Showcase your storytelling skills by creating entertaining and impactful reels. Compete to see if you have what it takes to captivate audiences.",
+    "About SBI",
     image:
       "https://images.unsplash.com/photo-1542056178-9c65c9b6f8ac?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
     url:"https://sbi.com",
@@ -27,7 +27,7 @@ const eventDetails = [
     id: 3,
     title: "X Company",
     description:
-    "Capture the essence of our campus through your lens, highlighting its beauty and uniqueness. Showcase your creativity by telling a story with every frame.",
+    "About X Company",
     image:
       "https://images.unsplash.com/photo-1518302609613-36c1bdb7c603?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
     url:"https://x.com",
@@ -72,16 +72,6 @@ function Sponsers() {
                 <div className={styles.glowBar}></div>
                 
                 <p className={styles.eventDescription}>{event.description}</p>
-                
-                
-
-                <Link 
-                  target="new"
-                  to={event.url}
-                  className={styles.registerButton}
-                >
-                  Click to know more
-                </Link>
               </div>
             </div>
           ))}

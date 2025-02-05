@@ -91,6 +91,33 @@
     transform: translate(-25px, -25px);
   }
 }
+.heroDualContainer {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.heroSection {
+  flex: 1;
+  background: transparent;  /* No card-like background */
+  padding: 40px;
+  text-align: center;
+  border: none;
+}
+
+/* Hero Titles and Descriptions */
+.heroTitle {
+  color: #87CEEB;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
+}
+
+.heroDescription {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+}
 
 
 /* New About Page Styles */
@@ -256,6 +283,9 @@
   .fullWidthCard {
     padding: 30px;
   }
+  .heroDualContainer {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {
@@ -270,5 +300,8 @@
   .logoContainer {
     width: 150px;
     height: 150px;
+  }
+  .heroDualContainer {
+    flex-direction: column;
   }
 }

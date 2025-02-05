@@ -31,45 +31,30 @@ const About = () => {
         </section>
 
         {/* About Content */}
-        <div className={styles.gridContainer}>
-          <section className={styles.card} data-aos="fade-right">
-            <h2>Our Legacy</h2>
-            <div className={styles.glowBar}></div>
-            <p>
-              Since 1985, Zeitgeist has been the flagship event of JNTU Kakinada, 
-              evolving into one of India's largest college festivals. What began 
-              as a small technical exhibition has transformed into a 3-day 
-              extravaganza attracting 10,000+ participants annually.
+        <section className={styles.heroDualContainer}>
+          <div className={styles.heroSection} data-aos="fade-right">
+            <h2 className={styles.heroTitle}>Our Legacy</h2>
+            <p className={styles.heroDescription}>
+            Zeitgeist, a National-level Technical Carnival by the Computer Science and Engineering Department, JNTUK, has been held for 10 years. It highlights emerging technologies, offering opportunities to learn and excel through events and workshops. The fest fosters innovation and collaboration among participants. It also serves as a platform to showcase skills and explore future possibilities.
+            Additionally, refreshing activities are included to break the monotony of daily life, making it a comprehensive and engaging experience.
             </p>
-          </section>
+          </div>
+          <div className={styles.heroSection} data-aos="fade-left">
+            <h2 className={styles.heroTitle}>2025 Edition</h2>
+            <p className={styles.heroDescription}>
+            Zeitgeist 2025 is a National-Level Technical Carnival organized by the Department of Computer Science and Engineering, JNTUK, on March 15 & 16. It brings to light emerging technologies in today’s world and provides opportunities to learn, explore, and excel in various domains of Computer Science.
+            <br />
+            <br />
 
-          <section className={styles.card} data-aos="fade-left">
-            <h2>2024 Edition</h2>
-            <div className={styles.glowBar}></div>
-            <p>
-              This year we're pushing boundaries with AI-powered competitions, 
-              immersive VR experiences, and sustainable tech challenges. 
-              Featuring 50+ events across technical, cultural, and sports domains, 
-              Zeitgeist 2024 promises to be our most innovative edition yet.
+            This event bridges the gap between theoretical knowledge and practical applications through numerous workshops, events, and contests. On the other hand, it also features refreshing activities that break the monotony of daily life, making the fest a wholesome experience.
+            <br />
+            <br />
+
+            Centered in the coastal town of Kakinada at UCEK, JNTU, Zeitgeist 2025 offers an arena for participants to gain hands-on exposure to cutting-edge technologies such as Generative AI, Cloud Computing, and Cybersecurity. A broad range of technical events is complemented by a vibrant cultural fest – Cultivo and fun-filled activities to create an engaging and delightful atmosphere.
             </p>
-          </section>
+          </div>
+        </section>
 
-          {/* Leadership Section */}
-          <section className={styles.fullWidthCard} data-aos="fade-up">
-            <h2 style={{ color: "#87CEEB" }}>Leadership</h2>
-            <div className={styles.leadershipGrid}>
-              <div className={styles.leaderCard}>
-                <h3>Convener</h3>
-                <p>Dr. N. Ramakrishnaiah</p>
-                <p>HOD, Computer Science</p>
-              </div>
-              <div className={styles.leaderCard}>
-                <h3>Coordinators</h3>
-                <p>Dr. S. Chandra Sekhar</p>
-                <p>Dr. S. Surekha</p>
-              </div>
-            </div>
-          </section>
 
           {/* Timeline Section */}
           <section className={styles.timeline} data-aos="fade-up">
@@ -77,26 +62,19 @@ const About = () => {
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
-                <h3>March 15-30</h3>
-                <p>Workshop Series & Prelims</p>
+                <h3>February 8, 2025</h3>
+                <p>Online Registrations Open: Participants can begin registering for the events and workshops.
+                </p>
               </div>
             </div>
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
-                <h3>April 1-10</h3>
-                <p>Online Competitions</p>
-              </div>
-            </div>
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineDot}></div>
-              <div className={styles.timelineContent}>
-                <h3>April 15-17</h3>
-                <p>Main Fest Events</p>
+                <h3>March 8, 2025</h3>
+                <p>Registration closed</p>
               </div>
             </div>
           </section>
-        </div>
 
         {/* CTA Section */}
         <section className={styles.ctaSection} data-aos="zoom-in">
@@ -105,8 +83,8 @@ const About = () => {
             <button className={styles.ctaButton}>Register Now</button>
           </Link>
         </section>
+        </div>
       </div>
-    </div>
   );
 };
 

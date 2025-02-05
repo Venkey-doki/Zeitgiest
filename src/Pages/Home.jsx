@@ -29,17 +29,29 @@ export default function Home() {
         {/* <img src={logo} alt="Fest Logo" className={styles.logo} data-aos="fade-down" /> */}
         
         {/* Typewriter Text */}
+          <h2 className={styles.quotationHeading}>Jawaharlal Nehru Technological University Kakinada</h2>
+          <br />
+          <br />
+          <h2 className={styles.quotationHeading}>University College of Engineering Kakinada</h2>
+          <br />
+          <br />
+          <br />
+          <h2 className={styles.quotationHeading}>Department of Computer Science and Engineering</h2>
+          <br />
+          <br />
+          <h4 >Presents </h4>
         <div className={styles.typewriterContainer} data-aos="fade-up">
           <h1 className={styles.typewriterText}>ZEITGEIST'25</h1>
         </div>
 
         <blockquote className={styles.quotation} data-aos="fade-up">
-          <p>"Unleashing Creativity, Innovation, and Passion!"</p>
+          <p>"Fusion of ideas, Harmony of minds...!"</p>
         </blockquote>
 
         <blockquote className={styles.quotation} data-aos="fade-up">
-          <p>"Fusion of ideas, Harmony of minds...!"</p>
+          <p>"Unleashing Creativity, Innovation, and Passion!"</p>
         </blockquote>
+
 
         <div className={styles.timerSection} data-aos="fade-up">
           <Timer />
@@ -51,17 +63,28 @@ export default function Home() {
         <div className={styles.heroContent} >
           <h2>About the Fest</h2>
           <p>
-            Welcome to our annual fest! Experience a blend of music, art, culture, and innovation.
+            Welcome to our Annual fest! Experience a blend of Music, Art, Culture, and Innovation.
             Join us for an unforgettable journey filled with competitions, workshops, and networking
             opportunities.
           </p>
           <div className={styles.buttonContainer}>
-            <Link to="/about"><button className={styles.button}>Learn More</button></Link>
+            <Link to="/about"><button className={styles.button}>Know More</button></Link>
+          </div>
+        </div>
+      </section>
+      <section className={styles.heroSection} data-aos="fade-left">
+        <div className={styles.heroContent} >
+          <h2>Workshops</h2>
+          <p>
+          Immerse yourself in transformative learning experiences with workshops designed to explore the latest advancements in technology. Gain practical, hands-on knowledge and elevate your expertise to excel in cutting-edge domains.
+          </p>
+          <div className={styles.buttonContainer}>
+            <Link to="/workshop"><button className={styles.button}>Workshops</button></Link>
           </div>
         </div>
       </section>
 
-      <section className={styles.heroSection} data-aos="fade-left">
+      <section className={styles.heroSection} data-aos="fade-right">
         <div className={styles.heroContent} >
           <h2>Events</h2>
           <p>
@@ -74,27 +97,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className={styles.heroSection} data-aos="fade-right">
-        <div className={styles.heroContent} >
-          <h2>Workshop</h2>
-          <p>
-            Discover exciting technical and online events that challenge your skills and creativity.
-            Participate in various competitions and showcase your talents.
-          </p>
-          <div className={styles.buttonContainer}>
-            <Link to="/workshop"><button className={styles.button}>Workshop</button></Link>
-          </div>
-        </div>
-      </section>
       <section className={styles.heroSection} data-aos="fade-left">
         <div className={styles.heroContent} >
-          <h2>Contest</h2>
+          <h2>Contests</h2>
           <p>
-            Discover exciting technical and online events that challenge your skills and creativity.
-            Participate in various competitions and showcase your talents.
+          Showcase your skills, creativity, and competitive spirit through a variety of exciting contests. Test your technical prowess, creative abilities, and innovative thinking in challenges that promise fun and learning.
           </p>
           <div className={styles.buttonContainer}>
-            <Link to="/contests"><button className={styles.button}>Contest</button></Link>
+            <Link to="/contests"><button className={styles.button}>Contests</button></Link>
           </div>
         </div>
       </section>

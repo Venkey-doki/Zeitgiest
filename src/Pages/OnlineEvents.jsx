@@ -3,6 +3,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import styles from "../CSS/OnlineEvents.module.css";
+import mindmaze from "../assets/mind-maze.jpg"
+import codecombat from "../assets/code-combat.jpg"
+import webwizardes from "../assets/web-wizards.jpg"
 
 const eventDetails = [
   {
@@ -11,7 +14,7 @@ const eventDetails = [
     description:
       "Prove your coding skills by battling it out in this ultimate programming contest. Solve challenging problems within time constraints and showcase your expertise.",
     image:
-      "https://images.unsplash.com/photo-1656618020911-1c7a937175fd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTE&ixlib=rb-1.2.1&q=80",
+      codecombat,
     coordinators1: "N. Sivaraju",
     coordinators1ph: "+91 7032358921",
     coordinators2: "B. Kavya",
@@ -23,7 +26,7 @@ const eventDetails = [
     description:
       "Enter a world of riddles, puzzles, and brain teasers that test your intellect. This multifaceted event will challenge your problem-solving and critical-thinking abilities.",
     image:
-      "https://images.unsplash.com/photo-1656624782564-c0d0d6c2f7e5?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTQ&ixlib=rb-1.2.1&q=80",
+      mindmaze,
     coordinators1: "P. Dinesh Kumar",
     coordinators1ph: "+91 6281733814",
     coordinators2: "A. Lohitha",
@@ -35,10 +38,10 @@ const eventDetails = [
     description:
       "Create stunning and functional websites that combine design and usability. Show off your web development skills in this creative coding competition.",
     image:
-      "https://images.unsplash.com/photo-1656618364955-4450214b83f9?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTI&ixlib=rb-1.2.1&q=80",
+     webwizardes,
     coordinators1: "B. Bharadwaj",
     coordinators1ph: "+91 9502496903",
-    coordinators2: "M. Meghana",
+    coordinators2: "M. Lakshmi Meghana",
     coordinators2ph: "+91 6304088712",
   }
 ];
@@ -98,7 +101,7 @@ export default function OnlineEvents() {
                   
                   <div className={styles.pricing}>
                     <h3>Participation Fee</h3>
-                    <p className={styles.fee}>₹200</p>
+                    <p className={styles.fee}>Waiver</p>
                   </div>
                 </div>
 

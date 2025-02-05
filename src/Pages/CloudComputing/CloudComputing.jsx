@@ -47,7 +47,7 @@ function CloudComputing() {
               <h4 className={styles.textLight}>Pricing Details:</h4>
               <ul className={styles.listStyled}>
                 <li>Single Registration : ₹1200</li>
-                <li>Team Registration(Max 4 Persons): ₹4400 </li>
+                <li>Team Registration (Max 4 Persons) : ₹4400 </li>
               </ul>
 
               <h4 className={styles.textLight}>Coordinators:</h4>

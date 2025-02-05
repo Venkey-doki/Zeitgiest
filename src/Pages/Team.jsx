@@ -7,7 +7,7 @@ import hod from "../assets/hodsir.jpg"
 import fc1 from "../assets/chandusir.jpg"
 import fc2 from "../assets/surekhamam.jpg"
 import sco1 from "../assets/sco1.jpeg"
-import sco2 from "../assets/sco4.jpg"
+import sco2 from "../assets/sco2.jpg"
 import sco3 from "../assets/sco3.jpg"
 import sco4 from "../assets/sco4.jpg"
 import sco5 from "../assets/sco5.jpg"
@@ -25,16 +25,16 @@ function Team() {
   }, []);
   const faculty = [
     { name: "Dr.Chandra Sekhar",  designation: "Assistant Professor",img:fc1, },
-    { name: "Dr. S. Surekha",  designation: "Associate Professor" ,img:fc2,},
+    { name: "Dr. S. Surekha",  designation: "Assistant Professor" ,img:fc2,},
     // Add more coordinators if needed
   ];
   const coordinators = [
-    { name: "D.V.Bhargav Reddy", contact: "83175 04292"  ,img:sco1,},
-    { name: "T.Vivek", contact: "77990 02247" ,img:sco3, },
-    { name: "B.Likith Nayak", contact: "75698 01239"  ,img:sco2,},
-    { name: "S. Manjunadh", contact: "81432 24017"  ,img:sco4,},
-    { name: "B. Navaneetha", contact: "79894 25914"  ,img:sco5,},
-    { name: "K. Satya Eswari", contact: "70136 90151"  ,img:sco6,},
+    { name: "D. V. Bhargava Reddy", contact: "8317504292"  ,img:sco1,},
+    { name: "B. Likhith Nayak", contact: "7569801239"  ,img:sco2,},
+    { name: "T. Vivek", contact: "7799002247" ,img:sco3, },
+    { name: "S. Manjunadh", contact: "8143224017"  ,img:sco4,},
+    { name: "B. Navaneetha", contact: "7989425914"  ,img:sco5,},
+    { name: "K. Satya Eswari", contact: "7013690151"  ,img:sco6,},
     // Add more coordinators if needed
   ];
   return (
@@ -47,7 +47,7 @@ function Team() {
           Convenor
         </h1>
         
-        <div className={styles.eventsGrid}>
+        <div className={styles.eventsflex}>
         
             <div className={styles.eventCard} data-aos="fade-up">
               <div className={styles.cardVisual} data-aos="zoom-in">
@@ -63,7 +63,7 @@ function Team() {
                 <h2 className={styles.eventTitle}>Dr. N. Ramakrishnaiah</h2>
                 <div className={styles.glowBar}></div>
                 
-                <p className={styles.eventDescription}>Head of The Department Computer Science and Engineering</p>
+                <p className={styles.eventDescription}>Prof. & Head of the Department </p>
                 
 
               </div>
@@ -75,7 +75,7 @@ function Team() {
 
       <div className={styles.contentContainer}>
   <h1 className={styles.mainTitle} data-aos="fade-down">Faculty Coordinators</h1>
-  <div className={styles.eventsGrid}>
+  <div className={styles.eventsflex}>
     {faculty.map((member, index) => (
       <div className={styles.eventCard} key={index} data-aos="fade-up">
         <div className={styles.cardVisual} data-aos="zoom-in">

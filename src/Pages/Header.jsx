@@ -29,7 +29,7 @@ export default function Header() {
         { path: "/OnlineEvents", icon: "fa-laptop", text: "Online" }
       ]
     },
-    { path: "/workshop", icon: "fa-chalkboard", text: "Workshop" },
+    { path: "/workshop", icon: "fa-chalkboard", text: "Workshops" },
     { path: "/contests", icon: "fa-trophy", text: "Contests" },
     { path: "/accommodation", icon: "fa-bed", text: "Stay" },
   ];

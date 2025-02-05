@@ -3,6 +3,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import styles from "../CSS/TechnicalEvents.module.css";
+import snapshot from "../assets/snap-shot.jpg"
+import pictureperfect from "../assets/picture-perfect.jpg"
+import memecraft from "../assets/meme-craft.jpg"
+import reelmaster from "../assets/reel-master.jpg"
+import battlearena from "../assets/battle-arena.jpg"
 
 const eventDetails = [ 
   {
@@ -10,11 +15,10 @@ const eventDetails = [
     title: "Meme Crafts",
     description:
       "Unleash your humor and creativity by crafting memes that resonate. Turn your ideas into viral-worthy masterpieces and win the crowd’s laughter.",
-    image:
-      "https://images.unsplash.com/photo-1537432376769-00c70b3d8bb8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
-      coordinators1: "K. Praneeth",
+    image:memecraft,
+     coordinators1: "K. Praneeth Reddy",
       coordinators1ph:"+91 9603009614", 
-      coordinators2:"Y. K. Komala",
+      coordinators2:"Y. Krupa Komala",
       coordinators2ph:" +91 7671894241",
   },
   {
@@ -22,8 +26,7 @@ const eventDetails = [
     title: "Reel Masters",
     description:
     "Showcase your storytelling skills by creating entertaining and impactful reels. Compete to see if you have what it takes to captivate audiences.",
-    image:
-      "https://images.unsplash.com/photo-1542056178-9c65c9b6f8ac?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
+    image:reelmaster,
       coordinators1: "P. Manikanta",
       coordinators1ph:"+91 9390159239", 
       coordinators2:"N. Poorna Chandrika",
@@ -34,11 +37,10 @@ const eventDetails = [
     title: "Picture Perfect",
     description:
     "Capture the essence of our campus through your lens, highlighting its beauty and uniqueness. Showcase your creativity by telling a story with every frame.",
-    image:
-      "https://images.unsplash.com/photo-1518302609613-36c1bdb7c603?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
-      coordinators1: "Sk. Mansoor",
+    image:pictureperfect,
+       coordinators1: "Sk. Mansoor Biag",
       coordinators1ph:"+91 9014230074", 
-      coordinators2:"P. Sahithi",
+      coordinators2:"P. Lakshmi Sahithi",
       coordinators2ph:" +91 9440147799",
   },
   {
@@ -46,11 +48,10 @@ const eventDetails = [
     title: "Battle Arena",
     description:
     "Step into the world of intense battle royale action with games like PUBG and Free Fire. Compete in fast-paced matches to showcase your gaming skills and secure victory in the ultimate gaming showdown.",
-    image:
-      "https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
+    image:battlearena, 
       coordinators1: "M. Karthik",
       coordinators1ph:"+91 9704776155", 
-      coordinators2:"K. Revanth",
+      coordinators2:"A. Revanth Reddy",
       coordinators2ph:" +91 9110363298",
   },
   {
@@ -59,10 +60,10 @@ const eventDetails = [
     description:
     "Strike your best pose and capture the perfect selfie moment. Let your creativity shine and share your unique style with the world.",
     image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
-      coordinators1: "D. Vamsi",
+      snapshot,
+      coordinators1: "D. Vamsi Reddy",
       coordinators1ph:"+91 6302549989", 
-      coordinators2:"D. Hasa",
+      coordinators2:"D. Sri Hasa",
       coordinators2ph:" +91 7671834633",
   },
  

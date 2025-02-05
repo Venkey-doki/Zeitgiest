@@ -156,7 +156,13 @@
 .quotation{
   color: #fff;
   backdrop-filter: blur(8px);
-  font-size: larger;
+  font-size:x-large;
+}
+.quotationHeading{
+  color: #fff;
+  backdrop-filter: blur(8px);
+  font-size:xx-large;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .typewriterContainer {
@@ -166,7 +172,7 @@
 
 .typewriterText {
   color: #87CEEB; /* Skyblue color */
-  font-size: 2.5rem;
+  font-size: 75px;
   font-weight: bold;
   font-family: 'Consolas', 'Courier New', monospace;
   overflow: hidden;
@@ -462,6 +468,9 @@
   }
 
   .quotation {
+    font-size: 1.2rem;
+  }
+  .quotationHeading {
     font-size: 1.2rem;
   }
 }

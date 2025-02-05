@@ -46,9 +46,9 @@ function Accommodation() {
               <h4 className={styles.textLight}>Coordinators:</h4>
               <p className={styles.contactDetails}>
                 <strong>S. Manjunadh:</strong> +91 8143224017 <br />
-                <strong>K. Praneeth:</strong> +91 9603009614 <br />
+                <strong>K. Praneeth Reddy:</strong> +91 9603009614 <br />
                 <strong>B. Navaneetha:</strong> +91 7989425914 <br />
-                <strong>K. Prasanna:</strong> +91 9392453883
+                <strong>K. Durga Prasanna:</strong> +91 9392453883
               </p>
 
               <div className={styles.buttonContainer}>

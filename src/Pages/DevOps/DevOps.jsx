@@ -47,14 +47,14 @@ function DevOps() {
               <h4 className={styles.textLight}>Pricing Details:</h4>
               <ul className={styles.listStyled}>
                 <li>Single Registration : ₹1100</li>
-                <li>Team Registration(Max 4 Persons): ₹4000 </li>
+                <li>Team Registration (Max 4 Persons) : ₹4000 </li>
               </ul>
 
               <h4 className={styles.textLight}>Coordinators:</h4>
               <p className={styles.contactDetails}>
-              <strong>Sk. Salam:</strong> +91 8309241980 <br />
-                <strong>G. Uday Naga Pavan:</strong> +91 9000766719 <br />
-                <strong>Jane Smith:</strong> +91 7671894241 <br />
+              <strong>Sk. Abdul Salam:</strong> +91 8309241980 <br />
+              <strong>G. Uday Naga Pavan:</strong> +91 9000766719 <br />
+              <strong>Y. Krupa Komala:</strong> +91 7671864241 <br />
               </p>
 
               <div className={styles.buttonContainer}>

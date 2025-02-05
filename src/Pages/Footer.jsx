@@ -42,7 +42,7 @@ const Footer = () => {
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About</Link></li>
-              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/Workshop">Workshops</Link></li>
               <li><Link to="/team">Team</Link></li>
             </ul>
           </div>
@@ -52,9 +52,9 @@ const Footer = () => {
             <h4>Contact Us</h4>
             <p><a href="mailto:info@zeitgeistjntukcse.com">info@zeitgeistjntukcse.com</a></p>
             <div className={styles.contactList}>
-              <p>D.BHARGAV - 83175 04292</p>
+              <p>D. V. BHARGAVA REDDY - 83175 04292</p>
               <p>T.VIVEK - 77990 02247</p>
-              <p>B.LIKITH - 75698 01239</p>
+              <p>B.LIKHITH NAYAK- 75698 01239</p>
               <p>S.MANJUNADH - 81432 24017</p>
               <p>B.NAVANEENTHA - 79894 25914</p>
               <p>K.SATYA ESWARI - 70136 90151</p>

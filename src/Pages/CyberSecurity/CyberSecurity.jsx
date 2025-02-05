@@ -48,14 +48,14 @@ function CyberSecurity() {
               <h4 className={styles.textLight}>Pricing Details:</h4>
               <ul className={styles.listStyled}>
                 <li>Single Registration : ₹1100</li>
-                <li>Team Registration(Max 4 Persons): ₹4000 </li>
+                <li>Team Registration (Max 4 Persons) : ₹4000 </li>
               </ul>
 
               <h4 className={styles.textLight}>Coordinators:</h4>
               <p className={styles.contactDetails}>
-              <strong>G. Chaitanya:</strong> +91 7569092272 <br />
+              <strong>G. Siva Chaitanya:</strong> +91 7569092272 <br />
                 <strong>P. Praneeth Joshi:</strong> +91 79816986419 <br />
-                <strong>S. Mani Tejeswi:</strong> +91 8332048777<br />
+                <strong>S. Mani Tejaswi:</strong> +91 8332048777<br />
               </p>
 
               <div className={styles.buttonContainer}>

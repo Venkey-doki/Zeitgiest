@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import styles from "../CSS/TechnicalEvents.module.css";
 
-const eventDetails = [
+const eventDetails = [ 
   {
     id: 1,
     title: "Technoquest: Ignite Your Tech-Savvy Spirit",

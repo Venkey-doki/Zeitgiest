@@ -32,7 +32,6 @@ export default function Header() {
     { path: "/workshop", icon: "fa-chalkboard", text: "Workshop" },
     { path: "/contests", icon: "fa-trophy", text: "Contests" },
     { path: "/accommodation", icon: "fa-bed", text: "Stay" },
-    { path: "/gallery", icon: "fa-image", text: "Gallery" },
   ];
 
   const dropdownItems = [

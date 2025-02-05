@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Confetti from 'react-confetti';
+import ConfettiComponent from '../components/Confetti/Confetti';
 import styles from "../CSS/Timer.module.css";
 import logo from "../assets/logo.jpg"
 export default function Timer() {
-  const targetDate = new Date('2025-03-15T23:59:59').getTime();
+  const targetDate = new Date('2025-03-14T23:59:59').getTime();
   const [currentTime, setCurrentTime] = useState(Date.now());
   const [isCelebrating, setIsCelebrating] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
@@ -62,7 +62,7 @@ export default function Timer() {
         </div>
       ) : (
         <div className="text-center">
-          <Confetti width={windowSize.width} height={windowSize.height} />
+          <ConfettiComponent  />
           <h1 className={styles.celebrateText}>🎉 Time to Celebrate! 🎉</h1>
           <img src={logo} alt="Logo" className={styles.logo} />
         </div>

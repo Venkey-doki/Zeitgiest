@@ -1,0 +1,209 @@
+/* Accommodation Page Styles */
+.wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at center, #000000, #0a0a23);
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Animated Grid Lines */
+.background::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px),
+              linear-gradient(0deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGridLines 5s linear infinite;
+}
+
+@keyframes moveGridLines {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-25px, -25px);
+  }
+}
+
+/* Accommodation Details Background Animation */
+.accommodationContainer {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  border: 1px solid rgba(135, 206, 235, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.accommodationContainer::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(135, 206, 235, 0.1) 1%, transparent 1%);
+  background-size: 100px 100px;
+  animation: moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+/* Typography */
+h1, h2, h4, p {
+  color: white;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.8);
+}
+
+.text-warning {
+  color: #87CEEB !important;
+}
+
+/* Buttons */
+.btn-outline-warning {
+  border-color: rgba(135, 206, 235, 0.5);
+  color: #87CEEB;
+}
+
+.btn-outline-warning:hover {
+  background-color: #87CEEB;
+  color: black;
+}
+/* Accommodation Background */
+.accommodationBackground {
+  color:white;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #000000, #101025);
+}
+
+.accommodationBackground::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px),
+              linear-gradient(0deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGrid 5s linear infinite;
+}
+
+@keyframes moveGrid {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-25px, -25px);
+  }
+}
+
+/* Accommodation Details Section */
+.accommodationDetails {
+  color: aliceblue;
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  z-index: 2;
+  border-top: 1px solid rgba(135, 206, 235, 0.2);
+  border-bottom: 1px solid rgba(135, 206, 235, 0.2);
+  overflow: hidden;
+}
+
+/* Button Styles */
+.accommodationButton {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.accommodationButton:hover {
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.accommodationButton::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(45deg);
+  animation: buttonGlow 3s infinite linear;
+}
+
+@keyframes buttonGlow {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.button {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  background: linear-gradient(45deg, 
+    rgba(135, 206, 235, 0.8), 
+    rgba(0, 191, 255, 0.8));
+  border: 1px solid rgba(135, 206, 235, 0.5);
+  color: #000;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+}
+
+.button:hover {
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+  
+}
+Link{
+  text-decoration: none;
+}
+.button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%
+}
+
+@keyframes buttonGlow {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+.hostelImage{
+  border-radius: 30px;
+  width:70%;
+  height: auto;
+}
+.listStyled{
+  color:#87CEEB;
+}

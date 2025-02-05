@@ -14,7 +14,7 @@
     border: 3px solid #41C9E2;
     border-radius: 15px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
+    /* background: rgba(0, 0, 0, 0.6); */
     animation: borderSpread 2s infinite ease-in-out;
     color: white;
   }

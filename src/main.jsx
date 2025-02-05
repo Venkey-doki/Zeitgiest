@@ -7,7 +7,6 @@ import Home from './Pages/Home'
 import Workshop from './Pages/Workshop'
 import Login from './Pages/Login'
 import Events from './Pages/Events'
-import Gallery from './Pages/Gallery'
 import Contests from './Pages/Contests'
 import About from './Pages/About'
 import TechnicalEvents from './Pages/TechnicalEvents'
@@ -32,7 +31,6 @@ const router = createBrowserRouter(
       <Route path='/Workshop' element={<Workshop />} />
       <Route path='/login' element={<Login />} />
       <Route path='/events' element={<Events />} />
-      <Route path='/Gallery' element={<Gallery />} />
       <Route path='/Contests' element={<Contests />} />
       <Route path='/About' element={<About />} />
       <Route path='/TechnicalEvents' element={<TechnicalEvents />} />

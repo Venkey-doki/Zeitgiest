@@ -52,12 +52,12 @@ const Footer = () => {
             <h4>Contact Us</h4>
             <p><a href="mailto:info@zeitgeistjntukcse.com">info@zeitgeistjntukcse.com</a></p>
             <div className={styles.contactList}>
-              <p>D.BHARGAV - 8317504292</p>
-              <p>T.VIVEK - 7799002247</p>
-              <p>B.LIKITH - 7569801239</p>
-              <p>S.MANJUNADH - 8143224017</p>
-              <p>B.NAVANEENTHA - 7989425914</p>
-              <p>K.SATYA ESWARI - 701690151</p>
+              <p>D.BHARGAV - 83175 04292</p>
+              <p>T.VIVEK - 77990 02247</p>
+              <p>B.LIKITH - 75698 01239</p>
+              <p>S.MANJUNADH - 81432 24017</p>
+              <p>B.NAVANEENTHA - 79894 25914</p>
+              <p>K.SATYA ESWARI - 70136 90151</p>
             </div>
           </div>
 

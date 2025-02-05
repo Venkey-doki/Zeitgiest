@@ -26,15 +26,19 @@ export default function Home() {
       <div className={styles.background}></div>
 
       <div className={styles.contentContainer}>
-        <img src={logo} alt="Fest Logo" className={styles.logo} data-aos="fade-down" />
+        {/* <img src={logo} alt="Fest Logo" className={styles.logo} data-aos="fade-down" /> */}
         
         {/* Typewriter Text */}
         <div className={styles.typewriterContainer} data-aos="fade-up">
-          <h1 className={styles.typewriterText}>ZEITGEIST</h1>
+          <h1 className={styles.typewriterText}>ZEITGEIST'25</h1>
         </div>
 
         <blockquote className={styles.quotation} data-aos="fade-up">
           <p>"Unleashing Creativity, Innovation, and Passion!"</p>
+        </blockquote>
+
+        <blockquote className={styles.quotation} data-aos="fade-up">
+          <p>"Fusion of ideas, Harmony of minds...!"</p>
         </blockquote>
 
         <div className={styles.timerSection} data-aos="fade-up">
@@ -84,13 +88,13 @@ export default function Home() {
       </section>
       <section className={styles.heroSection} data-aos="fade-left">
         <div className={styles.heroContent} >
-          <h2>contest</h2>
+          <h2>Contest</h2>
           <p>
             Discover exciting technical and online events that challenge your skills and creativity.
             Participate in various competitions and showcase your talents.
           </p>
           <div className={styles.buttonContainer}>
-            <Link to="/technicalevents"><button className={styles.button}>Technical Events</button></Link>
+            <Link to="/contests"><button className={styles.button}>Contest</button></Link>
           </div>
         </div>
       </section>

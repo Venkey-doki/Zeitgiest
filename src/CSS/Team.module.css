@@ -1,160 +1,306 @@
-.teamContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  margin-top: 50px;
-  width: 100%; /* Ensure it spans the width of the screen */
-  box-sizing: border-box;
-}
-
-.bg {
-  z-index: 0;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.bg h1 {
-  font-size: 14rem; /* Reduce size for better mobile scaling */
-  color: #fff;
-  filter: opacity(0.2);
-}
-
-.nftGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(350px, 1fr)); /* Adjusted for smaller devices */
-  gap: 1.5rem;
-  padding: 1.5rem;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.nft {
-  user-select: none;
-  width: 100%; /* Adjust to grid width */
-  max-width: 600px; /* Keep card within reasonable size limits */
-  border: 1px solid #ffffff22;
-  background-color: #282c34;
-  background: linear-gradient(45deg, rgba(40, 44, 52, 1) 0%, rgba(0, 72, 94, 0.322) 100%);
-  box-shadow: 0 7px 20px 5px #00000088;
-  border-radius: 0.7rem;
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  overflow: hidden;
-  transition: 0.5s all;
+/* Reuse home page background styles */
+.container {
   position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.nft .main {
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #000000, #101025);
+}
+.background::before,
+  .background::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(135, 206, 235, 0.1) 1%, transparent 1%),
+                linear-gradient(45deg, rgba(135, 206, 235, 0.05) 25%, transparent 25%, transparent 75%, rgba(135, 206, 235, 0.05) 75%),
+                linear-gradient(45deg, rgba(135, 206, 235, 0.05) 25%, transparent 25%, transparent 75%, rgba(135, 206, 235, 0.05) 75%);
+    background-size: 100px 100px, 50px 50px, 50px 50px;
+    animation: moveGrid 20s linear infinite;
+  }
+  
+  .background::before {
+    top: 0;
+    left: 0;
+    transform: rotate(45deg);
+  }
+  
+  .background::after {
+    top: 0;
+    left: 50%;
+    transform: rotate(-45deg);
+    animation-delay: -10s;
+  }
+  
+  @keyframes moveGrid {
+    0% {
+      transform: translate(0, 0) rotate(45deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+  
+  /* Add glowing particles */
+  .background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(135, 206, 235, 0.3) 1%, transparent 1%);
+    background-size: 20px 20px;
+    animation: moveParticles 10s linear infinite;
+  }
+  
+  @keyframes moveParticles {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+  /* Add neon grid lines */
+  .background::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveGridLines 5s linear infinite;
+  }
+  
+  @keyframes moveGridLines {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-25px, -25px);
+    }
+  }
+  
+
+/* Main Content */
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  padding: 120px 20px 60px;
+  max-width: 1600px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;;
+}
+
+.mainTitle {
+  font-size: 4rem;
+  color: #87CEEB;
+  text-align: center;
+  margin-bottom: 80px;
+  text-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
+}
+
+/* Events Grid - Desktop: 3x2 Matrix */
+.eventsGrid {
+    display: grid;
+    justify-content: center; /* Centers grid horizontally */
+    align-items: center; /* Centers grid vertically */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 0 40px;
+    max-width: 1200px; /* Restricts width to prevent stretching */
+    margin: 0 auto; /* Ensures the grid is centered in the container */
+    
+}
+
+/* Card Design */
+.eventCard {
+  position: relative;
+  background: rgba(16, 16, 37, 0.6);
+  border-radius: 15px;
+  border: 1px solid rgba(135, 206, 235, 0.1);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.eventCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(135, 206, 235, 0.2);
+  border-color: rgba(135, 206, 235, 0.3);
+  align-items: center;
+}
+
+/* Card Visual Section */
+.cardVisual {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Adjusted to take full card width */
-  padding: 1.5rem;
 }
 
-.nft .main .tokenImage {
-  border-radius: 0.5rem;
-  width: 100%; /* Ensure it scales responsively */
-  height: auto;
-  max-height: 325px;
+.eventImage {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin-bottom: 1rem;
+  transition: transform 0.4s ease;
 }
 
-.nft .main .name {
-  font-size: 1.25rem;
-  color: #00e1ff;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.eventCard:hover .eventImage {
+  transform: scale(1.1);
 }
 
-.nft .main .description {
-  margin: 0.5rem 0;
-  color: #00e1ffd3;
-  text-align: center; /* Align text for smaller screens */
+/* Card Content */
+.cardContent {
+  padding: 25px;
+  position: relative;
+  z-index: 2;
 }
 
-.nft:hover {
-  border: 1px solid #ffffff44;
-  box-shadow: 0 7px 50px 10px #000000aa;
-  transform: scale(1.015);
+.eventTitle {
+  font-size: 1.5rem;
+  color: #87CEEB;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
 }
 
-.nft::before {
-  position: absolute;
-  content: "";
-  box-shadow: 0 0 100px 40px #00c3ff1e;
-  top: -10%;
-  left: -100%;
-  transform: rotate(-45deg);
-  height: 60rem;
-  transition: .5s all;
+.eventDescription {
+  font-size: 0.95rem;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.2);
 }
 
-.nft:hover::before {
-  filter: brightness(.5);
-  top: -100%;
-  left: 200%;
-}
-
-.sectionHeading {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 20px;
-  text-align: center;
-  color: #fff;
-}
-
-/* Student Coordinators Grid - 3x2 Layout */
-.studentGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+/* Details Section */
+.detailsSection {
+  display: flex;
+  justify-content: space-between;
   gap: 20px;
-  justify-items: center;
-  margin-top: 20px;
+  margin-bottom: 25px;
 }
 
-/* Media Queries for Responsiveness */
+.coordinators h3,
+.pricing h3 {
+  font-size: 1.1rem;
+  color: #87CEEB;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+}
+
+.coordinatorList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.coordinatorItem {
+  flex: 1 1 calc(33.33% - 20px); /* 3x2 Matrix */
+  text-align: center;
+}
+
+.coordinatorItem p {
+  margin: 8px 0;
+  font-size: 0.85rem;
+}
+
+.name {
+  display: block;
+  color: #ffffff;
+}
+
+.phone {
+  color: #87CEEB;
+  font-size: 0.8rem;
+}
+
+.pricing {
+  text-align: right;
+}
+
+.fee {
+  font-size: 1.4rem;
+  color: #87CEEB;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+}
+
+/* Register Button */
+.registerButton {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  text-align: center;
+  background: linear-gradient(45deg, rgba(135, 206, 235, 0.8), rgba(0, 191, 255, 0.8));
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.registerButton:hover {
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .eventsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2x3 Matrix for tablets */
+  }
+
+  .coordinatorItem {
+    flex: 1 1 calc(50% - 20px); /* 2 per row */
+  }
+}
+
 @media (max-width: 768px) {
-  .bg h1 {
-    font-size: 5rem;
+  .mainTitle {
+    font-size: 3rem;
   }
-  .nftGrid {
-    padding: 1rem;
-    gap: 2rem;
+  
+  .detailsSection {
+    flex-direction: column;
   }
-  .nft .main .name {
-    font-size: 1rem;
+  
+  .pricing {
+    text-align: left;
   }
-  .nft .main .description {
-    font-size: 0.9rem;
+
+  .cardVisual {
+    height: 300px;
   }
-  .sectionHeading {
-    font-size: 1.25rem;
+
+  .eventsGrid {
+    grid-template-columns: 1fr; /* 1 per row on mobile */
   }
-  .studentGrid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+
+  .coordinatorItem {
+    flex: 1 1 100%; /* 1 per row */
   }
 }
 
 @media (max-width: 480px) {
-  .bg h1 {
-    font-size: 3.5rem;
+  .mainTitle {
+    font-size: 2.5rem;
   }
-  .nft .main .tokenImage {
-    max-height: 300px;
-  }
-  .nft {
-    box-shadow: 0 4px 10px 3px #00000088;
-  }
-  .studentGrid {
-    grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
+
+  .cardVisual {
+    height: 250px;
   }
 }

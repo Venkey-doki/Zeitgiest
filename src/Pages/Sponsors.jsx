@@ -1,77 +1,87 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
+import styles from "../CSS/TechnicalEvents.module.css";
 
-
-// Sponsor data
-const sponsors = [
+const eventDetails = [ 
   {
     id: 1,
-    name: "Platinum Sponsor",
-    logo: "https://via.placeholder.com/300",
-    description: "Empowering innovation through technology leadership.",
+    title: "Innovation Research Centre JNTUK",
+    description:
+      "Unleash your humor and creativity by crafting memes that resonate. Turn your ideas into viral-worthy masterpieces and win the crowd’s laughter.",
+    image:
+      "https://images.unsplash.com/photo-1537432376769-00c70b3d8bb8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
+   url:"https://jntuk.edu.in", 
   },
   {
     id: 2,
-    name: "Gold Sponsor",
-    logo: "https://via.placeholder.com/300",
-    description: "Driving success with cutting-edge solutions and expertise.",
+    title: "SBI",
+    description:
+    "Showcase your storytelling skills by creating entertaining and impactful reels. Compete to see if you have what it takes to captivate audiences.",
+    image:
+      "https://images.unsplash.com/photo-1542056178-9c65c9b6f8ac?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
+    url:"https://sbi.com",
   },
+  {
+    id: 3,
+    title: "X Company",
+    description:
+    "Capture the essence of our campus through your lens, highlighting its beauty and uniqueness. Showcase your creativity by telling a story with every frame.",
+    image:
+      "https://images.unsplash.com/photo-1518302609613-36c1bdb7c603?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfGFsbHwxfHx8fHx8fHwxNjc3ODc2NTU4&ixlib=rb-1.2.1&q=80",
+    url:"https://x.com",
+  },
+ 
 ];
 
-export default function Sponsors() {
+function Sponsers() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration
-      once: true, // Only animate once
+      duration: 1000,
+      once: true,
+      mirror: false
     });
+    window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-      AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
-      window.scrollTo(0, 0); // Scroll to the top of the page
-    }, [location.pathname]);
-    useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
 
   return (
-    <div className="py-12 px-6" style={{ backgroundColor: "#f3f4f6" }}>
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Title Section */}
-        <h1 className="text-4xl font-bold mb-8" data-aos="fade-up">
-          Our Sponsors
+    <div className={styles.container}>
+      {/* Animated Background */}
+      <div className={styles.background}></div>
+
+      <div className={styles.contentContainer}>
+        <h1 className={styles.mainTitle} data-aos="fade-down">
+          Sponsors
         </h1>
-        <p
-          className="text-lg text-gray-700 mb-12"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          A big thank you to our sponsors for their generous support and
-          dedication to excellence.
-        </p>
         
-        {/* Sponsors Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-          {sponsors.map((sponsor, index) => (
-            <div
-              key={sponsor.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105"
-              data-aos="zoom-in"
-              data-aos-delay={`${index * 200}`}
-            >
-              <div className="p-6 text-center">
-                {/* Sponsor Logo */}
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  className="mx-auto mb-4 max-w-full h-40 object-contain"
+        <div className={styles.eventsGrid}>
+          {eventDetails.map((event) => (
+            <div className={styles.eventCard} key={event.id} data-aos="fade-up">
+              <div className={styles.cardVisual} data-aos="zoom-in">
+                <img 
+                  src={event.image} 
+                  alt={event.title} 
+                  className={styles.eventImage}
                 />
-                {/* Sponsor Name */}
-                <h2 className="text-2xl font-semibold mb-2 text-gray-800">
-                  {sponsor.name}
-                </h2>
-                {/* Sponsor Description */}
-                <p className="text-gray-600">{sponsor.description}</p>
+                <div className={styles.imageOverlay}></div>
+              </div>
+              
+              <div className={styles.cardContent}>
+                <h2 className={styles.eventTitle}>{event.title}</h2>
+                <div className={styles.glowBar}></div>
+                
+                <p className={styles.eventDescription}>{event.description}</p>
+                
+                
+
+                <Link 
+                  target="new"
+                  to={event.url}
+                  className={styles.registerButton}
+                >
+                  Click to know more
+                </Link>
               </div>
             </div>
           ))}
@@ -80,3 +90,5 @@ export default function Sponsors() {
     </div>
   );
 }
+
+export default Sponsers;

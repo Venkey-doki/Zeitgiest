@@ -55,7 +55,7 @@ function Workshop() {
 
       <div className={styles.contentContainer}>
         <h1 className={styles.mainTitle} data-aos="fade-down">
-          TECH WORKSHOPS
+          WORKSHOPS
         </h1>
         
         {workshops.map((workshop, index) => (

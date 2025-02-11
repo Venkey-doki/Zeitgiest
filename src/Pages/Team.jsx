@@ -14,6 +14,7 @@ import sco5 from "../assets/sco5.jpg"
 import sco6 from "../assets/sco6.jpg"
 
 
+
 function Team() {
   useEffect(() => {
     AOS.init({

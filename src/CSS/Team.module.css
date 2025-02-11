@@ -312,6 +312,8 @@
   }
   .eventsflex{
     flex-direction: column;
-    
+    /* width: 300px;
+    height: 500px; */
+    margin: 20px 50px 20px 50px;
   }
 }

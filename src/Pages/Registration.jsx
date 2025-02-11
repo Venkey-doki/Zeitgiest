@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../CSS/Registration.css";
 import QrCode from "../assets/QrCode.jpg";
-
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function Registration() {
      const [isDesktop, setIsDesktop] = useState(window.innerWidth > 980);
       
@@ -59,7 +61,7 @@ function Registration() {
       navigate("/registration?event=NEW REGISTRATION");
       
       return;
-    }
+    }  }, [location.search, navigate]);
     useEffect(() => {
         AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
         window.scrollTo(0, 0); // Scroll to the top of the page
@@ -92,18 +94,21 @@ function Registration() {
     }
     
     // Update form data with both event and user details
-    setFormData(prevData => ({
-      ...prevData,
-      name: userDetails[1] || "",
-      email: userDetails[2] || "",
-      contactNo: userDetails[3] || "",
-      rollNumber: userDetails[4] || "",
-      collegeName: userDetails[5] || "",
-      collegePlace: userDetails[6] || "",
-      event: eventFromUrl || "NEW REGISTRATION",
-      price: price,
-    }));
-  }, [location.search, navigate]); // Dependencies updated to include only necessary items
+    useEffect(() => {
+      setFormData(prevData => ({
+        ...prevData,
+        name: userDetails[1] || "",
+        email: userDetails[2] || "",
+        contactNo: userDetails[3] || "",
+        rollNumber: userDetails[4] || "",
+        collegeName: userDetails[5] || "",
+        collegePlace: userDetails[6] || "",
+        event: eventFromUrl || "NEW REGISTRATION",
+        price: price,
+      }));
+    }, []); // Empty dependency array ensures it runs only once
+    
+ // Dependencies updated to include only necessary items
 
   // Rest of your component remains the same
   const validateForm = () => {
@@ -279,12 +284,12 @@ function Registration() {
                 )}
                 <div className="app-form-group buttons">
                   <button
-                    type="button"
+                    type="reset"
                     className="app-form-button"
                     onClick={handleCancel}
                     disabled={isSubmitting}
                   >
-                    CANCEL
+                    Reset
                   </button>
                   <button
                     type="submit"

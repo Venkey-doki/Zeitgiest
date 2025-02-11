@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;700&display=swap');
+
 /* Header Styles */
 .header {
   position: fixed;
@@ -159,10 +161,11 @@
   font-size:x-large;
 }
 .quotationHeading{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #fff;
   backdrop-filter: blur(8px);
   font-size:xx-large;
-  font-family: 'Times New Roman', Times, serif;
+  /* font-family: 'Times New Roman', Times, serif; */
 }
 
 .typewriterContainer {
@@ -174,7 +177,7 @@
   color: #87CEEB; /* Skyblue color */
   font-size: 75px;
   font-weight: bold;
-  font-family: 'Consolas', 'Courier New', monospace;
+  font-family: 'Orbitron','Consolas', 'Courier New', monospace;
   overflow: hidden;
   border-right: 2px solid #87CEEB;
   white-space: nowrap;

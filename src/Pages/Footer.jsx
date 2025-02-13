@@ -9,11 +9,11 @@ import styles from '../CSS/Footer.module.css';
 const Footer = () => {
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
     window.scrollTo(0, 0); // Scroll to the top of the page
   }, [location.pathname]);
   useEffect(() => {
-      window.scrollTo(0, 0);
     }, []);
 
   return (

@@ -160,13 +160,7 @@
   backdrop-filter: blur(8px);
   font-size:x-large;
 }
-.quotationHeading{
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: #fff;
-  backdrop-filter: blur(8px);
-  font-size:xx-large;
-  /* font-family: 'Times New Roman', Times, serif; */
-}
+
 
 .typewriterContainer {
   margin: 20px 0;
@@ -476,4 +470,30 @@
   .quotationHeading {
     font-size: 1.2rem;
   }
+  .universityName{
+    font-weight: 100;
+  }
+}
+/* Apply different font styles */
+.universityName {
+  font-family: "Playfair Display", serif; /* Classic Serif */
+  font-style: italic;
+  font-size: 1.8rem;
+  font-weight: bold;
+  /* color: #2c3e50; Dark Blue */
+}
+
+.collegeName {
+  font-family: "Montserrat", sans-serif; /* Modern Sans-serif */
+  font-size: 1.6rem;
+  font-weight: 600;
+  /* color: #d35400; Dark Orange */
+}
+
+.departmentName {
+  font-family: "PT Serif", serif; /* Elegant Serif */
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 700;
+  /* color: #2980b9; Bright Blue */
 }

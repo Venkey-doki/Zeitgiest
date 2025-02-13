@@ -6,14 +6,33 @@ export default function Header() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  // Function to get user from localStorage
+  const fetchUser = () => {
     const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) setUser(JSON.parse(loggedInUser));
+    setUser(loggedInUser ? JSON.parse(loggedInUser) : null);
+    
+  };
+
+  useEffect(() => {
+    // Fetch user initially
+    fetchUser();
+
+    // Listen for changes in localStorage (manual trigger included)
+    const handleStorageChange = () => {
+      fetchUser();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
+    window.dispatchEvent(new Event("storage")); // Trigger update event
     navigate("/");
   };
 
@@ -36,7 +55,6 @@ export default function Header() {
 
   const dropdownItems = [
     { path: "/team", icon: "fa-users", text: "Team" },
-    { path: "/sponsors", icon: "fa-handshake", text: "Sponsors" },
   ];
 
   return (

@@ -48,12 +48,12 @@ const eventDetails = [
 
 export default function OnlineEvents() {
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({
       duration: 1000,
       once: true,
       mirror: false
     });
-    window.scrollTo(0, 0);
   }, []);
 
   return (

@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({ duration: 1000 });
     AOS.refresh();
-    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -29,16 +29,12 @@ export default function Home() {
         {/* <img src={logo} alt="Fest Logo" className={styles.logo} data-aos="fade-down" /> */}
         
         {/* Typewriter Text */}
-          <h2 className={styles.quotationHeading}>Jawaharlal Nehru Technological University Kakinada</h2>
-          <br />
-          <br />
-          <h2 className={styles.quotationHeading}>University College of Engineering Kakinada</h2>
-          <br />
-          <br />
-          <br />
-          <h2 className={styles.quotationHeading}>Department of Computer Science and Engineering</h2>
-          <br />
-          <br />
+          <h2 className={styles.universityName}>Jawaharlal Nehru Technological University Kakinada</h2>
+<br />
+<h2 className={styles.collegeName}>University College of Engineering Kakinada</h2>
+<br />
+<h2 className={styles.departmentName}>Department of Computer Science and Engineering</h2>
+<br></br>
           <h4 >Presents </h4>
         <div className={styles.typewriterContainer} data-aos="fade-up">
           <h1 className={styles.typewriterText}>ZEITGEIST'25</h1>

@@ -7,12 +7,13 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({ 
       duration: 1000,
       once: true,
       mirror: false
     });
-    window.scrollTo(0, 0);
+    AOS.refresh();
   }, []);
 
   return (
@@ -54,27 +55,6 @@ const About = () => {
             </p>
           </div>
         </section>
-
-
-          {/* Timeline Section */}
-          <section className={styles.timeline} data-aos="fade-up">
-            <h2>Fest Timeline</h2>
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineDot}></div>
-              <div className={styles.timelineContent}>
-                <h3>February 8, 2025</h3>
-                <p>Online Registrations Open: Participants can begin registering for the events and workshops.
-                </p>
-              </div>
-            </div>
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineDot}></div>
-              <div className={styles.timelineContent}>
-                <h3>March 8, 2025</h3>
-                <p>Registration closed</p>
-              </div>
-            </div>
-          </section>
 
         {/* CTA Section */}
         <section className={styles.ctaSection} data-aos="zoom-in">

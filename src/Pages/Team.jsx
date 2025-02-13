@@ -17,12 +17,12 @@ import sco6 from "../assets/sco6.jpg"
 
 function Team() {
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({
       duration: 1000,
       once: true,
       mirror: false
     });
-    window.scrollTo(0, 0);
   }, []);
   const faculty = [
     { name: "Dr.Chandra Sekhar",  designation: "Assistant Professor",img:fc1, },

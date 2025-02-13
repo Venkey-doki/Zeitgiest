@@ -12,6 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scroll(0,0);
     AOS.init({ duration: 1000, once: true });
 
     // Redirect to profile if the user is already logged in
@@ -48,8 +49,9 @@ const Login = () => {
       // Check if the response was successful
       if (response.data.success) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("refresh", "true");
+
         setMessage("");
-        window.r
         navigate("/profile");
       } else {
         setMessage(response.data.message || "Invalid username or password.");
@@ -99,8 +101,8 @@ const Login = () => {
           <button
             className={`${styles.submitButton} ${loading ? styles.disabled : ""}`}
             type="submit"
-            data-aos="zoom-in"
-            disabled={loading}
+            // data-aos="zoom-in"
+            // disabled={loading}
           >
             {loading ? "Logging in..." : "LogIn"}
           </button>

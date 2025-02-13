@@ -6,6 +6,7 @@ import styles from "../../CSS/Accomodation.module.css"; // Import CSS module
 import { Link } from "react-router-dom";
 function DevOps() {
   useEffect(() => {
+    window.scroll(0,0);
     AOS.init({ duration: 1000, once: true });
   }, []);
 
@@ -38,11 +39,11 @@ function DevOps() {
 
 
               <h4 className={styles.textLight}>Rules & Regulations:</h4>
-              <ul className={styles.listStyled}>
-              <li>1. Registration is mandatory for all participants.</li>
-                <li>2. Participants must adhere to the workshop timings.</li>
-                <li>3. Use of personal laptops is encouraged.</li>
-              </ul>
+              <ol className={styles.listStyled}>
+              <li>Registration is mandatory for all participants.</li>
+                <li>Participants must adhere to the workshop timings.</li>
+                <li>Use of personal laptops is encouraged.</li>
+              </ol>
               
               <h4 className={styles.textLight}>Pricing Details:</h4>
               <ul className={styles.listStyled}>

@@ -41,7 +41,6 @@
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
-  transition: all 0.3s;
 }
 
 .input:focus {
@@ -64,7 +63,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s;
+
 }
 
 .submitButton:hover {

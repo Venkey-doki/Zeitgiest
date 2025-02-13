@@ -6,7 +6,9 @@ import styles from "../CSS/Accomodation.module.css"; // Import CSS module
 
 function Accommodation() {
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({ duration: 1000, once: true });
+   
   }, []);
 
   return (

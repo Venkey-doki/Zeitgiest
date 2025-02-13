@@ -10,11 +10,12 @@ import { Link } from "react-router-dom";
 
 function Workshop() {
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({
       duration: 1000,
       once: true,
     });
-    window.scrollTo(0, 0);
+    AOS.refresh();
   }, []);
 
   const workshops = [

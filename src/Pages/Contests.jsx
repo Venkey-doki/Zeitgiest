@@ -71,12 +71,12 @@ const eventDetails = [
 
 function Contests() {
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({
       duration: 1000,
       once: true,
       mirror: false
     });
-    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -122,10 +122,19 @@ function Contests() {
                     </div>
                   </div>
                   
-                  <div className={styles.pricing}>
-                    <h3>Participation Fee</h3>
-                    <p className={styles.fee}>₹0</p>
-                  </div>
+                  {
+  event.title === "Battle Arena" ? (
+    <div className={styles.pricing}>
+      <h3>Participation Fee</h3>
+      <p className={styles.fee}>contact coordinators</p>
+    </div>
+  ) : (
+    <div className={styles.pricing}>
+      <h3>Participation Fee</h3>
+      <p className={styles.fee}>₹0</p>
+    </div>
+  )
+}        
                 </div>
 
                 <Link 

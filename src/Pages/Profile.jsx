@@ -45,7 +45,7 @@ export default function Profile() {
                   className={`img-fluid rounded-circle ${styles.profileImage}`}
                 />
               </div>
-              <h3 className="mb-0">{user.fullname}</h3>
+              <h3 className="mb-0">{user.name}</h3>
               <p className="text-muted">{user.email}</p>
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function Profile() {
                       type="text"
                       name="fullname"
                       className="form-control"
-                      value={user.fullname}
+                      value={user.name}
                       readOnly
                     />
                   </div>
@@ -89,7 +89,7 @@ export default function Profile() {
                       type="tel"
                       name="phone"
                       className="form-control"
-                      value={registrations ? registrations.contact_no : "N/A"}
+                      value={user.contact_no ? user.contact_no : "N/A"}
                       readOnly
                     />
                   </div>
@@ -99,7 +99,7 @@ export default function Profile() {
                       type="text"
                       name="college"
                       className="form-control"
-                      value={registrations ? registrations.college_name : "N/A"}
+                      value={user ? user.college_name : "N/A"}
                       readOnly
                     />
                   </div>

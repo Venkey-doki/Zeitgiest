@@ -10,7 +10,6 @@ export default function Header() {
   const fetchUser = () => {
     const loggedInUser = localStorage.getItem("user");
     setUser(loggedInUser ? JSON.parse(loggedInUser) : null);
-    
   };
 
   useEffect(() => {
@@ -104,7 +103,7 @@ export default function Header() {
           <div className="nav-dropdown">
             <button className="nav-link">
               <i className="fas fa-user-circle" />
-              <span>{user.fullname}</span>
+              <span>{user.name}</span>
             </button>
             <div className="dropdown-menu">
               <Link to="/profile" className="dropdown-item">

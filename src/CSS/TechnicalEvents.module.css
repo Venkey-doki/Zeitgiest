@@ -118,6 +118,7 @@
 }
 
 /* New Card Design */
+/* Updated Event Card Styles */
 .eventCard {
   position: relative;
   background: rgba(16, 16, 37, 0.6);
@@ -126,6 +127,7 @@
   overflow: hidden;
   transition: all 0.4s ease;
   transform-style: preserve-3d;
+  touch-action: pan-y; /* New line added */
 }
 
 .eventCard::before {

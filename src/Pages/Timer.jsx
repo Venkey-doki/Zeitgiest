@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ConfettiComponent from '../components/Confetti/Confetti';
 import styles from "../CSS/Timer.module.css";
-import logo from "../assets/logo.jpg"
+import ConfettiComponent from '../components/Confetti/Confetti';
+import logo from "../assets/logo.jpg";
+
 export default function Timer() {
   const targetDate = new Date('2025-03-14T23:59:59').getTime();
   const [currentTime, setCurrentTime] = useState(Date.now());
   const [isCelebrating, setIsCelebrating] = useState(false);
-  const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,12 +21,6 @@ export default function Timer() {
     return () => clearInterval(interval);
   }, [currentTime, targetDate]);
 
-  useEffect(() => {
-    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const formatTime = (milliseconds) => {
     const totalSeconds = Math.floor(milliseconds / 1000);
     const day = Math.floor(totalSeconds / (3600 * 24));
@@ -35,36 +28,34 @@ export default function Timer() {
     const min = Math.floor((totalSeconds % 3600) / 60);
     const sec = totalSeconds % 60;
     return {
-      day: day.toString().padStart(2, '0'),
-      hour: hour.toString().padStart(2, '0'),
-      min: min.toString().padStart(2, '0'),
-      sec: sec.toString().padStart(2, '0')
+      days: day.toString().padStart(2, '0'),
+      hours: hour.toString().padStart(2, '0'),
+      minutes: min.toString().padStart(2, '0'),
+      seconds: sec.toString().padStart(2, '0')
     };
   };
 
   const timeRemaining = formatTime(Math.max(targetDate - currentTime, 0));
 
   return (
-    <div className="d-flex align-items-center vh-75 vw-100 justify-content-center text-white text-uppercase">
+    <div className={styles.timerSection}>
       {!isCelebrating ? (
-        <div className={`${styles.timerContainer} text-center p-4 rounded w-75`}>
-          <h1 className={styles.header}>Countdown to Event</h1>
-          <div className="row justify-content-center">
+        <div className={styles.timerContainer}>
+          <h2 className={styles.timerHeading}>COUNTDOWN TO ZEITGEIST'25</h2>
+          <div className={styles.timerGrid}>
             {Object.entries(timeRemaining).map(([unit, value]) => (
-              <div key={unit} className="col-6 col-md-3 col-lg-2 mb-4">
-                <div className={styles.timerBox}>
-                  <span className={styles.label}>{unit}</span><br/>
-                  <span className={styles.value}>{value}</span>
-                </div>
+              <div key={unit} className={styles.timerItem}>
+                <div className={styles.timerNumber}>{value}</div>
+                <div className={styles.timerLabel}>{unit}</div>
               </div>
             ))}
           </div>
         </div>
       ) : (
-        <div className="text-center">
-          <ConfettiComponent  />
-          <h1 className={styles.celebrateText}>🎉 Time to Celebrate! 🎉</h1>
-          <img src={logo} alt="Logo" className={styles.logo} />
+        <div className={styles.celebrationContainer}>
+          <ConfettiComponent />
+          <h1 className={styles.celebrateText}>🎉 TIME TO CELEBRATE! 🎉</h1>
+          <img src={logo} alt="Logo" className={styles.celebrateLogo} />
         </div>
       )}
     </div>

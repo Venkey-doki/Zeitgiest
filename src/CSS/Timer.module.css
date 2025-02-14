@@ -1,69 +1,154 @@
-@keyframes borderSpread {
-    0% {
-      box-shadow: 0 0 5px #41C9E2;
-    }
-    50% {
-      box-shadow: 0 0 20px #41C9E2, 0 0 40px rgba(65, 201, 226, 0.7);
-    }
-    100% {
-      box-shadow: 0 0 5px #41C9E2;
-    }
+/* Timer Section */
+.timerSection {
+  margin: 4rem 0;
+  padding: 2rem;
+  background: rgba(10, 15, 25, 0.8);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(109, 213, 237, 0.2);
+  box-shadow: 0 0 30px rgba(109, 213, 237, 0.1);
+}
+
+.timerHeading {
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.timerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timerItem {
+  position: relative;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.timerItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, 
+    var(--primary-color), 
+    transparent, 
+    var(--secondary-color)) border-box;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: timerGlow 3s linear infinite;
+  border-radius: 12px;
+}
+
+.timerNumber {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--primary-color), #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.timerLabel {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Celebration Styles */
+.celebrationContainer {
+  text-align: center;
+  padding: 3rem;
+}
+
+.celebrateText {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 15px rgba(109, 213, 237, 0.5);
+}
+
+.celebrateLogo {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 0 15px var(--primary-color));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes timerGlow {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timerGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
   
-  .timerContainer {
-    border: 3px solid #41C9E2;
-    border-radius: 15px;
-    padding: 20px;
-    /* background: rgba(0, 0, 0, 0.6); */
-    animation: borderSpread 2s infinite ease-in-out;
-    color: white;
-  }
-  
-  .header {
+  .timerNumber {
     font-size: 2rem;
-    margin-bottom: 20px;
-    color: #41C9E2;
-    font-weight: bold;
   }
   
-  .timerBox {
-    border: 2px solid #41C9E2;
-    padding: 15px;
-    text-align: center;
+  .timerLabel {
+    font-size: 0.9rem;
+  }
+  
+  .timerHeading {
     font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(65, 201, 226, 0.8);
-    transition: transform 0.3s ease-in-out;
-    color: white;
-  }
-  
-  .timerBox:hover {
-    transform: scale(1.05);
-  }
-  
-  .label {
-    display: block;
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #41C9E2;
-  }
-  
-  .value {
-    font-size: 2rem;
-    font-weight: bold;
   }
   
   .celebrateText {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #41C9E2;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timerSection {
+    padding: 1rem;
   }
   
-  .logo {
-    width: 200px;
-    height: auto;
-    margin-top: 20px;
+  .timerNumber {
+    font-size: 1.8rem;
   }
   
+  .timerLabel {
+    font-size: 0.8rem;
+  }
+  
+  .celebrateText {
+    font-size: 1.2rem;
+  }
+  
+  .celebrateLogo {
+    width: 150px;
+  }
+}

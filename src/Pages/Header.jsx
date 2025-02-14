@@ -11,16 +11,15 @@ export default function Header() {
     const loggedInUser = localStorage.getItem("user");
     setUser(loggedInUser ? JSON.parse(loggedInUser) : null);
   };
+  
 
   useEffect(() => {
     // Fetch user initially
     fetchUser();
-
     // Listen for changes in localStorage (manual trigger included)
     const handleStorageChange = () => {
       fetchUser();
     };
-
     window.addEventListener("storage", handleStorageChange);
 
     return () => {

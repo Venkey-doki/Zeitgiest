@@ -36,14 +36,14 @@ const About = () => {
           <div className={styles.heroSection} data-aos="fade-right">
             <h2 className={styles.heroTitle}>Our Legacy</h2>
             <p className={styles.heroDescription}>
-            Zeitgeist, a National-level Technical Carnival by the Computer Science and Engineering Department, JNTUK, has been held for 10 years. It highlights emerging technologies, offering opportunities to learn and excel through events and workshops. The fest fosters innovation and collaboration among participants. It also serves as a platform to showcase skills and explore future possibilities.
+            Zeitgeist, a National-level Technical Carnival by the Computer Science and Engineering Department, UCEK, JNTUK, has been held for 10 years. It highlights emerging technologies, offering opportunities to learn and excel through events and workshops. The fest fosters innovation and collaboration among participants. It also serves as a platform to showcase skills and explore future possibilities.
             Additionally, refreshing activities are included to break the monotony of daily life, making it a comprehensive and engaging experience.
             </p>
           </div>
           <div className={styles.heroSection} data-aos="fade-left">
             <h2 className={styles.heroTitle}>2025 Edition</h2>
             <p className={styles.heroDescription}>
-            Zeitgeist 2025 is a National-Level Technical Carnival organized by the Department of Computer Science and Engineering, JNTUK, on March 15 & 16. It brings to light emerging technologies in today’s world and provides opportunities to learn, explore, and excel in various domains of Computer Science.
+            Zeitgeist 2025 is a National-Level Technical Carnival organized by the Department of Computer Science and Engineering, UCEK, JNTUK, on March 15 & 16. It brings to light emerging technologies in today’s world and provides opportunities to learn, explore, and excel in various domains of Computer Science.
             <br />
             <br />
 

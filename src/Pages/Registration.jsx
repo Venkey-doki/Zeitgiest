@@ -29,11 +29,6 @@ function Registration() {
     event: "NEW REGISTRATION",
     price: "200",
   });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  // New state for file preview
-  const [preview, setPreview] = useState(null);
-
   const eventQrMap = {
     "Technoquest: Ignite Your Tech-Savvy Spirit": QrCode300,
     "Typing Titans: The Ultimate Keyboard Showdown": QrCode200,
@@ -49,6 +44,7 @@ function Registration() {
     "DevOps": QrCode1200,
     "CyberSecurity": QrCode1100,
     "Cloud Computing": QrCode1100,
+    "NEW REGISTRATION": QrCode200,
   };
 
   const eventPriceMap = { 
@@ -66,7 +62,18 @@ function Registration() {
     "DevOps": "1200",
     "CyberSecurity": "1100",
     "Cloud Computing": "1100",
+    "NEW REGISTRATION": "200",
   };
+
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  // New state for file preview
+  const [preview, setPreview] = useState(null);
+    // Get event from URL parameters
+    const urlParams = new URLSearchParams(location.search);
+    const eventFromUrl = urlParams.get("event");
+    const price = eventPriceMap[eventFromUrl] || "200";
+    const fromLogin = urlParams.get("from") === "login";
 
   useEffect(() => { 
     const handleResize = () => {
@@ -81,20 +88,21 @@ function Registration() {
   useEffect(() => {
     const checkAuth = () => {
       const user = localStorage.getItem("user");
-      setIsLoggedIn(!!user);
-      if (!user) {
+      console.log("from login"+fromLogin);
+      
+      // Only redirect if user is not logged in and NOT coming from login page
+      if (!user && !fromLogin) {
         navigate("/login?redirect=registration");
       }
+      setIsLoggedIn(!!user);
     };
     checkAuth();
     window.addEventListener("storage", checkAuth);
     return () => window.removeEventListener("storage", checkAuth);
-  }, [navigate]);
+  }, [navigate, fromLogin]);
 
-  // Get event from URL parameters
-  const urlParams = new URLSearchParams(location.search);
-  const eventFromUrl = urlParams.get("event");
-  const price = eventPriceMap[eventFromUrl] || "200";
+
+
 
   // Get user data from localStorage
   const userData = localStorage.getItem("user");
@@ -114,12 +122,12 @@ function Registration() {
   useEffect(() => {
     setFormData(prevData => ({
       ...prevData,
-      name: userDetails[1] || "",
-      email: userDetails[2] || "",
-      contact_No: userDetails[3] || "",
+      name: userDetails[0] || "",
+      email: userDetails[1] || "",
+      contact_No: userDetails[2] || "",
       roll_Number: userDetails[4] || "",
-      college_Name: userDetails[5] || "",
-      college_Place: userDetails[6] || "",
+      college_Name: userDetails[3] || "",
+      college_Place: userDetails[5] || "",
       event: eventFromUrl || "NEW REGISTRATION",
       price: price,
     }));
@@ -234,7 +242,7 @@ function Registration() {
 
   return (
     <div className="registration-container background">
-      {!isLoggedIn ? (
+      {!isLoggedIn && !fromLogin ? (
         <div className="auth-warning">
           <h2>Authentication Required</h2>
           <p>Please login to access registration</p>

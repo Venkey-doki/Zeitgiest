@@ -108,7 +108,7 @@ const Login = () => {
             Not registered yet?{" "}
             <span
               className={styles.link}
-              onClick={() => navigate("/registration")}
+              onClick={() => navigate("/registration?from=login")}
             >
               Register Now!
             </span>

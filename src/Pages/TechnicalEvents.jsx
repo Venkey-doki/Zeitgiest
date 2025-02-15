@@ -3,14 +3,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import styles from "../CSS/TechnicalEvents.module.css";
-import tecnoquest from "../assets/techno-quest.jpg"
-import typingtitans from "../assets/typing-titans.jpg"
-import blindcoding from "../assets/blind-coding.jpg"
-import beatthebug from "../assets/beat-the-bug.jpg"
-import cryptichunt from "../assets/cryptic-hunt.jpg"
-import openmic from "../assets/open-mic.jpg"
-import presentyou from "../assets/present-you.jpg"
-
+import tecnoquest from "../assets/techno-quest.jpg";
+import typingtitans from "../assets/typing-titans.jpg";
+import blindcoding from "../assets/blind-coding.jpg";
+import beatthebug from "../assets/beat-the-bug.jpg";
+import cryptichunt from "../assets/cryptic-hunt.jpg";
+import openmic from "../assets/open-mic.jpg";
+import presentyou from "../assets/present-you.jpg";
 
 const eventDetails = [ 
   {
@@ -96,68 +95,70 @@ const eventDetails = [
   },
 ];
 
+
+
 function TechnicalEvents() {
   useEffect(() => {
     window.scrollTo(0, 0);
     AOS.init({
       duration: 1000,
       once: true,
-      mirror: false
+      mirror: false,
     });
   }, []);
 
   return (
     <div className={styles.container}>
-      {/* Animated Background */}
+      {/* Background */}
       <div className={styles.background}></div>
 
       <div className={styles.contentContainer}>
         <h1 className={styles.mainTitle} data-aos="fade-down">
           Technical Events
         </h1>
-        
+
         <div className={styles.eventsGrid}>
           {eventDetails.map((event) => (
-            <div className={styles.eventCard} key={event.id} data-aos="fade-up">
-              <div className={styles.cardVisual} data-aos="zoom-in">
-                <img 
-                  src={event.image} 
-                  alt={event.title} 
+            <div
+              className={styles.eventCard}
+              key={event.id}
+              data-aos="zoom-in"
+            >
+              <div className={styles.cardVisual}>
+                <img
+                  src={event.image}
+                  alt={event.title}
                   className={styles.eventImage}
                 />
-                <div className={styles.imageOverlay}></div>
               </div>
-              
+
               <div className={styles.cardContent}>
                 <h2 className={styles.eventTitle}>{event.title}</h2>
-                <div className={styles.glowBar}></div>
-                
+
                 <p className={styles.eventDescription}>{event.description}</p>
-                
+
                 <div className={styles.detailsSection}>
                   <div className={styles.coordinators}>
                     <h3>Coordinators</h3>
-                    <div className={styles.coordinatorList}>
-                      <p>
-                        <span className={styles.name}>{event.coordinators1}</span>
-                        <span className={styles.phone}>{event.coordinators1ph}</span>
-                      </p>
-                      <p>
-                        <span className={styles.name}>{event.coordinators2}</span>
-                        <span className={styles.phone}>{event.coordinators2ph}</span>
-                      </p>
-                    </div>
+                    <p>
+                      <span className={styles.name}>{event.coordinators1}</span>
+                      <span className={styles.phone}>{event.coordinators1ph}</span>
+                    </p>
+                    <p>
+                      <span className={styles.name}>{event.coordinators2}</span>
+                      <span className={styles.phone}>{event.coordinators2ph}</span>
+                    </p>
                   </div>
-                  
+
                   <div className={styles.pricing}>
                     <h3>Participation Fee</h3>
                     <p className={styles.fee}>₹200</p>
                   </div>
                 </div>
 
-                <Link 
-                  to={`/Registration?event=${event.title}`} 
-                  className={styles.registerButton}
+                <Link
+                  to={`/Registration?event=${event.title}`}
+                  className={styles.button}
                 >
                   Register Now
                 </Link>

@@ -275,7 +275,6 @@
   background: var(--glass-bg);
   border-radius: 15px;
   padding: 2rem;
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(109, 213, 237, 0.1);
   transition: transform 0.3s ease;
 }

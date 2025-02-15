@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "../CSS/Registration.css";
-import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -15,7 +14,6 @@ function Registration() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,6 +26,7 @@ function Registration() {
     event: "NEW REGISTRATION",
     price: "200",
   });
+  
   const eventQrMap = {
     "Technoquest: Ignite Your Tech-Savvy Spirit": QrCode300,
     "Typing Titans: The Ultimate Keyboard Showdown": QrCode200,
@@ -66,30 +65,28 @@ function Registration() {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // New state for file preview
   const [preview, setPreview] = useState(null);
-    // Get event from URL parameters
-    const urlParams = new URLSearchParams(location.search);
-    const eventFromUrl = urlParams.get("event");
-    const price = eventPriceMap[eventFromUrl] || "200";
-    const fromLogin = urlParams.get("from") === "login";
 
+  // Get URL parameters for event and the 'from' flag (if coming from login)
+  const urlParams = new URLSearchParams(location.search);
+  const eventFromUrl = urlParams.get("event");
+  const price = eventPriceMap[eventFromUrl] || "200";
+  const fromLogin = urlParams.get("from") === "login";
+
+  // Adjust layout on window resize
   useEffect(() => { 
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > 980);
+      // You may add additional layout adjustments here
     };
-
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Check if the user is logged in.
+  // If not logged in and not coming from login (i.e. new registration flow), redirect to login.
   useEffect(() => {
     const checkAuth = () => {
       const user = localStorage.getItem("user");
-      console.log("from login"+fromLogin);
-      
-      // Only redirect if user is not logged in and NOT coming from login page
       if (!user && !fromLogin) {
         navigate("/login?redirect=registration");
       }
@@ -100,24 +97,21 @@ function Registration() {
     return () => window.removeEventListener("storage", checkAuth);
   }, [navigate, fromLogin]);
 
-
-
-
-  // Get user data from localStorage
-  const userData = localStorage.getItem("user");
+  // Retrieve user data from localStorage (if available)
   let userDetails = {};
-  const parsedData = JSON.parse(userData);
-  if (userData) {
-    try {
+  try {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      const parsedData = JSON.parse(userData);
       if (parsedData) {
         userDetails = Object.values(parsedData);
       }
-    } catch (error) {
-      console.error("Error parsing user data:", error);
     }
+  } catch (error) {
+    console.error("Error parsing user data:", error);
   }
     
-  // Update form data with both event and user details
+  // Update form data with event and user details
   useEffect(() => {
     setFormData(prevData => ({
       ...prevData,
@@ -130,20 +124,21 @@ function Registration() {
       event: eventFromUrl || "NEW REGISTRATION",
       price: price,
     }));
-  }, []); // Empty dependency array ensures it runs only once
+  }, []);
 
+  // Validate form with keys matching our formData state
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name) newErrors.name = "Name is required.";
     if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Valid email is required.";
     }
-    if (!formData.contactNo || !/^[0-9]{10}$/.test(formData.contactNo)) {
-      newErrors.contactNo = "Contact number must be 10 digits.";
+    if (!formData.contact_No || !/^[0-9]{10}$/.test(formData.contact_No)) {
+      newErrors.contact_No = "Contact number must be 10 digits.";
     }
-    if (!formData.rollNumber) newErrors.rollNumber = "Roll number is required.";
-    if (!formData.collegeName) newErrors.collegeName = "College name is required.";
-    if (!formData.transactionId) newErrors.transactionId = "Transaction ID is required.";
+    if (!formData.roll_Number) newErrors.roll_Number = "Roll number is required.";
+    if (!formData.college_Name) newErrors.college_Name = "College name is required.";
+    if (!formData.transaction_Id) newErrors.transaction_Id = "Transaction ID is required.";
     if (formData.price !== "0" && !formData.paymentReceipt) {
       newErrors.paymentReceipt = "Payment receipt is required.";
     }
@@ -158,7 +153,7 @@ function Registration() {
     }));
   };
 
-  // Updated file change handler to include preview option
+  // Handle file input changes and create a preview
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.size > 2 * 1024 * 1024) {
@@ -169,53 +164,58 @@ function Registration() {
       ...prevData,
       paymentReceipt: file,
     }));
-    // Accept both images and PDFs
     if (file && (file.type.startsWith("image/") || file.type === "application/pdf")) {
       setPreview(URL.createObjectURL(file));
     } else {
       setPreview(null);
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
-    setErrors({});
     setIsSubmitting(true);
-
-    const formDataToSend = new FormData();
-    Object.keys(formData).forEach((key) => {
-      if (key === "paymentReceipt" && formData[key]) {
-        formDataToSend.append(key, formData[key], formData[key].name);
-      } else {
-        formDataToSend.append(key, formData[key]);
-      }
-    });
-
+    
     try {
+      const formDataToSend = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        if (key === "paymentReceipt" && value) {
+          formDataToSend.append(key, value, value.name);
+        } else if (value !== null && value !== undefined) {
+          formDataToSend.append(key, value);
+        }
+      });
+
       const response = await fetch("https://zeitgeistjntukcse.com/Zeitgeist/register.php", {
         method: "POST",
         body: formDataToSend,
       });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      const textResponse = await response.text();
+      let result;
+      try {
+        result = JSON.parse(textResponse);
+      } catch {
+        throw new Error("Invalid server response");
       }
 
-      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.message || "Registration failed");
+      }
 
       if (result.status === "success") {
-        alert(`Registration successful! Your User ID: ${result.userId}`);
-        navigate(`/`);
+        alert( `${result.message}`);
+        navigate("/");
       } else {
-        alert("Registration failed: " + result.message);
+        throw new Error(result.message || "Unknown error occurred");
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("An error occurred: " + error.message);
+      console.error("Submission error:", error);
+      alert(`Error: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -240,7 +240,7 @@ function Registration() {
 
   return (
     <div className="registration-container background">
-      {!isLoggedIn && !fromLogin ? (
+      {(!isLoggedIn && !fromLogin) ? (
         <div className="auth-warning">
           <h2>Authentication Required</h2>
           <p>Please login to access registration</p>
@@ -254,10 +254,8 @@ function Registration() {
             <h2>Event Registration</h2>
             <div className="price-badge">₹{formData.price}</div>
           </div>
-          
-
           <div className="registration-grid">
-          {formData.price !== "0" && (
+            {formData.price !== "0" && (
               <div className="payment-info">
                 <div className="qr-container">
                   <h3>Scan to Pay</h3>
@@ -277,16 +275,20 @@ function Registration() {
             <form className="registration-form" onSubmit={handleSubmit}>
               {Object.keys(formData).map(
                 (key) =>
-                  key !== "paymentReceipt" && key !== "event" && key !== "price" ? (
+                  key !== "paymentReceipt" &&
+                  key !== "event" &&
+                  key !== "price" ? (
                     <div className="form-group" key={key}>
                       <input
-                        className={` ${errors[key] ? "error" : ""}`}
+                        className={`${errors[key] ? "error" : ""}`}
                         placeholder={key.toUpperCase().replace(/_/g, " ")}
                         name={key}
                         value={formData[key]}
                         onChange={handleChange}
                       />
-                      {errors[key] && <p className="error-text text-danger">{errors[key]}</p>}
+                      {errors[key] && (
+                        <p className="error-text text-danger">{errors[key]}</p>
+                      )}
                     </div>
                   ) : null
               )}
@@ -310,7 +312,6 @@ function Registration() {
                   />
                 </div>
               )}
-
               {formData.price !== "0" && (
                 <div className="form-section">
                   <h3>Payment Receipt</h3>
@@ -319,35 +320,34 @@ function Registration() {
                       Upload Receipt
                       <input
                         type="file"
+                        name="payment_Receipt"
                         onChange={handleFileChange}
                         accept="image/*,.pdf"
                         required
                       />
                     </label>
                   </div>
-                  {/* Preview for image files */}
                   {preview && (
-                      <div className="file-preview">
-                        <h4>Preview:</h4>
-                        <a href={preview} target="_blank" rel="noopener noreferrer">
-                          {formData.paymentReceipt.type.startsWith("image/") ? (
-                            <img
-                              src={preview}
-                              alt="Payment Receipt Preview"
-                              className="preview-image"
-                            />
-                          ) : (
-                            <div className="preview-pdf-button">
-                              <p>Click here to preview PDF</p>
-                            </div>
-                          )}
-                        </a>
-                      </div>
-                    )}
-
+                    <div className="file-preview">
+                      <h4>Preview:</h4>
+                      <a href={preview} target="_blank" rel="noopener noreferrer">
+                        {formData.paymentReceipt &&
+                        formData.paymentReceipt.type.startsWith("image/") ? (
+                          <img
+                            src={preview}
+                            alt="Payment Receipt Preview"
+                            className="preview-image"
+                          />
+                        ) : (
+                          <div className="preview-pdf-button">
+                            <p>Click here to preview PDF</p>
+                          </div>
+                        )}
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
-
               <div className="form-actions">
                 <button
                   type="button"

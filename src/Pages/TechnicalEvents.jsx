@@ -149,11 +149,18 @@ function TechnicalEvents() {
                       <span className={styles.phone}>{event.coordinators2ph}</span>
                     </p>
                   </div>
-
-                  <div className={styles.pricing}>
+                  {
+                    event.title === "Beat the Bug: Debugging Showdown" || event.title === "Cryptic Hunt: Decode, Discover, Dominate" || event.title === "Technoquest: Ignite Your Tech-Savvy Spirit" ?(
+                    <div className={styles.pricing}>
+                    <h3>TEAM EVENTS</h3>
+                    <h3>Participation Fee</h3>
+                    <p className={styles.fee}>₹300</p>
+                  </div>
+                    ) :(<div className={styles.pricing}>
                     <h3>Participation Fee</h3>
                     <p className={styles.fee}>₹200</p>
-                  </div>
+                  </div>)
+                }
                 </div>
 
                 <Link

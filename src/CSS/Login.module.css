@@ -1,25 +1,38 @@
+:root {
+  --primary-color: #6dd5ed;
+  --secondary-color: #2193b0;
+  --accent-color: #ff6b6b;
+  --dark-bg: #0a0f1a;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(135, 206, 235, 0.2);
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to right, #000000 0%, #2c2b2b 100%);
+  background: linear-gradient(45deg, var(--dark-bg), #0a0a23);
+  font-family: 'Rajdhani', sans-serif;
+  color: white;
 }
 
 .formBox {
   width: 400px;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: var(--glass-bg);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
 }
 
 .title {
-  color: #fff;
+  color: white;
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 20px;
-  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .form {
@@ -36,19 +49,21 @@
   width: 100%;
   padding: 10px 15px;
   font-size: 16px;
-  color: #fff;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #fff;
+  color: white;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
   outline: none;
+  transition: all 0.3s ease;
 }
 
 .input:focus {
-  border-bottom: 1px solid #41c9e2;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(109, 213, 237, 0.4);
 }
 
 .error {
-  color: #ff6b6b;
+  color: var(--accent-color);
   font-size: 14px;
   margin-top: -10px;
   margin-bottom: 10px;
@@ -58,16 +73,16 @@
 .submitButton {
   padding: 10px 20px;
   font-size: 16px;
-  color: #fff;
-  background: #41c9e2;
+  color: white;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
-
+  transition: all 0.3s ease;
 }
 
 .submitButton:hover {
-  background: #008dda;
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
   box-shadow: 0 5px 15px rgba(0, 141, 218, 0.4);
 }
 
@@ -79,12 +94,12 @@
 }
 
 .link {
-  color: #fff;
+  color: white;
   cursor: pointer;
   text-decoration: underline;
   transition: color 0.3s;
 }
 
 .link:hover {
-  color: #41c9e2;
+  color: var(--primary-color);
 }

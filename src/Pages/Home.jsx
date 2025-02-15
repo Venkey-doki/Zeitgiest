@@ -7,6 +7,8 @@ import logo from "../assets/logo-bg.png";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const isLoggedIn = localStorage.getItem("user") !== null;
+
   useEffect(() => {
     window.scrollTo(0, 0);
     AOS.init({
@@ -29,9 +31,15 @@ export default function Home() {
       {/* Header Section */}
       <header className={styles.header}>
         <img src={logo} alt="Fest Logo" className={styles.headerLogo} />
-        <Link to="/login">
-          <button className={styles.loginButton}>Login</button>
-        </Link>
+        {isLoggedIn ? (
+          <Link to="/profile">
+            <button className={styles.loginButton}>Profile</button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <button className={styles.loginButton}>Login</button>
+          </Link>
+        )}
       </header>
 
       {/* Main Content */}

@@ -1,50 +1,64 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../CSS/Registration.css";
-import QrCode from "../assets/QrCode.jpg";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+// Import different QR codes
+import QrCode200 from "../assets/qr-200.jpg";
+import QrCode300 from "../assets/qr-300.jpg";
+import QrCode1100 from "../assets/qr-1100.jpg";
+import QrCode1200 from "../assets/qr-1200.jpg";
+
 function Registration() {
-     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 980);
-      
-        useEffect(() => { 
-          const handleResize = () => {
-            setIsDesktop(window.innerWidth > 980);
-          };
-      
-          window.addEventListener("resize", handleResize);
-      
-          return () => window.removeEventListener("resize", handleResize);
-        }, []);
-        
   const navigate = useNavigate();
   const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    contactNo: "",
-    rollNumber: "",
-    collegeName: "",
-    collegePlace: "",
-    referredBy: "",
-    transactionId: "",
-    paymentReceipt: null,
+    contact_No: "",
+    roll_Number: "",
+    college_Name: "",
+    college_Place: "",
+    referred_By: "",
+    transaction_Id: "",
+    payment_Receipt: null,
     event: "NEW REGISTRATION",
     price: "200",
   });
-
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // New state for file preview
+  const [preview, setPreview] = useState(null);
 
-  const eventPriceMap = {
-    "Technoquest: Ignite Your Tech-Savvy Spirit": "200",
+  const eventQrMap = {
+    "Technoquest: Ignite Your Tech-Savvy Spirit": QrCode300,
+    "Typing Titans: The Ultimate Keyboard Showdown": QrCode200,
+    "Blind Coding: Code Without Sight, Trust Your Logic": QrCode200,
+    "Present You: Showcase Your Ideas, Redefine Innovation": QrCode200,
+    "Open Mic: The PowerPoint Edition": QrCode200,
+    "Beat the Bug: Debugging Showdown": QrCode300,
+    "Cryptic Hunt: Decode, Discover, Dominate": QrCode300,
+    "Mind Maze": null,
+    "Code Combat": null,
+    "Web Wizards": null,
+    "GenAI": QrCode1200,
+    "DevOps": QrCode1200,
+    "CyberSecurity": QrCode1100,
+    "Cloud Computing": QrCode1100,
+  };
+
+  const eventPriceMap = { 
+    "Technoquest: Ignite Your Tech-Savvy Spirit": "300",
     "Typing Titans: The Ultimate Keyboard Showdown": "200",
     "Blind Coding: Code Without Sight, Trust Your Logic": "200",
     "Present You: Showcase Your Ideas, Redefine Innovation": "200",
     "Open Mic: The PowerPoint Edition": "200",
-    "Beat the Bug: Debugging Showdown": "200",
-    "Cryptic Hunt: Decode, Discover, Dominate": "200",
+    "Beat the Bug: Debugging Showdown": "300",
+    "Cryptic Hunt: Decode, Discover, Dominate": "300",
     "Mind Maze": "0",
     "Code Combat": "0",
     "Web Wizards": "0",
@@ -54,63 +68,63 @@ function Registration() {
     "Cloud Computing": "1100",
   };
 
+  useEffect(() => { 
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 980);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
-    // Check login status
-    const isLoggedIn = localStorage.getItem("user");
-    if (!isLoggedIn) {
-      navigate("/registration?event=NEW REGISTRATION");
-      
-      return;
-    }  }, [location.search, navigate]);
-    useEffect(() => {
-      window.scrollTo(0, 0);
-        AOS.init({ duration: 1000 }); // Initialize AOS with a 1000ms animation duration
-        window.scrollTo(0, 0); // Scroll to the top of the page
-      }, [location.pathname]);
-      useEffect(() => {
-        }, []);
-    // Get event from URL parameters
-    const urlParams = new URLSearchParams(location.search);
-    const eventFromUrl = urlParams.get("event");
-    const price = eventPriceMap[eventFromUrl] || "200";
-
-    // Get user data from localStorage
-    const userData = localStorage.getItem("user");
-    let userDetails = {};
-    // console.log(userData);
-    
-    
-    const parsedData = JSON.parse(userData);
-    // console.log(typeof(parsedData));
-    
-    if (userData) {
-      try {
-        if (parsedData) {
-          userDetails = Object.values(parsedData);
-        }
-      } catch (error) {
-        console.error("Error parsing user data:", error);
+    const checkAuth = () => {
+      const user = localStorage.getItem("user");
+      setIsLoggedIn(!!user);
+      if (!user) {
+        navigate("/login?redirect=registration");
       }
-    }
-    
-    // Update form data with both event and user details
-    useEffect(() => {
-      setFormData(prevData => ({
-        ...prevData,
-        name: userDetails[1] || "",
-        email: userDetails[2] || "",
-        contactNo: userDetails[3] || "",
-        rollNumber: userDetails[4] || "",
-        collegeName: userDetails[5] || "",
-        collegePlace: userDetails[6] || "",
-        event: eventFromUrl || "NEW REGISTRATION",
-        price: price,
-      }));
-    }, []); // Empty dependency array ensures it runs only once
-    
- // Dependencies updated to include only necessary items
+    };
+    checkAuth();
+    window.addEventListener("storage", checkAuth);
+    return () => window.removeEventListener("storage", checkAuth);
+  }, [navigate]);
 
-  // Rest of your component remains the same
+  // Get event from URL parameters
+  const urlParams = new URLSearchParams(location.search);
+  const eventFromUrl = urlParams.get("event");
+  const price = eventPriceMap[eventFromUrl] || "200";
+
+  // Get user data from localStorage
+  const userData = localStorage.getItem("user");
+  let userDetails = {};
+  const parsedData = JSON.parse(userData);
+  if (userData) {
+    try {
+      if (parsedData) {
+        userDetails = Object.values(parsedData);
+      }
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+    }
+  }
+    
+  // Update form data with both event and user details
+  useEffect(() => {
+    setFormData(prevData => ({
+      ...prevData,
+      name: userDetails[1] || "",
+      email: userDetails[2] || "",
+      contact_No: userDetails[3] || "",
+      roll_Number: userDetails[4] || "",
+      college_Name: userDetails[5] || "",
+      college_Place: userDetails[6] || "",
+      event: eventFromUrl || "NEW REGISTRATION",
+      price: price,
+    }));
+  }, []); // Empty dependency array ensures it runs only once
+
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name) newErrors.name = "Name is required.";
@@ -137,6 +151,7 @@ function Registration() {
     }));
   };
 
+  // Updated file change handler to include preview option
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.size > 2 * 1024 * 1024) {
@@ -147,8 +162,13 @@ function Registration() {
       ...prevData,
       paymentReceipt: file,
     }));
+    // Accept both images and PDFs
+    if (file && (file.type.startsWith("image/") || file.type === "application/pdf")) {
+      setPreview(URL.createObjectURL(file));
+    } else {
+      setPreview(null);
+    }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
@@ -209,115 +229,52 @@ function Registration() {
       price: "200",
     });
     setErrors({});
+    setPreview(null);
   };
 
   return (
-    <>
-    
-    {isDesktop ? 
-    <div className="background">
-      <div className="container">
-        <div className="screen">
-          <div className="screen-body">
-            <div className="screen-body-item left">
-              <div className="app-title">
-                <span>SCAN QR</span>
-                <span>TO PAY</span>
-              </div>
-              <img src={QrCode} alt="logo" className="logo" />
-              <p style={{ color: "white", marginTop: "20px" }}>
-                After scanning the QR Code, please provide the transaction ID
-                and upload the payment receipt.
-              </p>
-            </div>
-            <div className="screen-body-item">
-              <form className="app-form" onSubmit={handleSubmit}>
-                {Object.keys(formData).map(
-                  (key) =>
-                    key !== "paymentReceipt" && key !== "event" && key !== "price" ? (
-                      <div className="app-form-group" key={key}>
-                        <input
-                          className={`app-form-control ${errors[key] ? "error" : ""}`}
-                          placeholder={key.toUpperCase().replace(/_/g, " ")}
-                          name={key}
-                          value={formData[key]}
-                          onChange={handleChange}
-                        />
-                        {errors[key] && <p className="error-text text-danger">{errors[key]}</p>}
-                      </div>
-                    ) : null
-                )}
-                {formData.event && (
-                  <div className="app-form-group" key="event">
-                    <input
-                      className="app-form-control"
-                      placeholder="EVENT"
-                      name="event"
-                      value={formData.event}
-                      readOnly
-                    />
-                  </div>
-                )}
-                {formData.price && (
-                  <div className="app-form-group" key="price">
-                    <input
-                      className="app-form-control"
-                      placeholder="PRICE"
-                      name="price"
-                      value={formData.price}
-                      readOnly
-                    />
-                  </div>
-                )}
-                {formData.price !== "0" && (
-                  <div className="app-form-group">
-                    <input
-                      type="file"
-                      className="app-form-control"
-                      name="paymentReceipt"
-                      onChange={handleFileChange}
-                    />
-                    {errors.paymentReceipt && (
-                      <p className="error-text text-danger">{errors.paymentReceipt}</p>
-                    )}
-                  </div>
-                )}
-                <div className="app-form-group buttons">
-                  <button
-                    type="reset"
-                    className="app-form-button"
-                    onClick={handleCancel}
-                    disabled={isSubmitting}
-                  >
-                    Reset
-                  </button>
-                  <button
-                    type="submit"
-                    className="app-form-button"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+    <div className="registration-container background">
+      {!isLoggedIn ? (
+        <div className="auth-warning">
+          <h2>Authentication Required</h2>
+          <p>Please login to access registration</p>
+          <Link to="/login" className="auth-button">
+            Go to Login
+          </Link>
         </div>
-      </div>
-    </div>
-    :
-    <div className="background">
-    <div className="container">
-      <div className="screen">
-        <div className="screen-body">
-          <div className="screen-body-item">
-            <form className="app-form" onSubmit={handleSubmit}>
+      ) : (
+        <div className="registration-card">
+          <div className="registration-header">
+            <h2>Event Registration</h2>
+            <div className="price-badge">₹{formData.price}</div>
+          </div>
+          
+
+          <div className="registration-grid">
+          {formData.price !== "0" && (
+              <div className="payment-info">
+                <div className="qr-container">
+                  <h3>Scan to Pay</h3>
+                  <img
+                    src={eventQrMap[formData.event]}
+                    alt="Payment QR Code"
+                    className="qr-code"
+                  />
+                  <div className="payment-instructions">
+                    <p>1. Scan QR code to make payment</p>
+                    <p>2. Take screenshot of successful payment</p>
+                    <p>3. Upload receipt with transaction ID</p>
+                  </div>
+                </div>
+              </div>
+            )}
+            <form className="registration-form" onSubmit={handleSubmit}>
               {Object.keys(formData).map(
                 (key) =>
                   key !== "paymentReceipt" && key !== "event" && key !== "price" ? (
-                    <div className="app-form-group" key={key}>
+                    <div className="form-group" key={key}>
                       <input
-                        className={`app-form-control ${errors[key] ? "error" : ""}`}
+                        className={` ${errors[key] ? "error" : ""}`}
                         placeholder={key.toUpperCase().replace(/_/g, " ")}
                         name={key}
                         value={formData[key]}
@@ -328,9 +285,8 @@ function Registration() {
                   ) : null
               )}
               {formData.event && (
-                <div className="app-form-group" key="event">
+                <div className="form-group" key="event">
                   <input
-                    className="app-form-control"
                     placeholder="EVENT"
                     name="event"
                     value={formData.event}
@@ -338,22 +294,9 @@ function Registration() {
                   />
                 </div>
               )}
-                <div className="screen-body-item left">
-            <div className="app-title flex">
-              <span>SCAN QR TO PAY</span>
-            
-            </div>
-            <img src={QrCode} alt="logo" className="logo" style={{margin:"0 auto",width: "200px" }} />
-
-            <p style={{ color: "white", marginTop: "20px" }}>
-              After scanning the QR Code, please provide the transaction ID
-              and upload the payment receipt.
-            </p>
-          </div>
               {formData.price && (
-                <div className="app-form-group" key="price">
+                <div className="form-group" key="price">
                   <input
-                    className="app-form-control"
                     placeholder="PRICE"
                     name="price"
                     value={formData.price}
@@ -361,44 +304,65 @@ function Registration() {
                   />
                 </div>
               )}
+
               {formData.price !== "0" && (
-                <div className="app-form-group">
-                  <input
-                    type="file"
-                    className="app-form-control"
-                    name="paymentReceipt"
-                    onChange={handleFileChange}
-                  />
-                  {errors.paymentReceipt && (
-                    <p className="error-text">{errors.paymentReceipt}</p>
-                  )}
+                <div className="form-section">
+                  <h3>Payment Receipt</h3>
+                  <div className="file-upload">
+                    <label>
+                      Upload Receipt
+                      <input
+                        type="file"
+                        onChange={handleFileChange}
+                        accept="image/*,.pdf"
+                        required
+                      />
+                    </label>
+                  </div>
+                  {/* Preview for image files */}
+                  {preview && (
+                      <div className="file-preview">
+                        <h4>Preview:</h4>
+                        <a href={preview} target="_blank" rel="noopener noreferrer">
+                          {formData.paymentReceipt.type.startsWith("image/") ? (
+                            <img
+                              src={preview}
+                              alt="Payment Receipt Preview"
+                              className="preview-image"
+                            />
+                          ) : (
+                            <div className="preview-pdf-button">
+                              <p>Click here to preview PDF</p>
+                            </div>
+                          )}
+                        </a>
+                      </div>
+                    )}
+
                 </div>
               )}
-              <div className="app-form-group buttons">
+
+              <div className="form-actions">
                 <button
                   type="button"
-                  className="app-form-button"
+                  className="cancel-btn"
                   onClick={handleCancel}
-                  disabled={isSubmitting}
                 >
-                  CANCEL
+                  Clear
                 </button>
                 <button
                   type="submit"
-                  className="app-form-button"
+                  className="submit-btn"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+                  {isSubmitting ? "Processing..." : "Complete Registration"}
                 </button>
               </div>
             </form>
           </div>
         </div>
-      </div>
+      )}
     </div>
-  </div>
-    }
-    </>
   );
 }
 

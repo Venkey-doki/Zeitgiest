@@ -60,7 +60,7 @@ function CloudComputing() {
 
               <div className={styles.buttonContainer}>
               <Link
-                to="/Registration?event=GenAI"
+                to="/Registration?event=Cloud Computing"
                 className={styles.button}
                 data-aos="zoom-in"
               >

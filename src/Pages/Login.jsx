@@ -71,8 +71,8 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.container} data-aos="fade-up">
-      <div className={styles.formBox}>
+    <div className={styles.container} >
+      <div className={styles.formBox} data-aos="fade-up">
         <h1 className={styles.title}>Login</h1>
         <form className={styles.form} autoComplete="off" onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
@@ -101,8 +101,6 @@ const Login = () => {
           <button
             className={`${styles.submitButton} ${loading ? styles.disabled : ""}`}
             type="submit"
-            // data-aos="zoom-in"
-            // disabled={loading}
           >
             {loading ? "Logging in..." : "LogIn"}
           </button>

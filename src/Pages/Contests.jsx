@@ -139,7 +139,7 @@ function Contests() {
 
                 <Link 
                   to={`/Registration?event=${event.title}`} 
-                  className={styles.registerButton}
+                  className={styles.button}
                 >
                   Register Now
                 </Link>

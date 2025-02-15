@@ -6,6 +6,9 @@ import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 
 const About = () => {
+  const isLoggedIn = localStorage.getItem("user") !== null;
+  const user = JSON.parse(localStorage.getItem("user"))
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     AOS.init({ 
@@ -39,6 +42,18 @@ const About = () => {
             Zeitgeist, a National-level Technical Carnival by the Computer Science and Engineering Department, UCEK, JNTUK, has been held for 10 years. It highlights emerging technologies, offering opportunities to learn and excel through events and workshops. The fest fosters innovation and collaboration among participants. It also serves as a platform to showcase skills and explore future possibilities.
             Additionally, refreshing activities are included to break the monotony of daily life, making it a comprehensive and engaging experience.
             </p>
+            <h2 className={styles.heroTitle}>Fest payment Details</h2>
+            <p className={styles.heroDescription}>
+              there is a manditory registration fee of ₹200 for each participant.
+              after registration,with in 24hrs the participant can login to the website 
+              <br />
+              <br />
+              participant can only register to any other events only when he is lolgged in in the website  
+              <br />
+              <br />
+              for the Manditory registration fee of ₹200, the participant will get to participate in online events.
+
+            </p>
           </div>
           <div className={styles.heroSection} data-aos="fade-left">
             <h2 className={styles.heroTitle}>2025 Edition</h2>
@@ -57,12 +72,23 @@ const About = () => {
         </section>
 
         {/* CTA Section */}
-        <section className={styles.ctaSection} data-aos="zoom-in">
-          <h2>Ready to Be Part of History?</h2>
-          <Link to="/Registration?event=NEW REGISTRATION">
-            <button className={styles.ctaButton}>Register Now</button>
-          </Link>
-        </section>
+        {
+          isLoggedIn? (
+            <div className={styles.ctaSection} data-aos="zoom-in">
+              <h2>Welcome back, {user.name}</h2>
+              <Link to="/profile">
+                <button className={styles.ctaButton}>profile</button>
+              </Link>
+            </div>
+          ) : (
+            <div className={styles.ctaSection} data-aos="zoom-in">
+              <h2>Ready to Be Part of History?</h2>
+              <Link to="/Registration?event=NEW REGISTRATION">
+                <button className={styles.ctaButton}>Register Now</button>
+              </Link>
+            </div>
+          )
+        }
         </div>
       </div>
   );

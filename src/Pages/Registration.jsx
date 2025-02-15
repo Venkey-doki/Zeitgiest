@@ -156,8 +156,8 @@ function Registration() {
   // Handle file input changes and create a preview
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file && file.size > 2 * 1024 * 1024) {
-      alert("File size should be less than 2MB");
+    if (file && file.size > 2 * 2048 * 2048) {
+      alert("File size should be less than 4MB");
       return;
     }
     setFormData(prevData => ({
@@ -268,6 +268,7 @@ function Registration() {
                     <p>1. Scan QR code to make payment</p>
                     <p>2. Take screenshot of successful payment</p>
                     <p>3. Upload receipt with transaction ID</p>
+                    <p>3. For confirmation or any queries contact: 8317504292</p>
                   </div>
                 </div>
               </div>

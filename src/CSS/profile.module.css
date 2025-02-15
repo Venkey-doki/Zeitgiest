@@ -1,60 +1,64 @@
+:root {
+  --primary-color: #6dd5ed;
+  --secondary-color: #2193b0;
+  --accent-color: #ff6b6b;
+  --dark-bg: #0a0f1a;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(135, 206, 235, 0.2);
+}
+
 .profileContainer {
-    min-height: 100vh;
-    padding-top: 80px;
-  }
-  
-  .profilePicture {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 20px auto;
-  }
-  
-  .profileImage {
-    
-    border: 3px solid #fff;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  }
-  
-  .cardStyle {
-    border: none;
-    border-radius: 15px;
-    transition: transform 0.3s;
-  }
-  
-  .cardStyle:hover {
-    transform: translateY(-5px);
-  }
-  
-  .sectionTitle {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .formLabel {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  
-  .buttonGroup {
-    margin-top: 2rem;
-  }
-  
-  .linkButton {
-    color: #6c757d;
-    transition: color 0.3s;
-    text-decoration: none;
-  }
-  
-  .linkButton:hover {
-    color: #0d6efd;
-  }
-  
-  .activityLog {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .cardShadow {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  }
+  min-height: 100vh;
+  background: linear-gradient(45deg, var(--dark-bg), #0a0a23);
+  padding: 2rem;
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profileHeader h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(109, 213, 237, 0.7);
+}
+.profileContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.profileDetails,
+.registrationList {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.profileDetails h2,
+.registrationList h2 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.profileDetails ul,
+.registrationList ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profileDetails li,
+.registrationList li {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.registrationList li strong {
+  color: var(--secondary-color);
+}

@@ -25,12 +25,17 @@
   color: var(--primary-color);
   text-shadow: 0 0 10px rgba(109, 213, 237, 0.7);
 }
+
 .profileContent {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  justify-items: center; /*Center grid items horizontally*/
+  align-items: center;
 }
 
+
+/* Reduced card width and center text */
 .profileDetails,
 .registrationList {
   background: var(--glass-bg);
@@ -38,6 +43,9 @@
   border: 1px solid var(--border-color);
   border-radius: 1rem;
   padding: 1.5rem;
+  max-width: 600px; /* Reduced width */
+  width: 100%;
+  text-align:left; /* Center align text */
   margin-bottom: 2rem;
 }
 
@@ -51,6 +59,7 @@
 .registrationList ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .profileDetails li,
@@ -61,4 +70,35 @@
 
 .registrationList li strong {
   color: var(--secondary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profileContent {
+    grid-template-columns: 1fr;
+  }
+  
+  .profileHeader h1 {
+    font-size: 2.5rem;
+  }
+  
+  .profileDetails li,
+  .registrationList li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileContainer {
+    padding: 1rem;
+  }
+  
+  .profileHeader h1 {
+    font-size: 2rem;
+  }
+  
+  .profileDetails,
+  .registrationList {
+    padding: 1rem;
+  }
 }

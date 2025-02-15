@@ -122,19 +122,19 @@ function Contests() {
                     </div>
                   </div>
                   
-                  {
-  event.title === "Battle Arena" ? (
-    <div className={styles.pricing}>
-      <h3>Participation Fee</h3>
-      <p className={styles.fee}>contact coordinators</p>
-    </div>
-  ) : (
-    <div className={styles.pricing}>
-      <h3>Participation Fee</h3>
-      <p className={styles.fee}>₹0</p>
-    </div>
-  )
-}        
+                                {
+                event.title === "Battle Arena" ? (
+                  <div className={styles.pricing}>
+                    <h3>Participation Fee</h3>
+                    <p className={styles.fee}>contact coordinators</p>
+                  </div>
+                ) : (
+                  <div className={styles.pricing}>
+                    <h3>Participation Fee</h3>
+                    <p className={styles.fee}>₹0</p>
+                  </div>
+                )
+              }        
                 </div>
 
                 <Link 

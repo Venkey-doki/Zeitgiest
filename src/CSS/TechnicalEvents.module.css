@@ -187,7 +187,7 @@
 
 /* Pricing Section */
 .pricing {
-  background: rgba(135, 206, 235, 0.1); /* Light blue background */
+  background: rgba(135, 206, 235, 0.1); 
   padding: 15px;
   border-radius: 8px;
   display: flex;
@@ -208,11 +208,7 @@
   font-size: 1.2rem;
   font-weight: 700;
   padding-top: 20px;
-  color: #7B68EE; /* A slight darker shade for the fee amount */
-  background: linear-gradient(45deg, #87CEEB, #7B68EE);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #68e3ee; /* A slight darker shade for the fee amount */
 }
 
 

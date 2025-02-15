@@ -1,14 +1,52 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import p1 from "../../assets/CyberSecurity1.png";
 import styles from "../../CSS/Accomodation.module.css"; // Import CSS module
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 function CyberSecurity() {
   useEffect(() => {
     window.scroll(0,0);
     AOS.init({ duration: 1000, once: true });
   }, []);
+
+  const navigate = useNavigate();
+  // State to check if the user is already registered for GenAI
+  const [Cyberreg, setCyberreg] = useState(false);
+
+    // Fetch registration status and verify authentication
+    useEffect(() => {
+      // Initialize AOS (in case it needs re-initialization)
+      AOS.init({ duration: 1000, once: true });
+      // Retrieve user from localStorage; if not found, redirect to login
+      const userData = localStorage.getItem("user");
+      if (!userData) {
+        navigate("/login?redirect=profile");
+      } else {
+        const parsedUser = JSON.parse(userData);
+        // Fetch registrations from backend using the user's email
+        fetch(
+          `https://zeitgeistjntukcse.com/Zeitgeist/getRegistrations.php?email=${encodeURIComponent(
+            parsedUser.email
+          )}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === "success") {
+              // Check if any of the registrations is for "GenAI"
+              const isRegistered = data.registrations
+                .map((reg) => reg.event)
+                .includes("CyberSecurity");
+              setCyberreg(isRegistered);
+            } else {
+              console.log("Error: Could not fetch registrations.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching registrations:", error);
+          });
+      }
+    }, [navigate]);
 
   return (
     <div className={styles.wrapper}>
@@ -60,13 +98,25 @@ function CyberSecurity() {
               </p>
 
               <div className={styles.buttonContainer}>
-              <Link
-                to="/Registration?event=CyberSecurity"
-                className={styles.button}
-                data-aos="zoom-in"
-              >
-                Register Now
-              </Link>
+              {Cyberreg ? (
+                                // If already registered, show "Already Registered"
+                                <Link
+                                  to="/Registration?event=GenAI"
+                                  className={styles.button}
+                                  data-aos="zoom-in"
+                                >
+                                  Already Registered
+                                </Link>
+                              ) : (
+                                // Otherwise, show "Register Now"
+                                <Link
+                                  to="/Registration?event=CyberSecurity"
+                                  className={styles.button}
+                                  data-aos="zoom-in"
+                                >
+                                  Register Now
+                                </Link>
+                              )}
               </div>
             </div>
           </div>

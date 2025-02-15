@@ -117,208 +117,125 @@ gap: 30px;
 padding: 0 40px;
 }
 
-/* New Card Design */
+/* Card Styling */
 .eventCard {
-position: relative;
-background: rgba(16, 16, 37, 0.6);
-border-radius: 15px;
-border: 1px solid rgba(135, 206, 235, 0.1);
-overflow: hidden;
-transition: all 0.4s ease;
-transform-style: preserve-3d;
-}
-
-.eventCard::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(
-  45deg,
-  transparent 50%,
-  rgba(135, 206, 235, 0.05) 50%
-);
-background-size: 10px 10px;
-animation: moveGrid 20s linear infinite;
-z-index: -1;
-}
-
-.eventCard::after {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(
-  90deg,
-  transparent,
-  rgba(135, 206, 235, 0.1),
-  transparent
-);
-animation: glowSlide 6s infinite;
-z-index: -1;
+  background: rgba(16, 16, 37, 0.7);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .eventCard:hover {
-transform: translateY(-10px) scale(1.02);
-box-shadow: 0 20px 40px rgba(135, 206, 235, 0.2);
-border-color: rgba(135, 206, 235, 0.3);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Card Visual Section */
 .cardVisual {
-position: relative;
-height: 250px;
-overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .eventImage {
-width: 100%;
-height: 100%;
-object-fit: cover;
-transition: transform 0.4s ease;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  filter: brightness(0.7);
 }
 
-.eventCard:hover .eventImage {
-transform: scale(1.1);
-}
-
-.imageOverlay {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(
-  180deg,
-  rgba(0, 0, 0, 0.6) 0%,
-  transparent 50%,
-  rgba(0, 0, 0, 0.8) 100%
-);
-}
-
-/* Card Content Section */
 .cardContent {
-padding: 25px;
-position: relative;
-z-index: 2;
+  padding: 20px;
+  background: rgba(16, 16, 37, 0.9);
 }
 
 .eventTitle {
-font-size: 1.5rem;
-color: #87CEEB;
-margin-bottom: 15px;
-text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
-position: relative;
-}
-
-.eventTitle::after {
-content: '';
-position: absolute;
-bottom: -10px;
-left: 0;
-width: 60px;
-height: 2px;
-background: linear-gradient(
-  90deg,
-  #87CEEB,
-  transparent
-);
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .eventDescription {
-font-size: 0.95rem;
-color: #ffffff;
-line-height: 1.6;
-margin-bottom: 25px;
-text-shadow: 0 0 5px rgba(135, 206, 235, 0.2);
+  color: #bbb;
+  margin-bottom: 20px;
 }
 
-/* Details Section */
+/* Coordinator Section */
 .detailsSection {
-display: flex;
-justify-content: space-between;
-gap: 20px;
-margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-.coordinators h3,
-.pricing h3 {
-font-size: 1.1rem;
-color: #87CEEB;
-margin-bottom: 10px;
-text-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+.coordinators {
+  background: rgba(135, 206, 235, 0.1);
+  padding: 10px;
+  border-radius: 8px;
 }
 
-.coordinatorList p {
-margin: 8px 0;
-font-size: 0.85rem;
+.coordinators h3 {
+  font-size: 1.2rem;
+  color: #87CEEB;
 }
 
 .name {
-display: block;
-color: #ffffff;
+  font-weight: bold;
+  color: #87CEEB;
 }
 
 .phone {
-color: #87CEEB;
-font-size: 0.8rem;
+  color: #fff;
 }
 
+/* Pricing Section */
 .pricing {
-text-align: right;
+  background: rgba(135, 206, 235, 0.1); /* Light blue background */
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.pricing h3 {
+  font-size: 1.1rem;
+  color: #87CEEB; /* Light blue color */
+  margin: 0;
 }
 
 .fee {
-font-size: 1.4rem;
-color: #87CEEB;
-font-weight: bold;
-text-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-top: 20px;
+  color: #7B68EE; /* A slight darker shade for the fee amount */
+  background: linear-gradient(45deg, #87CEEB, #7B68EE);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Register Button */
-.registerButton {
-display: block;
-width: 100%;
-padding: 12px 0;
-text-align: center;
-background: linear-gradient(
-  45deg,
-  rgba(135, 206, 235, 0.8),
-  rgba(0, 191, 255, 0.8)
-);
-color: #000;
-font-weight: bold;
-border-radius: 8px;
-transition: all 0.3s ease;
-position: relative;
-overflow: hidden;
-border: none;
+
+/* Button */
+.button {
+  display: block;
+  padding: 14px 0;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(45deg, #147ea8, #68deee);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  text-decoration: none;
 }
 
-.registerButton:hover {
-box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
-transform: translateY(-2px);
-}
-
-.registerButton::before {
-content: '';
-position: absolute;
-top: -50%;
-left: -50%;
-width: 100%;
-height: 100%;
-background: linear-gradient(
-  45deg,
-  transparent,
-  rgba(255, 255, 255, 0.2),
-  transparent
-);
-transform: rotate(45deg);
-animation: buttonGlow 3s infinite linear;
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
 }
 
 /* Animations */
@@ -355,6 +272,14 @@ animation: buttonGlow 3s infinite linear;
   .mainTitle {
     font-size: 3rem;
   }
+
+  .eventsGrid{
+    grid-template-columns: repeat(2, 1fr); /* Set two cards per row */
+  }
+    
+  .eventTitle {
+    font-size: 1.5rem;
+  }
   
   .detailsSection {
     flex-direction: column;
@@ -375,7 +300,10 @@ animation: buttonGlow 3s infinite linear;
   .eventTitle {
     font-size: 1.5rem;
   }
+  .eventsGrid{
+    grid-template-columns: repeat(1, 1fr); 
   
+    }
   .cardVisual {
     height: 250px;
   }

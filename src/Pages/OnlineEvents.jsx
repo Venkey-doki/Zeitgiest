@@ -107,7 +107,7 @@ export default function OnlineEvents() {
 
                 <Link 
                   to={`/Registration?event=${event.heading}`} 
-                  className={styles.registerButton}
+                  className={styles.button}
                 >
                   Register Now
                 </Link>

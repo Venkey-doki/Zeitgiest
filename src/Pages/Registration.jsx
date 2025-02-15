@@ -25,7 +25,6 @@ function Registration() {
     college_Place: "",
     referred_By: "",
     transaction_Id: "",
-    payment_Receipt: null,
     event: "NEW REGISTRATION",
     price: "200",
   });
@@ -232,7 +231,6 @@ function Registration() {
       college_Place: "",
       referred_By: "",
       transaction_Id: "",
-      payment_Receipt: null,
       event: "NEW REGISTRATION",
       price: "200",
     });

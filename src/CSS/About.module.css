@@ -1,12 +1,29 @@
 /* About.module.css */
-/* Reuse Home page background styles */
-.container {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;500;700&display=swap');
+
+:root {
+  --primary-color: #6dd5ed;
+  --secondary-color: #2193b0;
+  --accent-color: #ff6b6b;
+  --dark-bg: #0a0f1a;
+  --light-bg: #1a1f2b;
+  --text-color: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.05);
 }
 
+/* Base Container */
+.container {
+  position: relative;
+  min-height: 100vh;
+  background: var(--dark-bg);
+  color: var(--text-color);
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+  padding: 2rem;
+}
+
+/* Background */
+/* Techy Animated Background */
 .background {
   position: fixed;
   width: 100%;
@@ -91,70 +108,44 @@
     transform: translate(-25px, -25px);
   }
 }
-.heroDualContainer {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 60px;
-}
 
-.heroSection {
-  flex: 1;
-  background: transparent;  /* No card-like background */
-  padding: 40px;
-  text-align: center;
-  border: none;
-}
-
-/* Hero Titles and Descriptions */
-.heroTitle {
-  color: #87CEEB;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
-}
-
-.heroDescription {
-  color: #fff;
-  font-size: 1.5rem;
-  line-height: 1.6;
-}
-
-
-/* New About Page Styles */
+/* Content Container */
 .contentContainer {
-  position: relative;
-  z-index: 2;
-  padding: 120px 20px 60px;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
+/* Hero Section */
 .hero {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 3rem;
 }
 
 .title {
-  font-size: 4rem;
-  color: #87CEEB;
-  text-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
-  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px var(--primary-color);
 }
 
 .subtitle {
   font-size: 1.5rem;
-  color: #fff;
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
+/* Logo Styling */
 .logoContainer {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
+  margin: 1rem auto;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid rgba(135, 206, 235, 0.5);
-  box-shadow: 0 0 30px rgba(135, 206, 235, 0.3);
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -163,110 +154,233 @@
   object-fit: cover;
 }
 
-.gridContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-bottom: 60px;
+/* About Content */
+.aboutContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
-.card {
-  background: rgba(16, 16, 37, 0.9);
-  padding: 30px;
-  border-radius: 15px;
-  color: #fff;
-  border: 1px solid rgba(135, 206, 235, 0.2);
+.heroSection {
+  flex: 1;
+  min-width: 300px;
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.heroTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.heroDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Fee Details Section */
+.feeDetails {
+  background: var(--light-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.feeTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.feeDescription {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+/* Call-to-Action Section */
+.ctaSection {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--light-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ctaSection h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.ctaButton {
+  background: linear-gradient(
+    45deg,
+    rgba(135, 206, 235, 0.8),
+    rgba(0, 191, 255, 0.8)
+  );
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 25px;
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.card h2 {
-  color: #87CEEB;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.glowBar {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, #87CEEB, transparent);
-  margin-bottom: 20px;
-}
-
-.fullWidthCard {
-  grid-column: 1 / -1;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 40px;
-  border-radius: 15px;
-  border: 1px solid rgba(135, 206, 235, 0.2);
-}
-
-
-.ctaSection {
-  text-align: center;
-  margin-top: 60px;
-}
-
-.ctaSection h2 {
-  font-size: 2.5rem;
-  color: #87CEEB;
-  margin-bottom: 30px;
-}
-
-.ctaButton {
-  padding: 15px 50px;
-  font-size: 1.2rem;
-  background: linear-gradient(45deg, 
-    rgba(135, 206, 235, 0.8), 
-    rgba(0, 191, 255, 0.8));
-  border: none;
-  border-radius: 30px;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
 .ctaButton:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(135, 206, 235, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
 }
 
-/* Responsive Design */
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: buttonGlow 3s infinite linear;
+}
+
+@keyframes buttonGlow {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Responsive Styles for Tablets */
 @media (max-width: 768px) {
-  .title {
-    font-size: 3rem;
+  .contentContainer {
+    padding: 1rem;
   }
-
-  .gridContainer {
-    grid-template-columns: 1fr;
+  .hero {
+    margin-bottom: 2rem;
   }
-
-  .fullWidthCard {
-    padding: 30px;
-  }
-  .heroDualContainer {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 480px) {
   .title {
     font-size: 2.5rem;
   }
+  .subtitle {
+    font-size: 1.3rem;
+  }
+  .logoContainer {
+    width: 120px;
+    height: 120px;
+  }
+  .aboutContent {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .heroSection {
+    padding: 1rem;
+  }
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+  .heroDescription {
+    font-size: 0.95rem;
+  }
+  .feeDetails {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .feeTitle {
+    font-size: 2rem;
+  }
+  .feeDescription {
+    font-size: 1rem;
+  }
+  .ctaSection {
+    padding: 1.5rem;
+  }
+  .ctaSection h2 {
+    font-size: 1.8rem;
+  }
+  .ctaButton {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
 
+/* Responsive Styles for Mobiles */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  .contentContainer {
+    padding: 0.5rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
   .subtitle {
     font-size: 1.2rem;
   }
-
   .logoContainer {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
-  .heroDualContainer {
-    flex-direction: column;
+  .aboutContent {
+    gap: 1rem;
+  }
+  .heroSection {
+    padding: 0.8rem;
+  }
+  .heroTitle {
+    font-size: 1.5rem;
   }
   .heroDescription {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+  }
+  .feeDetails {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .feeTitle {
+    font-size: 1.8rem;
+  }
+  .feeDescription {
+    font-size: 0.95rem;
+  }
+  .ctaSection {
+    padding: 1rem;
+  }
+  .ctaSection h2 {
+    font-size: 1.5rem;
+  }
+  .ctaButton {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
   }
 }
+ 

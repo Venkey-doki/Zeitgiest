@@ -138,7 +138,29 @@ function TechnicalEvents() {
                 <p className={styles.eventDescription}>{event.description}</p>
 
                 <div className={styles.detailsSection}>
-                  <div className={styles.coordinators}>
+                  {
+                    event.title === "Beat the Bug: Debugging Showdown" || event.title === "Cryptic Hunt: Decode, Discover, Dominate" || event.title === "Technoquest: Ignite Your Tech-Savvy Spirit" ?(
+                    <>
+                    <div className={styles.coordinators}>
+                    <h3>Coordinators</h3>
+                    <p>
+                      <span className={styles.name}>{event.coordinators1}</span>
+                      <span className={styles.phone}>{event.coordinators1ph}</span>
+                    </p>
+                    <p>
+                      <span className={styles.name}>{event.coordinators2}</span>
+                      <span className={styles.phone}>{event.coordinators2ph}</span>
+                    </p>
+                    <h3>TEAM EVENTS</h3>
+                  </div>
+                    <div className={styles.pricing}>
+                    <h3>Participation Fee</h3>
+                    <p className={styles.fee}>₹300</p>
+                  </div>
+                  </>
+                    ) :(
+                    <>
+                    <div className={styles.coordinators}>
                     <h3>Coordinators</h3>
                     <p>
                       <span className={styles.name}>{event.coordinators1}</span>
@@ -149,17 +171,12 @@ function TechnicalEvents() {
                       <span className={styles.phone}>{event.coordinators2ph}</span>
                     </p>
                   </div>
-                  {
-                    event.title === "Beat the Bug: Debugging Showdown" || event.title === "Cryptic Hunt: Decode, Discover, Dominate" || event.title === "Technoquest: Ignite Your Tech-Savvy Spirit" ?(
                     <div className={styles.pricing}>
-                    <h3>TEAM EVENTS</h3>
-                    <h3>Participation Fee</h3>
-                    <p className={styles.fee}>₹300</p>
-                  </div>
-                    ) :(<div className={styles.pricing}>
                     <h3>Participation Fee</h3>
                     <p className={styles.fee}>₹200</p>
-                  </div>)
+                  </div>
+                  </>
+                  )
                 }
                 </div>
 

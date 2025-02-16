@@ -519,12 +519,14 @@
     margin-top: 50px;
   }
   .institutionInfo{
-    margin-top: 70px;
+    margin-top: 60px;
   }
   .universityName {
     font-size: 1rem;
   }
-
+  .departmentName {
+    font-size: 1rem;
+  }
   .collegeName {
     font-size: 1.2rem;
   }

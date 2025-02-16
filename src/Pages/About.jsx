@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   const isLoggedIn = localStorage.getItem("user") !== null;
-  const user = JSON.parse(localStorage.getItem("user"))
-  
+  const user = isLoggedIn ? JSON.parse(localStorage.getItem("user")) : null;
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    AOS.init({ 
+    AOS.init({
       duration: 1000,
       once: true,
-      mirror: false
+      mirror: false,
     });
     AOS.refresh();
   }, []);
@@ -35,62 +35,68 @@ const About = () => {
         </section>
 
         {/* About Content */}
-        <section className={styles.heroDualContainer}>
-          <div className={styles.heroSection} data-aos="fade-right">
-            <h2 className={styles.heroTitle}>Our Legacy</h2>
-            <p className={styles.heroDescription}>
-            Zeitgeist, a National-level Technical Carnival by the Computer Science and Engineering Department, UCEK, JNTUK, has been held for 10 years. It highlights emerging technologies, offering opportunities to learn and excel through events and workshops. The fest fosters innovation and collaboration among participants. It also serves as a platform to showcase skills and explore future possibilities.
-            Additionally, refreshing activities are included to break the monotony of daily life, making it a comprehensive and engaging experience.
-            </p>
-            <h2 className={styles.heroTitle}>Fest payment Details</h2>
-            <p className={styles.heroDescription}>
-              there is a manditory registration fee of ₹200 for each participant.
-              after registration,with in 24hrs the participant can login to the website 
-              <br />
-              <br />
-              participant can only register to any other events only when he is lolgged in in the website  
-              <br />
-              <br />
-              for the Manditory registration fee of ₹200, the participant will get to participate in online events.
-
-            </p>
-          </div>
+        <section className={styles.aboutContent}>
           <div className={styles.heroSection} data-aos="fade-left">
             <h2 className={styles.heroTitle}>2025 Edition</h2>
             <p className={styles.heroDescription}>
-            Zeitgeist 2025 is a National-Level Technical Carnival organized by the Department of Computer Science and Engineering, UCEK, JNTUK, on March 15 & 16. It brings to light emerging technologies in today’s world and provides opportunities to learn, explore, and excel in various domains of Computer Science.
-            <br />
-            <br />
+              Zeitgeist 2025 is a National-Level Technical Carnival organized by the Department of Computer Science and Engineering, UCEK, JNTUK, on March 15 & 16. It brings emerging technologies to light and provides opportunities to learn, explore, and excel in various domains of Computer Science.
+              <br /><br />
+              The event bridges the gap between theory and practice through workshops, events, and contests, while also offering refreshing activities to break the monotony of daily life.
+              <br /><br />
+              Located in the coastal town of Kakinada at UCEK, JNTU, Zeitgeist 2025 offers hands-on exposure to cutting-edge technologies such as Generative AI, Cloud Computing, and Cybersecurity—complemented by a vibrant cultural fest.
+            </p>
+          </div>
 
-            This event bridges the gap between theoretical knowledge and practical applications through numerous workshops, events, and contests. On the other hand, it also features refreshing activities that break the monotony of daily life, making the fest a wholesome experience.
-            <br />
-            <br />
-
-            Centered in the coastal town of Kakinada at UCEK, JNTU, Zeitgeist 2025 offers an arena for participants to gain hands-on exposure to cutting-edge technologies such as Generative AI, Cloud Computing, and Cybersecurity. A broad range of technical events is complemented by a vibrant cultural fest – Cultivo and fun-filled activities to create an engaging and delightful atmosphere.
+          <div className={styles.heroSection} data-aos="fade-right">
+            <h2 className={styles.heroTitle}>Our Legacy</h2>
+            <p className={styles.heroDescription}>
+              For over 10 years, Zeitgeist has been a national-level carnival by the Department of Computer Science and Engineering, UCEK, JNTUK. The fest has consistently highlighted emerging technologies and provided platforms for innovation and collaboration.
+              <br /><br />
+              In addition to technical excellence, Zeitgeist offers an engaging mix of cultural events and fun-filled activities, making it a comprehensive and memorable experience.
             </p>
           </div>
         </section>
 
-        {/* CTA Section */}
-        {
-          isLoggedIn? (
-            <div className={styles.ctaSection} data-aos="zoom-in">
+        {/* Fee Details Section */}
+        <section className={styles.feeDetails} data-aos="fade-up">
+          <h2 className={styles.feeTitle}>Fest Payment Details</h2>
+          <p className={styles.feeDescription}>
+            1. The Basic Registration Fee is mandatory to participate in workshops and events.
+            <br />
+            2. No Basic Registration Fee is required for contests.
+            <br />
+            3. Students who pay the Basic Registration Fee will receive an ID card required for fest entry. This card allows access to stalls, cultural events, and more.
+            <br />
+            4. A reserved slot will be provided in all events and workshops for fee-paying students, who can then register for specific events.
+            <br />
+            5. There is no entry fee for online events for those who have paid the Basic Registration Fee.
+            <br />
+            6. Basic Registration is mandatory for all students, including team events and team-based workshops.
+            <br />
+            7. For team registrations or events, please contact D. V. Bhargava Reddy at 8317504292.
+          </p>
+        </section>
+
+        {/* Call-to-Action Section */}
+        <section className={styles.ctaSection} data-aos="zoom-in">
+          {isLoggedIn ? (
+            <>
               <h2>Welcome back, {user.name}</h2>
               <Link to="/profile">
-                <button className={styles.ctaButton}>profile</button>
+                <button className={styles.ctaButton}>Profile</button>
               </Link>
-            </div>
+            </>
           ) : (
-            <div className={styles.ctaSection} data-aos="zoom-in">
+            <>
               <h2>Ready to Be Part of History?</h2>
               <Link to="/Registration?event=NEW REGISTRATION">
                 <button className={styles.ctaButton}>Register Now</button>
               </Link>
-            </div>
-          )
-        }
-        </div>
+            </>
+          )}
+        </section>
       </div>
+    </div>
   );
 };
 

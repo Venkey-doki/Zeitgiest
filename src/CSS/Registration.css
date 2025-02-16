@@ -175,6 +175,7 @@
   cursor: pointer;
 }
 
+/* Responsive styles for tablets and smaller devices */
 @media (max-width: 768px) {
   .registration-grid {
     grid-template-columns: 1fr;
@@ -184,5 +185,51 @@
   .qr-container {
     order: -1;
     margin-bottom: 2rem;
+  }
+}
+
+/* Additional responsive tweaks for very small screens */
+@media (max-width: 480px) {
+  .registration-container {
+    padding: 1rem;
+  }
+  
+  .registration-header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .price-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .registration-grid {
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .form-group input {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .file-upload label {
+    padding: 0.75rem 1rem;
+  }
+  
+  .submit-btn, 
+  .cancel-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .qr-code {
+    max-width: 250px;
+  }
+  
+  .preview-image {
+    max-width: 250px;
   }
 }

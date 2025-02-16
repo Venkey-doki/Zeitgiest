@@ -110,7 +110,7 @@
 /* Events Grid */
 .eventsGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Set four cards per row */
+  grid-template-columns: repeat(3, 1fr); /* Set four cards per row */
   gap: 30px;
   padding: 0 10px;
 }

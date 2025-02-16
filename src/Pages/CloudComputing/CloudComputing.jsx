@@ -5,49 +5,44 @@ import p1 from "../../assets/CloudComputing.png";
 import styles from "../../CSS/Accomodation.module.css"; // Import CSS module
 import { Link,useNavigate } from "react-router-dom";
 function CloudComputing() {
+  const [Cloudreg, setCloudreg] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    window.scroll(0,0);
+    // Scroll to top and initialize AOS
+    window.scroll(0, 0);
     AOS.init({ duration: 1000, once: true });
-  }, []);
 
-    const navigate = useNavigate();
-    // State to check if the user is already registered for GenAI
-    const [cloudreg, setcloudreg] = useState(false);
-  
-      // Fetch registration status and verify authentication
-      useEffect(() => {
-        // Initialize AOS (in case it needs re-initialization)
-        AOS.init({ duration: 1000, once: true });
-        // Retrieve user from localStorage; if not found, redirect to login
-        const userData = localStorage.getItem("user");
-        if (!userData) {
-          navigate("/login?redirect=profile");
+    // Retrieve user data; if not found, alert the user (or redirect if needed)
+    const userData = localStorage.getItem("user");
+    if (!userData) {
+      alert("Please login to register for GenAI.");
+      // Uncomment the next line to redirect to login if needed:
+      // navigate("/login");
+      return;
+    }
+
+    // Parse user data and fetch registration status
+    const parsedUser = JSON.parse(userData);
+    fetch(
+      `https://zeitgeistjntukcse.com/Zeitgeist/getRegistrations.php?email=${encodeURIComponent(
+        parsedUser.email
+      )}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          // Check if any registration is for "GenAI"
+          const isRegistered = data.registrations
+            .map((reg) => reg.event)
+            .includes("Cloud Computing");
+          setCloudreg(isRegistered);
         } else {
-          const parsedUser = JSON.parse(userData);
-          // Fetch registrations from backend using the user's email
-          fetch(
-            `https://zeitgeistjntukcse.com/Zeitgeist/getRegistrations.php?email=${encodeURIComponent(
-              parsedUser.email
-            )}`
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.status === "success") {
-                // Check if any of the registrations is for "GenAI"
-                const isRegistered = data.registrations
-                  .map((reg) => reg.event)
-                  .includes("Cloud Computing");
-                setcloudreg(isRegistered);
-              } else {
-                console.log("Error: Could not fetch registrations.");
-              }
-            })
-            .catch((error) => {
-              console.error("Error fetching registrations:", error);
-            });
+          console.error("Error: Could not fetch registrations.");
         }
-      }, [navigate]);
-
+      })
+      .catch((error) => console.error("Error fetching registrations:", error));
+  }, [navigate]);
   return (
     <div className={styles.wrapper}>
       <div className={styles.background}></div>
@@ -85,8 +80,8 @@ function CloudComputing() {
               
               <h4 className={styles.textLight}>Pricing Details:</h4>
               <ul className={styles.listStyled}>
-                <li>Single Registration : ₹1200</li>
-                <li>Team Registration (Max 4 Persons) : ₹4400 </li>
+                <li>Single Registration : ₹1100</li>
+                <li>Team Registration (Team 4 Persons) : ₹4000 </li>
               </ul>
 
               <h4 className={styles.textLight}>Coordinators:</h4>
@@ -97,25 +92,13 @@ function CloudComputing() {
               </p>
 
               <div className={styles.buttonContainer}>
-              {cloudreg ? (
-                  // If already registered, show "Already Registered"
-                  <Link
-                    to="#"
-                    className={styles.button}
-                    data-aos="zoom-in"
-                  >
-                    Already Registered
-                  </Link>
-                ) : (
-                  // Otherwise, show "Register Now"
-                  <Link
-                    to="/Registration?event=Cloud Computing"
-                    className={styles.button}
-                    data-aos="zoom-in"
-                  >
-                    Register Now
-                  </Link>
-                )}
+                <Link
+                  to= {Cloudreg ? "#" : "/Registration?event=Cloud Computing"}
+                  className={styles.button}
+                  data-aos="zoom-in"
+                >
+                  {Cloudreg ? "Already Registered" : "please wait..."}
+                </Link>
               </div>
             </div>
           </div>

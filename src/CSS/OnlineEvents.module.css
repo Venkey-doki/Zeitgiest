@@ -1,5 +1,4 @@
-/* TechnicalEvents.module.css */
-/* Reuse home page background styles */
+/* General Styles */
 .container {
   position: relative;
   width: 100%;
@@ -7,6 +6,7 @@
   overflow-x: hidden;
 }
 
+/* Techy Animated Background */
 .background {
   position: fixed;
   width: 100%;
@@ -92,31 +92,28 @@
   }
 }
 
-/* Main Content */
 .contentContainer {
-position: relative;
-z-index: 2;
-padding: 120px 20px 60px;
-max-width: 1600px;
-margin: 0 auto;
+  z-index: 2;
+  padding: 120px 20px 60px;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .mainTitle {
-font-size: 4rem;
-color: #87CEEB;
-text-align: center;
-margin-bottom: 80px;
-text-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
+  font-size: 3.5rem;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 60px;
+  text-shadow: 0 0 15px rgba(135, 206, 235, 0.8);
 }
 
 /* Events Grid */
 .eventsGrid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 30px;
-padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Set four cards per row */
+  gap: 30px;
+  padding: 0 10px;
 }
-
 /* Card Styling */
 .eventCard {
   background: rgba(16, 16, 37, 0.7);
@@ -190,7 +187,7 @@ padding: 0 40px;
 
 /* Pricing Section */
 .pricing {
-  background: rgba(135, 206, 235, 0.1); /* Light blue background */
+  background: rgba(135, 206, 235, 0.1); 
   padding: 15px;
   border-radius: 8px;
   display: flex;
@@ -211,11 +208,7 @@ padding: 0 40px;
   font-size: 1.2rem;
   font-weight: 700;
   padding-top: 20px;
-  color: #7B68EE; /* A slight darker shade for the fee amount */
-  background: linear-gradient(45deg, #87CEEB, #7B68EE);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #68e3ee; /* A slight darker shade for the fee amount */
 }
 
 
@@ -238,73 +231,39 @@ padding: 0 40px;
   box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
 }
 
-/* Animations */
-@keyframes moveGrid {
-0% {
-  transform: translate(0, 0);
-}
-100% {
-  transform: translate(-50%, -50%);
-}
-}
-
-@keyframes glowSlide {
-0% {
-  left: -100%;
-}
-100% {
-  left: 100%;
-}
-}
-
-@keyframes buttonGlow {
-0% {
-  transform: translateX(-100%) rotate(45deg);
-}
-100% {
-  transform: translateX(100%) rotate(45deg);
-}
-}
-
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .mainTitle {
-    font-size: 3rem;
+    font-size: 2.8rem;
+  }
+
+  .detailsSection {
+    grid-template-columns: 1fr;
   }
 
   .eventsGrid{
-    grid-template-columns: repeat(2, 1fr); /* Set two cards per row */
+    grid-template-columns: repeat(2, 1fr); /* Set four cards per row */
   }
     
   .eventTitle {
     font-size: 1.5rem;
   }
-  
-  .detailsSection {
-    flex-direction: column;
-  }
-  
-  .pricing {
-    text-align: left;
-  }
 }
 
 @media (max-width: 480px) {
   .mainTitle {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
-  .eventsGrid{
-      grid-template-columns: 1fr;
-  }
+
   .eventTitle {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
+
   .eventsGrid{
-    grid-template-columns: repeat(1, 1fr); 
-  
-    }
+  grid-template-columns: repeat(1, 1fr); /* Set four cards per row */
+
+  }
   .cardVisual {
-    height: 250px;
+    height: 200px;
   }
 }

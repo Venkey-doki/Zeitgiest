@@ -4,12 +4,19 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios"; // Import axios
 import styles from "../CSS/Login.module.css"; // Modular CSS
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import Eye Icons
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState);
+  };
+
 
   useEffect(() => {
     window.scroll(0,0);
@@ -90,12 +97,32 @@ const Login = () => {
             <input
               className={styles.input}
               name="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
               required
+              style={{ paddingRight: '2rem' }}
             />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              style={{
+                position: 'absolute',
+                right: 0,
+                top: 0,
+                height: '100%',
+                border: 'none',
+                background: 'transparent',
+                cursor: 'pointer',
+                padding: '0 0.5rem',
+                color: showPassword? '#000' : '#ccc',
+                transition: 'color 0.3s ease-in-out'
+              }}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+            >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
           </div>
           {message && <p className={styles.error}>{message}</p>}
           <button

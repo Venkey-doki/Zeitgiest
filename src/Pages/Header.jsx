@@ -1,22 +1,49 @@
-import { React, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../CSS/Header.css';
+
+// Move navigation items outside the component to avoid re-creation on each render
+const navItems = [
+  { path: "/", icon: "fa-home", text: "Home" },
+  { path: "/about", icon: "fa-info-circle", text: "About" },
+  { 
+    type: "dropdown",
+    text: "Events",
+    icon: "fa-calendar-alt",
+    subItems: [
+      { path: "/TechnicalEvents", icon: "fa-code", text: "Technical" },
+      { path: "/OnlineEvents", icon: "fa-laptop", text: "Online" }
+    ]
+  },
+  { path: "/workshop", icon: "fa-chalkboard", text: "Workshops" },
+  { path: "/contests", icon: "fa-trophy", text: "Contests" },
+  { path: "/accommodation", icon: "fa-bed", text: "Stay" },
+];
+
+const dropdownItems = [
+  { path: "/team", icon: "fa-users", text: "Team" },
+];
 
 export default function Header() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  // Function to get user from localStorage
+  // Safely fetch user from localStorage
   const fetchUser = () => {
-    const loggedInUser = localStorage.getItem("user");
-    setUser(loggedInUser ? JSON.parse(loggedInUser) : null);
+    try {
+      const loggedInUser = localStorage.getItem("user");
+      setUser(loggedInUser ? JSON.parse(loggedInUser) : null);
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      setUser(null);
+    }
   };
-  
 
   useEffect(() => {
-    // Fetch user initially
+    // Fetch user on mount
     fetchUser();
-    // Listen for changes in localStorage (manual trigger included)
+
+    // Listen for changes in localStorage
     const handleStorageChange = () => {
       fetchUser();
     };
@@ -30,36 +57,16 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
-    window.dispatchEvent(new Event("storage")); // Trigger update event
+    // Dispatch a storage event to notify other tabs/components
+    window.dispatchEvent(new Event("storage"));
     navigate("/");
   };
-
-  const navItems = [
-    { path: "/", icon: "fa-home", text: "Home" },
-    { path: "/about", icon: "fa-info-circle", text: "About" },
-    { 
-      type: "dropdown",
-      text: "Events",
-      icon: "fa-calendar-alt",
-      subItems: [
-        { path: "/TechnicalEvents", icon: "fa-code", text: "Technical" },
-        { path: "/OnlineEvents", icon: "fa-laptop", text: "Online" }
-      ]
-    },
-    { path: "/workshop", icon: "fa-chalkboard", text: "Workshops" },
-    { path: "/contests", icon: "fa-trophy", text: "Contests" },
-    { path: "/accommodation", icon: "fa-bed", text: "Stay" },
-  ];
-
-  const dropdownItems = [
-    { path: "/team", icon: "fa-users", text: "Team" },
-  ];
 
   return (
     <header className="glass-header">
       {/* Desktop Navigation */}
       <nav className="desktop-nav">
-        {navItems.map((item, index) => (
+        {navItems.map((item, index) =>
           item.type === "dropdown" ? (
             <div key={index} className="nav-dropdown">
               <button className="nav-link">
@@ -81,7 +88,7 @@ export default function Header() {
               <span>{item.text}</span>
             </Link>
           )
-        ))}
+        )}
         
         <div className="nav-dropdown">
           <button className="nav-link">
@@ -123,7 +130,7 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       <nav className="mobile-nav">
-        {navItems.slice(0, 3).map((item, index) => (
+        {navItems.slice(0, 3).map((item, index) =>
           item.type === "dropdown" ? (
             <div key={index} className="nav-dropdown">
               <button className="nav-link">
@@ -143,21 +150,21 @@ export default function Header() {
               <i className={`fas ${item.icon}`} />
             </Link>
           )
-        ))}
+        )}
         
         <div className="nav-dropdown">
           <button className="nav-link">
             <i className="fas fa-ellipsis-h" />
           </button>
           <div className="dropdown-menu">
-            {[...navItems.slice(3), ...dropdownItems].map((item, index) => (
+            {[...navItems.slice(3), ...dropdownItems].map((item, index) =>
               item.path ? (
                 <Link key={index} to={item.path} className="dropdown-item">
                   <i className={`fas ${item.icon}`} />
                   {item.text}
                 </Link>
               ) : null
-            ))}
+            )}
             {user ? (
               <>
                 <Link to="/profile" className="dropdown-item">

@@ -6,8 +6,25 @@ import styles from "../CSS/Home.module.css";
 import logo from "../assets/logo-bg.png";
 import { Link } from "react-router-dom";
 
+// Reusable EventCard component
+const EventCard = ({ title, description, buttons, aosAnimation }) => (
+  <section className={styles.eventcard} data-aos={aosAnimation}>
+    <div className={styles.eventcontent}>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <div className={styles.buttonContainer}>
+        {buttons.map(({ text, link }, index) => (
+          <Link key={index} to={link}>
+            <button className={styles.button}>{text}</button>
+          </Link>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
 export default function Home() {
-  const isLoggedIn = localStorage.getItem("user") !== null;
+  const isLoggedIn = Boolean(localStorage.getItem("user"));
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,22 +32,55 @@ export default function Home() {
       duration: 1000,
       once: false,
       mirror: true,
-      easing: 'ease-in-out-quad'
+      easing: "ease-in-out-quad",
     });
-    AOS.refresh();
   }, []);
+
+  const eventCardsData = [
+    {
+      title: "About the Fest",
+      description:
+        "Welcome to our Annual fest! Experience a blend of Music, Art, Culture, and Innovation. Join us for an unforgettable journey filled with competitions, workshops, and networking opportunities.",
+      buttons: [{ text: "Know More", link: "/about" }],
+      aosAnimation: "fade-right",
+    },
+    {
+      title: "Workshops",
+      description:
+        "Immerse yourself in transformative learning experiences with workshops designed to explore the latest advancements in technology. Gain practical, hands-on knowledge and elevate your expertise to excel in cutting-edge domains.",
+      buttons: [{ text: "Workshops", link: "/workshop" }],
+      aosAnimation: "fade-left",
+    },
+    {
+      title: "Events",
+      description:
+        "Discover exciting technical and online events that challenge your skills and creativity. Participate in various competitions and showcase your talents.",
+      buttons: [
+        { text: "Technical Events", link: "/technicalevents" },
+        { text: "Online Events", link: "/onlineevents" },
+      ],
+      aosAnimation: "fade-right",
+    },
+    {
+      title: "Contests",
+      description:
+        "Showcase your skills, creativity, and competitive spirit through a variety of exciting contests. Test your technical prowess, creative abilities, and innovative thinking in challenges that promise fun and learning.",
+      buttons: [{ text: "Contests", link: "/contests" }],
+      aosAnimation: "fade-left",
+    },
+  ];
 
   return (
     <div className={styles.homeContainer}>
       {/* Gradient Overlay */}
-      <div className={styles.gradientOverlay}></div>
+      <div className={styles.gradientOverlay} />
 
       {/* Particle Background */}
-      <div className={styles.background}></div>
+      <div className={styles.background} />
 
       {/* Header Section */}
       <header className={styles.header}>
-        <img src={logo} alt="Fest Logo" className={styles.headerLogo} />
+        <img src={logo} alt="Fest Logo" className={styles.headerLogo} loading="lazy" />
         {isLoggedIn ? (
           <Link to="/profile">
             <button className={styles.loginButton}>Profile</button>
@@ -47,26 +97,48 @@ export default function Home() {
         <section className={styles.heroSection}>
           <div className={styles.heroContent} data-aos="zoom-in">
             <div className={styles.institutionInfo}>
-              <h3 className={styles.universityName}>Jawaharlal Nehru Technological University Kakinada</h3>
-              <h4 className={styles.collegeName}>University College of Engineering Kakinada</h4>
-              <p className={styles.departmentName}>Department of Computer Science and Engineering</p>
+              <h3 className={styles.universityName}>
+                Jawaharlal Nehru Technological University Kakinada
+              </h3>
+              <h4 className={styles.collegeName}>
+                University College of Engineering Kakinada
+              </h4>
+              <p className={styles.departmentName}>
+                Department of Computer Science and Engineering
+              </p>
             </div>
-            
-            <div className={styles.eventTitle} data-aos="fade-up" data-aos-delay="200">
+
+            <div
+              className={styles.eventTitle}
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <h1 className={styles.mainTitle}>ZEITGEIST'25</h1>
-              <div className={styles.titleUnderline}></div>
+              <div className={styles.titleUnderline} />
             </div>
 
             <div className={styles.quoteSection}>
-              <blockquote className={styles.quotation} data-aos="fade-up" data-aos-delay="300">
+              <blockquote
+                className={styles.quotation}
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 "Fusion of ideas, Harmony of minds..."
               </blockquote>
-              <blockquote className={styles.quotation} data-aos="fade-up" data-aos-delay="400">
+              <blockquote
+                className={styles.quotation}
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 "Unleashing Creativity, Innovation, and Passion!"
               </blockquote>
             </div>
 
-            <div className={styles.timerSection} data-aos="fade-up" data-aos-delay="500">
+            <div
+              className={styles.timerSection}
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
               <Timer />
             </div>
           </div>
@@ -74,59 +146,10 @@ export default function Home() {
 
         {/* Feature Cards */}
         <div className={styles.eventcardsContainer}>
-      {/* Hero Sections */}
-      <section className={styles.eventcard} data-aos="fade-right">
-        <div className={styles.eventcontent} >
-          <h2>About the Fest</h2>
-          <p>
-            Welcome to our Annual fest! Experience a blend of Music, Art, Culture, and Innovation.
-            Join us for an unforgettable journey filled with competitions, workshops, and networking
-            opportunities.
-          </p>
-          <div className={styles.buttonContainer}>
-            <Link to="/about"><button className={styles.button}>Know More</button></Link>
-          </div>
+          {eventCardsData.map((card, idx) => (
+            <EventCard key={idx} {...card} />
+          ))}
         </div>
-      </section>
-      <section className={styles.eventcard} data-aos="fade-left">
-        <div className={styles.eventcontent} >
-          <h2>Workshops</h2>
-          <p>
-          Immerse yourself in transformative learning experiences with workshops designed to explore the latest advancements in technology. Gain practical, hands-on knowledge and elevate your expertise to excel in cutting-edge domains.
-          </p>
-          <div className={styles.buttonContainer}>
-            <Link to="/workshop"><button className={styles.button}>Workshops</button></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.eventcard} data-aos="fade-right">
-        <div className={styles.eventcontent} >
-          <h2>Events</h2>
-          <p>
-            Discover exciting technical and online events that challenge your skills and creativity.
-            Participate in various competitions and showcase your talents.
-          </p>
-          <div className={styles.buttonContainer}>
-            <Link to="/technicalevents"><button className={styles.button}>Technical Events</button></Link>
-            <Link to="/onlineevents"><button className={styles.button}>Online Events</button></Link>
-          </div>
-        </div>
-      </section>
-      <section className={styles.eventcard} data-aos="fade-left">
-        <div className={styles.eventcontent} >
-          <h2>Contests</h2>
-          <p>
-          Showcase your skills, creativity, and competitive spirit through a variety of exciting contests. Test your technical prowess, creative abilities, and innovative thinking in challenges that promise fun and learning.
-          </p>
-          <div className={styles.buttonContainer}>
-            <Link to="/contests"><button className={styles.button}>Contests</button></Link>
-          </div>
-        </div>
-      </section>
-
-    </div>
-       
       </main>
     </div>
   );

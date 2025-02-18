@@ -3,9 +3,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import styles from "../CSS/OnlineEvents.module.css";
-import mindmaze from "../assets/mind-maze.jpg"
-import codecombat from "../assets/code-combat.jpg"
-import webwizardes from "../assets/web-wizards.jpg"
+import mindmaze from "../assets/mind-maze.jpg";
+import codecombat from "../assets/code-combat.jpg";
+import webwizardes from "../assets/web-wizards.jpg";
 
 const eventDetails = [
   {
@@ -13,8 +13,7 @@ const eventDetails = [
     heading: "Code Combat",
     description:
       "Prove your coding skills by battling it out in this ultimate programming contest. Solve challenging problems within time constraints and showcase your expertise.",
-    image:
-      codecombat,
+    image: codecombat,
     coordinators1: "N. Sivaraju",
     coordinators1ph: "+91 7032358921",
     coordinators2: "B. Kavya",
@@ -25,8 +24,7 @@ const eventDetails = [
     heading: "Mind Maze",
     description:
       "Enter a world of riddles, puzzles, and brain teasers that test your intellect. This multifaceted event will challenge your problem-solving and critical-thinking abilities.",
-    image:
-      mindmaze,
+    image: mindmaze,
     coordinators1: "P. Dinesh Kumar",
     coordinators1ph: "+91 6281733814",
     coordinators2: "A. Lohitha",
@@ -37,13 +35,12 @@ const eventDetails = [
     heading: "Web Wizards",
     description:
       "Create stunning and functional websites that combine design and usability. Show off your web development skills in this creative coding competition.",
-    image:
-     webwizardes,
+    image: webwizardes,
     coordinators1: "B. Bharadwaj",
     coordinators1ph: "+91 9502496903",
     coordinators2: "M. Lakshmi Meghana",
     coordinators2ph: "+91 6304088712",
-  }
+  },
 ];
 
 export default function OnlineEvents() {
@@ -52,7 +49,7 @@ export default function OnlineEvents() {
     AOS.init({
       duration: 1000,
       once: true,
-      mirror: false
+      mirror: false,
     });
   }, []);
 
@@ -65,25 +62,26 @@ export default function OnlineEvents() {
         <h1 className={styles.mainTitle} data-aos="fade-down">
           Online Events
         </h1>
-        
+
         <div className={styles.eventsGrid}>
           {eventDetails.map((event) => (
-            <div className={styles.eventCard} key={event.id} data-aos="fade-up">
+            <article className={styles.eventCard} key={event.id} data-aos="fade-up">
               <div className={styles.cardVisual} data-aos="zoom-in">
-                <img 
-                  src={event.image} 
-                  alt={event.heading} 
+                <img
+                  src={event.image}
+                  alt={event.heading}
                   className={styles.eventImage}
+                  loading="lazy"
                 />
                 <div className={styles.imageOverlay}></div>
               </div>
-              
+
               <div className={styles.cardContent}>
                 <h2 className={styles.eventTitle}>{event.heading}</h2>
                 <div className={styles.glowBar}></div>
-                
+
                 <p className={styles.eventDescription}>{event.description}</p>
-                
+
                 <div className={styles.detailsSection}>
                   <div className={styles.coordinators}>
                     <h3>Coordinators</h3>
@@ -98,21 +96,21 @@ export default function OnlineEvents() {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className={styles.pricing}>
                     <h3>Participation Fee</h3>
                     <p className={styles.fee}>Waiver</p>
                   </div>
                 </div>
 
-                <Link 
-                  to={`/Registration?event=${event.heading}`} 
+                <Link
+                  to={`/Registration?event=${encodeURIComponent(event.heading)}`}
                   className={styles.button}
                 >
                   Register Now
                 </Link>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

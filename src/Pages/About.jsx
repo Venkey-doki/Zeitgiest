@@ -5,9 +5,27 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 
+// Reusable component for info sections
+const InfoSection = ({ title, description, animation }) => (
+  <div className={styles.heroSection} data-aos={animation}>
+    <h2 className={styles.heroTitle}>{title}</h2>
+    <p className={styles.heroDescription}>{description}</p>
+  </div>
+);
+
+const getUserFromLocalStorage = () => {
+  try {
+    const userData = localStorage.getItem("user");
+    return userData ? JSON.parse(userData) : null;
+  } catch (error) {
+    console.error("Failed to parse user data:", error);
+    return null;
+  }
+};
+
 const About = () => {
-  const isLoggedIn = localStorage.getItem("user") !== null;
-  const user = isLoggedIn ? JSON.parse(localStorage.getItem("user")) : null;
+  const user = getUserFromLocalStorage();
+  const isLoggedIn = Boolean(user);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,7 +34,7 @@ const About = () => {
       once: true,
       mirror: false,
     });
-    AOS.refresh();
+    // Remove AOS.refresh() if not strictly necessary
   }, []);
 
   return (
@@ -30,31 +48,46 @@ const About = () => {
           <h1 className={styles.title}>ZEITGEIST</h1>
           <p className={styles.subtitle}>Annual Technical & Cultural Fest</p>
           <div className={styles.logoContainer} data-aos="flip-up">
-            <img src={Logo} alt="Fest Logo" className={styles.logo} />
+            <img src={Logo} alt="Fest Logo" className={styles.logo} loading="lazy" />
           </div>
         </section>
 
         {/* About Content */}
         <section className={styles.aboutContent}>
-          <div className={styles.heroSection} data-aos="fade-left">
-            <h2 className={styles.heroTitle}>2025 Edition</h2>
-            <p className={styles.heroDescription}>
-              Zeitgeist 2025 is a National-Level Technical Carnival organized by the Department of Computer Science and Engineering, UCEK, JNTUK, on March 15 & 16. It brings emerging technologies to light and provides opportunities to learn, explore, and excel in various domains of Computer Science.
-              <br /><br />
-              The event bridges the gap between theory and practice through workshops, events, and contests, while also offering refreshing activities to break the monotony of daily life.
-              <br /><br />
-              Located in the coastal town of Kakinada at UCEK, JNTU, Zeitgeist 2025 offers hands-on exposure to cutting-edge technologies such as Generative AI, Cloud Computing, and Cybersecurity—complemented by a vibrant cultural fest.
-            </p>
-          </div>
+          <InfoSection
+            title="2025 Edition"
+            description={
+              <>
+                Zeitgeist 2025 is a National-Level Technical Carnival organized by the
+                Department of Computer Science and Engineering, UCEK, JNTUK, on March 15 & 16.
+                It brings emerging technologies to light and provides opportunities to learn,
+                explore, and excel in various domains of Computer Science.
+                <br /><br />
+                The event bridges the gap between theory and practice through workshops, events, and
+                contests, while also offering refreshing activities to break the monotony of daily life.
+                <br /><br />
+                Located in the coastal town of Kakinada at UCEK, JNTU, Zeitgeist 2025 offers hands-on
+                exposure to cutting-edge technologies such as Generative AI, Cloud Computing, and Cybersecurity—
+                complemented by a vibrant cultural fest.
+              </>
+            }
+            animation="fade-left"
+          />
 
-          <div className={styles.heroSection} data-aos="fade-right">
-            <h2 className={styles.heroTitle}>Our Legacy</h2>
-            <p className={styles.heroDescription}>
-              For over 10 years, Zeitgeist has been a national-level carnival by the Department of Computer Science and Engineering, UCEK, JNTUK. The fest has consistently highlighted emerging technologies and provided platforms for innovation and collaboration.
-              <br /><br />
-              In addition to technical excellence, Zeitgeist offers an engaging mix of cultural events and fun-filled activities, making it a comprehensive and memorable experience.
-            </p>
-          </div>
+          <InfoSection
+            title="Our Legacy"
+            description={
+              <>
+                For over 10 years, Zeitgeist has been a national-level carnival by the Department of
+                Computer Science and Engineering, UCEK, JNTUK. The fest has consistently highlighted
+                emerging technologies and provided platforms for innovation and collaboration.
+                <br /><br />
+                In addition to technical excellence, Zeitgeist offers an engaging mix of cultural events and
+                fun-filled activities, making it a comprehensive and memorable experience.
+              </>
+            }
+            animation="fade-right"
+          />
         </section>
 
         {/* Fee Details Section */}
@@ -65,9 +98,11 @@ const About = () => {
             <br />
             2. No Basic Registration Fee is required for contests.
             <br />
-            3. Students who pay the Basic Registration Fee will receive an ID card required for fest entry. This card allows access to stalls, cultural events, and more.
+            3. Students who pay the Basic Registration Fee will receive an ID card required for fest entry.
+            This card allows access to stalls, cultural events, and more.
             <br />
-            4. A reserved slot will be provided in all events and workshops for fee-paying students, who can then register for specific events.
+            4. A reserved slot will be provided in all events and workshops for fee-paying students, who can then
+            register for specific events.
             <br />
             5. There is no entry fee for online events for those who have paid the Basic Registration Fee.
             <br />
@@ -83,14 +118,14 @@ const About = () => {
             <>
               <h2>Welcome back, {user.name}</h2>
               <Link to="/profile">
-                <button className={styles.ctaButton}>Profile</button>
+                <button className={styles.ctaButton} aria-label="Go to Profile">Profile</button>
               </Link>
             </>
           ) : (
             <>
               <h2>Ready to Be Part of History?</h2>
               <Link to="/Registration?event=NEW REGISTRATION">
-                <button className={styles.ctaButton}>Register Now</button>
+                <button className={styles.ctaButton} aria-label="Register Now">Register Now</button>
               </Link>
             </>
           )}

@@ -17,7 +17,7 @@ function DevOps() {
     // Retrieve user data; if not found, alert the user (or redirect if needed)
     const userData = localStorage.getItem("user");
     if (!userData) {
-      alert("Please login to register for GenAI.");
+      alert("Please login to register for DevOps.");
       // Uncomment the next line to redirect to login if needed:
       // navigate("/login");
       return;

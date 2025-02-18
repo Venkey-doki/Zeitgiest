@@ -16,7 +16,7 @@ function CloudComputing() {
     // Retrieve user data; if not found, alert the user (or redirect if needed)
     const userData = localStorage.getItem("user");
     if (!userData) {
-      alert("Please login to register for GenAI.");
+      alert("Please login to register for Cloud Computing.");
       // Uncomment the next line to redirect to login if needed:
       // navigate("/login");
       return;
@@ -97,7 +97,7 @@ function CloudComputing() {
                   className={styles.button}
                   data-aos="zoom-in"
                 >
-                  {Cloudreg ? "Already Registered" : "please wait..."}
+                  {Cloudreg ? "Already Registered" : "Register Now"}
                 </Link>
               </div>
             </div>

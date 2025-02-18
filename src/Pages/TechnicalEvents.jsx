@@ -151,7 +151,7 @@ function TechnicalEvents() {
                       <span className={styles.name}>{event.coordinators2}</span>
                       <span className={styles.phone}>{event.coordinators2ph}</span>
                     </p>
-                    <h3>TEAM EVENTS</h3>
+                    <h3>TEAM EVENT</h3>
                   </div>
                     <div className={styles.pricing}>
                     <h3>Participation Fee</h3>

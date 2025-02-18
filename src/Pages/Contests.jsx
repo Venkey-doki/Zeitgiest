@@ -20,6 +20,7 @@ const eventDetails = [
       coordinators1ph:"+91 9603009614", 
       coordinators2:"Y. Krupa Komala",
       coordinators2ph:" +91 7671894241",
+    links:"https://forms.gle/WjsjEczgL5o1SSNBA",
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ const eventDetails = [
       coordinators1ph:"+91 9390159239", 
       coordinators2:"N. Poorna Chandrika",
       coordinators2ph:" +91 7989015758",
+      links:"https://forms.gle/xJT2Z9cb2jvqG74v8",
   },
   {
     id: 3,
@@ -42,6 +44,7 @@ const eventDetails = [
       coordinators1ph:"+91 9014230074", 
       coordinators2:"P. Lakshmi Sahithi",
       coordinators2ph:" +91 9440147799",
+      links:"https://forms.gle/6xi44GzB7kAXAg6P8",
   },
   {
     id: 4,
@@ -53,6 +56,7 @@ const eventDetails = [
       coordinators1ph:"+91 9704776155", 
       coordinators2:"A. Revanth Reddy",
       coordinators2ph:" +91 9110363298",
+      links:null,
   },
   {
     id: 5,
@@ -65,6 +69,7 @@ const eventDetails = [
       coordinators1ph:"+91 6302549989", 
       coordinators2:"D. Sri Hasa",
       coordinators2ph:" +91 7671834633",
+      links:"https://forms.gle/pX9g9LpbwLtSFhDH7",
   },
  
 ];
@@ -125,24 +130,24 @@ function Contests() {
                                 {
                 event.title === "Battle Arena" ? (
                   <div className={styles.pricing}>
-                    <h3>Participation Fee</h3>
-                    <p className={styles.fee}>contact coordinators</p>
+                    <h3>For participation contact coordinators</h3>
                   </div>
                 ) : (
+                  <>
                   <div className={styles.pricing}>
                     <h3>Participation Fee</h3>
                     <p className={styles.fee}>₹0</p>
                   </div>
-                )
-              }        
-                </div>
-
-                <Link 
-                  to={`/Registration?event=${event.title}`} 
+                  <Link 
+                  to={event.links} 
                   className={styles.button}
                 >
                   Register Now
                 </Link>
+                </>
+                )
+              }        
+                </div>
               </div>
             </div>
           ))}

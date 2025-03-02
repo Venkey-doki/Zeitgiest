@@ -196,6 +196,7 @@
   font-weight: 700;
   margin-top: 20px;
   text-transform: uppercase;
+  margin:0 10px ; 
 }
 
 .pricing h3 {
@@ -242,7 +243,7 @@
   }
 
   .eventsGrid{
-    grid-template-columns: repeat(2, 1fr); /* Set four cards per row */
+    grid-template-columns: repeat(1, 1fr); /* Set four cards per row */
   }
     
   .eventTitle {
@@ -265,5 +266,42 @@
   }
   .cardVisual {
     height: 200px;
+  }
+}
+.eventbackground{
+  background: linear-gradient(45deg, var(--dark-bg), #0a0a23);
+
+}
+.detailsButton {
+  background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient Blue */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin:10px 0;
+}
+
+.detailsButton:hover {
+  background: linear-gradient(135deg, #0056b3, #003d80);
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.detailsButton:active {
+  transform: scale(0.95); /* Click effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 500px) {
+  .detailsButton {
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }

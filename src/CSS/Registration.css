@@ -74,7 +74,7 @@
   gap: 0.5rem;
 }
 
-.form-group input {
+.form-group input,select {
   background: var(--glass-bg);
   border: 1px solid var(--border-color);
   padding: 1rem;
@@ -84,7 +84,7 @@
   transition: all 0.3s ease;
 }
 
-.form-group input:focus {
+.form-group input:focus,select option {
   border-color: var(--primary-color);
   outline: none;
   box-shadow: 0 0 0 3px rgba(109, 213, 237, 0.2);
@@ -92,6 +92,30 @@
 
 .form-section {
   color: white;
+}
+/* Styling for the dropdown options */
+select option {
+  background: #0a0f1a; /* Dark background for options */
+  color: white; /* White text color */
+  font-size: 1rem;
+  padding: 10px;
+}
+
+/* Hover effect (applies in some browsers) */
+.form-group select option:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Selected option styling */
+.form-group select option:checked {
+  background: var(--secondary-color);
+  color: white;
+}
+
+/* For better appearance in some browsers */
+.form-group select:focus option {
+  background: var(--glass-bg);
 }
 
 .file-upload input {
@@ -231,5 +255,92 @@
   
   .preview-image {
     max-width: 250px;
+  }
+}
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Modal Box */
+.modal-content {
+  background: linear-gradient(45deg, var(--dark-bg), #0a0a23);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Close Button */
+.close-button {
+  margin-top: 15px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.close-button:hover {
+  background: #cc0000;
+}
+
+/* Payment QR Code */
+.qr-code {
+  width: 100%;
+  max-width: 250px;
+  margin: 10px auto;
+}
+
+/* Payment Instructions */
+.payment-instructions {
+  text-align: left;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.payment-instructions a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.payment-instructions a:hover {
+  text-decoration: underline;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .modal-content {
+    width: 95%;
   }
 }

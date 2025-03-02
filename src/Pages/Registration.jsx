@@ -27,7 +27,7 @@ const eventQrMap = {
   "GenAI": QrCode1200,
   "DevOps": QrCode1200,
   "CyberSecurity": QrCode1100,
-  "Cloud Computing": QrCode1100,
+  "Cloud Computing": QrCode1200,
   "BASIC REGISTRATION": QrCode200,
 };
 
@@ -36,7 +36,7 @@ const eventOptions = {
   "GenAI": { individual: 1200, team: 4400, teamSize: 4 },
   "DevOps": { individual: 1100, team: 4000, teamSize: 4 },
   "CyberSecurity": { individual: 1100, team: 4000, teamSize: 4 },
-  "Cloud Computing": { individual: 1100, team: 4000, teamSize: 4 },
+  "Cloud Computing": { individual: 1200, team: 4400, teamSize: 4 },
   "Technoquest: Ignite Your Tech-Savvy Spirit": { teamOnly: true, price: 300, teamSize: 3 },
   "Beat the Bug: Debugging Showdown": { teamOnly: true, price: 300, teamSize: 3 },
   "Cryptic Hunt: Decode, Discover, Dominate": { teamOnly: true, price: 300, teamSize: 3 },

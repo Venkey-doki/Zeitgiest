@@ -1,4 +1,33 @@
-html{
+html {
     background-color: black;
     color: #fff;
+}
+
+/* For WebKit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Adjust width as needed */
+}
+
+/* Completely remove scrollbar track background */
+::-webkit-scrollbar-track {
+    background: linear-gradient(90deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(135, 206, 235, 0.1) 1px, transparent 1px) !important; /* Fully transparent */
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Customize the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #87CEEB; /* Replace with your color */
+    border-radius: 10px;
+}
+
+/* Hover effect on the thumb */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #87CEEB; /* Replace with hover color */
+}
+
+/* Ensure no background appears in Firefox */
+html {
+    scrollbar-color:     #87CEEB transparent;
 }

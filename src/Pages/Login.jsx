@@ -4,13 +4,15 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import styles from "../CSS/Login.module.css";
+import "../CSS/Registration.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
+import QrCode200 from "../assets/qr-200-crop.jpg";
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   // Toggle password visibility
@@ -18,6 +20,9 @@ const Login = () => {
     setShowPassword((prevState) => !prevState);
   };
 
+  const toggleModal = () => {
+    setShowModal((prev) => !prev);
+  };
   // Check if user is already logged in and initialize AOS
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -144,8 +149,45 @@ const Login = () => {
               Register Now!
             </span>
           </p>
+          <p className={styles.footerText}>
+            Done Pre Registration?{" "}
+            <span
+              className={styles.link}
+              onClick={toggleModal}
+            >
+              Make Payment Now!
+            </span>
+          </p>
         </form>
       </div>
+      {showModal && (
+  <div className="modal-overlay" onClick={toggleModal}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <h3>Scan to Pay</h3>
+      <img src={QrCode200} alt="Payment QR Code" className="qr-code" />
+      <div className="payment-instructions">
+        <p>1. Scan QR code to make payment</p>
+        <p>2. Take a screenshot of successful payment</p>
+        <p>
+          3. Send payment screenshot to{" "}
+          <a href="https://wa.me/918317504292" target="_blank" rel="noopener noreferrer">
+            8317504292
+          </a>{" "}
+          via WhatsApp
+        </p>
+        <p>
+          4. Make a call to{" "}
+          <a href="tel:+918317504292">
+            8317504292
+          </a>{" "}
+          after successful payment
+        </p>
+      </div>
+      <button className="close-button" onClick={toggleModal}>Close</button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

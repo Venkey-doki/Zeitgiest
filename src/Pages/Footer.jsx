@@ -107,6 +107,13 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+
+            <div><br/>
+            <h4>Visitors Count</h4>
+            <a href="https://zeitgeistjntukcse.com">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=19344373&style=0010&nbdigits=5&type=page&initCount=11234" title="Counter Widget" Alt="Visit counter For Websites"   border="0" />
+            </a>
+            </div>
           </div>
         </div>
 
